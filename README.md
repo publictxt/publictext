@@ -15,6 +15,7 @@ This repository contains the Public Text template, which is a starting point for
 - **Social Bookmarking and Blogging**: Interactive platforms for content creation and sharing.
 - **Desktop and Mobile UI**: Accessible interfaces for diverse devices, enhancing user interaction, content discovery and creation, and community engagement.
 - **Web API**: A central conduit for seamless data integration and communication.
+- **ActivityPub**: integration with the decentralized social networking protocol.
 
 ## Public Text Template
 
@@ -32,7 +33,6 @@ The directory structure for a Public Text repository is as follows:
       - **day** (eg 01)
         - date.md: (eg 20231217.md) Contains the blog post
         - title.md: other posts for the day
-- **discussion**: Contains discussion threads
 - **wiki**: Contains wiki pages
 - **notes**: Contains notes
 - **media**: Contains media files
@@ -46,6 +46,13 @@ The directory structure for a Public Text repository is as follows:
   - **tags**: tag indexes for metaweb content
 - **tags**: Contains tag indexes for the entire repository
 - **indexes**: Contains indexes for the entire repository
+- **community**: Contains community content
+  - **discussion**: Contains discussion threads
+  - **profiles**: Contains user profiles
+  - **groups**: Contains group profiles
+  - **settings**: Contains settings files
+  - **indexes**: Contains indexes for community content
+  - **tags**: Contains tag indexes for community content
 - **settings**: Contains settings files
 
 
