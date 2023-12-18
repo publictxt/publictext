@@ -1,7 +1,7 @@
-# Project Name: Public Text
+# Project Name: PublicText
 
 ## Overview
-Public Text is an experimental platform combining the power of Git's version control with the dynamic world of public discourse, web browsing, social bookmarking, wikis and blogging. It's designed to enhance how we manage, share, and interact with information in a transparent, collaborative online space.
+PublicText is an experimental platform combining the power of Git's version control with the dynamic world of public discourse, web browsing, social bookmarking, wikis and blogging. It's designed to enhance how we manage, share, and interact with information in a transparent, collaborative online space.
 
 This repository contains the Public Text template, which is a starting point for creating a new Public Text repository. It includes a basic directory structure, a README template, and a license. The template is designed to be cloned and personalized for your own Public Text repository.
 
@@ -25,7 +25,7 @@ This repository contains the Public Text template, which is a starting point for
 
 ### Directory Structure
 
-The directory structure for a Public Text repository is as follows:
+The directory structure for a PublicText repository is as follows:
 
 - **blog**: Contains blog posts
   - **year** (eg 2023)
