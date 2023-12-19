@@ -5,12 +5,15 @@ PublicText is an experimental platform combining the power of Git's version cont
 
 This repository contains the Public Text template, which is a starting point for creating a new Public Text repository. It includes a basic directory structure, a README template, and a license. The template is designed to be cloned and personalized for your own Public Text repository.
 
-## Key Features of the ecosystem
+The experiment is in early stages. 
+Links to software repositories for tooling that works work these plaintext repositories to follow.
+
+## Planned Features of the ecosystem
 
 - **Plain text**: Using Markdown for simple, flexible content creation and editing. Tags and more complex metadata is stored using an open plaintext protocol. 
 - **Immutable Public Records**: Leveraging Git for transparent, reliable record-keeping.
 - **Consensus and Reputation Mechanisms**: Empowering community-driven content management and peer review.
-- **Fluid Control Settings**: Flexibility with public, semi-public, and private content settings.
+- **Fluid Community Controls**: Flexibility with public, semi-public, and private content settings.
 - **MetaWeb Commons Functionality**: A browser extension that integrates Git repositories that contain discussion and notes about web pages with the web browsing experience.
 - **Social Bookmarking and Blogging**: Interactive platforms for content creation and sharing.
 - **Desktop and Mobile UI**: Accessible interfaces for diverse devices, enhancing user interaction, content discovery and creation, and community engagement.
