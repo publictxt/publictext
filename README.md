@@ -1,15 +1,15 @@
-# Project Name: PublicText
+# Project Name: Public Text
 
 ## Overview
-PublicText is an experimental platform combining the power of Git's version control with the dynamic world of public discourse, web browsing, social bookmarking, wikis and blogging. It's designed to enhance how we manage, share, and interact with information in a transparent, collaborative online space.
+PublicTxt is a stab at using plaintext based git repos as efficient stores of public, community, and semi-private and private content. 
+And then hopefully, eventually also a bunch of tooling that works with these git repos to store, share, and organise content/knowledge/community. The idea is to combine the power of Git's version control with strong graphs of connected public content to provide a way for systems to store and interoperate in public discourse, web browsing, social bookmarking, wikis and blogging. It aims to enhance how we manage, share, and interact with information in a transparent, collaborative online space.
 
-The experiment is in early stages. 
-Links to software repositories for tooling that works work these plaintext repositories to follow.
+This repository contains the Public Text template, which is a starting point for creating a new Public Text repository. It includes a basic directory structure, a README template, and a license. The template is designed to be cloned and personalized for your own Public Text repository.
 
-## Planned Features of the ecosystem
+## Key Features of the ecosystem
 
 - **Plain text**: Using Markdown for simple, flexible content creation and editing. Tags and more complex metadata is stored using an open plaintext protocol. 
-- **Immutable Public Records**: Leveraging Git for transparent, reliable record-keeping.
+- **Immutable Public Records**: Leveraging Git commits - possibly in combination with other forms of distributed ledgers - for transparent and reliable record-keeping.
 - **Consensus and Reputation Mechanisms**: Empowering community-driven content management and peer review.
 - **Fluid Community Controls**: Flexibility with public, semi-public, and private content settings.
 - **MetaWeb Commons Functionality**: A browser extension that integrates Git repositories that contain discussion and notes about web pages with the web browsing experience.
@@ -20,14 +20,15 @@ Links to software repositories for tooling that works work these plaintext repos
 
 ## Public Text Template
 
-### Setting Up Your Git Repository
+### Using this Repository to work or play with the format
 
-- Clone the [template repository](https://github.com/publictext/publictext.template) to start a new PublicText repository
-- Use your clone to setup and experiment with your own text repo to be used for markdown content as is and with the tooling.
+- This repo should also function as a template of the format. Although it also holds a wiki and other content about the entire PublicTxt idea. If  
+- This repository should be able to be used with custom software, like the hoped for browser extension and other tooling.
+- Suggest changes via pull requests, issues, comments, or by forking the repository and creating your own version of the template.
 
 ### Directory Structure
 
-The directory structure for a PublicText repository is as follows:
+The directory structure for a Public Text repository is as follows:
 
 - **blog**: Contains blog posts
   - **year** (eg 2023)
