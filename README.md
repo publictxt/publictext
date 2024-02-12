@@ -2,9 +2,10 @@
 
 ## Overview
 PublicTxt is a stab at using plaintext based git repos as efficient stores of public, community, and semi-private and private content. 
-And then hopefully, eventually also a bunch of tooling that works with these git repos to store, share, and organise content/knowledge/community. The idea is to combine the power of Git's version control with strong graphs of connected public content to provide a way for systems to store and interoperate in public discourse, web browsing, social bookmarking, wikis and blogging. It aims to enhance how we manage, share, and interact with information in a transparent, collaborative online space.
+And then hopefully, eventually also a bunch of tooling that works with these git repos to store, share, and organise content/knowledge/community. The idea is to combine the power of Git's version control with strong graphs of connected public content to provide a way for systems to store and interoperate with content for public discourse, web browsing, social bookmarking, wikis and blogging. It aims to enhance how we manage, share, and interact with information in a transparent, collaborative online space.
 
-This repository contains the Public Text template, which is a starting point for creating a new Public Text repository. It includes a basic directory structure, a README template, and a license. The template is designed to be cloned and personalized for your own Public Text repository.
+The experiment is in early stages. 
+Links to software repositories for tooling that works work these plaintext repositories to follow.
 
 ## Key Features of the ecosystem
 
