@@ -23,8 +23,7 @@ Links to software repositories for tooling that works work these plaintext repos
 - **Web API**: A central conduit for seamless data integration and communication.
 - **Interoperability**: Compatibility with other systems and standards, such as ActivityPub and the W3C Web Annotation Data Model.
 - **Decentralisation**: A distributed, peer-to-peer network of repositories, with no central authority.
-
-
+- **Static Web Generation**: Generating static websites from PublicTxt repositories.
 
 
 ## Public Text Template
