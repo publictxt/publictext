@@ -1,7 +1,7 @@
-# Project Name: Public Text / PublicTxt
+# Project Name: Public Text / PublicTxt (Concept Phase)
 
 ## Overview
-PublicTxt is a stab at using plaintext based git repos as efficient stores of public, community, and semi-private and private content. 
+PublicTxt is a stab at using plaintext based git repos as an interoperability layer and efficient stores of public, community, and semi-private and private content. 
 And then hopefully, eventually also a bunch of tooling that works with these git repos to store, share, and organise content/knowledge/community. The idea is to combine the power of Git's version control with strong graphs of connected public content to provide a way for systems to store and interoperate with content for public discourse, web browsing, social bookmarking, wikis and blogging. It aims to enhance how we manage, share, and interact with information in a transparent, collaborative online space.
 
 The experiment is in early stages. 
