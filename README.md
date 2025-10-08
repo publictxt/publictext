@@ -1,31 +1,43 @@
-# Project Name: Public Text / PublicTxt (Concept Phase)
+# Project Name: Public Text / PublicTxt
 
 ## Overview
-PublicTxt is a stab at using plaintext based git repos as an interoperability layer and efficient stores of public, community, and semi-private and private content. 
-And then hopefully, eventually also a bunch of tooling that works with these git repos to store, share, and organise content/knowledge/community. The idea is to combine the power of Git's version control with strong graphs of connected public content to provide a way for systems to store and interoperate with content for public discourse, web browsing, social bookmarking, wikis and blogging. It aims to enhance how we manage, share, and interact with information in a transparent, collaborative online space.
 
-The experiment is in early stages. 
-Links to software repositories for tooling that works work these plaintext repositories to follow.
+PublicTxt is an experiment in using Git repositories as an interoperability layer and online storage for public and community knowledge. By leveraging free Git hosting services and plain text markdown files, it enables individuals and communities to share, curate, and collaborate on content without relying on centralized platforms or paid infrastructure.
 
-## Wanted Features of the Ecosystem
+The core idea is simple: Desktop and Web applications that sync between local and multiple Git repositories to store and share knowledge, subscribe to repositories and aggregate content from different sources, collaborate through user friendly abstractions over Git's branching and merging workflows, and publish everything to the web using static site generation.
 
-- **Plain text**: Using Markdown for simple, flexible content creation and editing. Tags and more complex metadata is stored using an open plaintext protocol.
-- **Rich Semantic Syntax**: Using RDF Semantic Edges and Weighted Attributes and Weighted Links/Edges 
+The experiment is in early stages. Links to software repositories for tooling that works with these plaintext repositories to follow.
+
+## Core Features
+
+- **Zero Cost Online Storage and Web Hosting**: Leverages free Git hosting (GitHub, GitLab, etc.) for all storage and distribution, and for static websites.
+- **Static Website Generation**: Simple publish to web flow requiring zero/minimal setup. 
+- **Plain text**: Using Markdown for simple, flexible content creation and editing. Tags and more complex metadata is stored using plaintext syntax.
 - **Compatibility** Plaintext PublicTxt Syntax should be consistent with Obsidian and Obsidian DataView Plugin links and attributes 
-- **Feature Rich UI** Making all the other features easy to use, while storing as much data as possible in plaintext with PublicTxt Syntax
-- **Desktop and Mobile UI**: Accessible interfaces for diverse devices, enhancing user interaction, content discovery and creation, and community engagement.
+- **Desktop UI**: Native applications that sync with Git repositories and pull repository data into local database for fast searching and browsing. User interfaces for content creation, organisation, discovery, search, aggregation, and community engagement. 
+- **User Friendly Git Operations**: Desktop and web applications hide the complexity of Git operations
+- **Feature Rich UI** Making all the other features easy to use, while storing as much data as possible in plaintext with PublicTxt Syntax, synced and transferred to database for use by applications.
 - **Fluid Community Controls**: Flexibility with public, semi-public, and private content settings.
-- **TerminusDb Backend**: Use richly featured, collaboration focused, versioned Graph Database like TerminusDb to store the Knowledge Graph  in memory for faster use of the graph in ecosystem applications
-- **Social Bookmarking and Blogging**: A standard for storing MetaWeb (SideWiki like) data about web resources. This to be used with  Interactive platforms for content creation and sharing.
-- **MetaWeb Commons Functionality**: A browser extension that integrates Git repositories that contain discussion and notes about web pages with the web browsing experience.
-- **Immutable Public Records**: Leveraging Git commits - possibly in combination with other forms of distributed ledgers - for transparent and reliable record-keeping.
-- **Consensus and Reputation Mechanisms**: Empowering community-driven content management and peer review.
-- **Web API**: A central conduit for seamless data integration and communication.
-- **Interoperability**: Compatibility with other systems and standards, such as ActivityPub and the W3C Web Annotation Data Model.
-- **Decentralisation**: A distributed, peer-to-peer network of repositories, with no central authority.
-- **Static Web Generation**: Generating static websites from PublicTxt repositories.
-- **Data Portability**: Easy import and export of data in standard formats.
+- **Social Bookmarking and  Annotation**: A standard for storing MetaWeb (SideWiki like) data about web resources, using W3C Annotation standards.
+- **GIT Topic Branches**: Using different branches to allow following certain aspects of a repo. These use shared naming standards.
 
+## Use Cases
+
+- **Personal and Community Knowledge Management**: Maintain your own markdown-based knowledge base with version control
+- **Community Wikis and Content Management**: Collaborative knowledge bases maintained by multiple contributors
+- **Social Bookmarking**: Share and annotate web resources with commentary and discussion
+- **Distributed Blogging**: Publish blog posts that others can subscribe to and aggregate
+- **Research Collaboration**: Share research notes and findings with selective access control
+- **Learning Communities**: Build shared knowledge bases around specific topics or fields
+
+## Future Ideas/Possibilities
+
+- **MetaWeb Commons Functionality**: A browser extension that integrates Git repositories that contain discussion and notes about web pages with the web browsing experience.
+- **ActivityPub**: integration with the decentralized social networking protocol.
+- **Immutable Public Records**: Leveraging Git commits - possibly in combination with other forms of distributed ledgers - for transparent and reliable record-keeping.
+- **Rich Semantic Syntax**: Using RDF Semantic Edges and Weighted Attributes and Weighted Links/Edges 
+- **TerminusDb Backend**: Use richly featured, collaboration focused, versioned Graph Database like TerminusDb to store the Knowledge Graph  in memory for faster use of the graph in ecosystem applications
+- **Consensus and Reputation Mechanisms**: Empowering community-driven content management and peer review.
 
 ## Public Text Template
 
