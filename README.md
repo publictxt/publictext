@@ -8,6 +8,13 @@ The core idea is simple: Desktop and Web applications that sync between local an
 
 The experiment is in early stages. Links to software repositories for tooling that works with these plaintext repositories to follow.
 
+## Linked Repos
+
+- [PublicTxt.net](https://github.com/publictxt/publictxt.net) An in-progress .NET implementation with:
+  - Core libraries, and feature based services  
+  - Git and Database Infrastructure projects  
+  - Avalonia Desktop & Blazor Web Apps
+
 ## Core Features
 
 - **Zero Cost Online Storage and Web Hosting**: Leverages free Git hosting (GitHub, GitLab, etc.) for all storage and distribution, and for static websites.
