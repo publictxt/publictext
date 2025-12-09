@@ -10,6 +10,10 @@ The experiment is in early stages. Links to software repositories for tooling th
 
 ## Linked Repos
 
+- [WikiTool](https://github.com/jaysen/WikiTool) In-progress. Multiplatform .NET Tool for handling multiple wikis
+  - Core Wiki Libraries
+  - Converts between Wiki formats and Wiki-Syntax
+  - Copy between wikis based on search, tag expressions (tag1 + tag2 - tag3), attributes.
 - [PublicTxt.net](https://github.com/publictxt/publictxt.net) An in-progress .NET implementation with:
   - Core libraries, and feature based services  
   - Git and Database Infrastructure projects  
