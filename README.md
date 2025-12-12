@@ -27,6 +27,7 @@ The experiment is in early stages. Links to software repositories for tooling th
 - **Compatibility** Plaintext PublicTxt Syntax should be consistent with Obsidian and Obsidian DataView Plugin links and attributes 
 - **Desktop UI**: Native applications that sync with Git repositories and pull repository data into local database for fast searching and browsing. User interfaces for content creation, organisation, discovery, search, aggregation, and community engagement. 
 - **User Friendly Git Operations**: Desktop and web applications hide the complexity of Git operations
+- **Selective Syncing with Multiple Repositories**: The possibility to aggregate from and sync to multiple repos - with syncing rules per topic/repo/type.  
 - **Feature Rich UI** Making all the other features easy to use, while storing as much data as possible in plaintext with PublicTxt Syntax, synced and transferred to database for use by applications.
 - **Fluid Community Controls**: Flexibility with public, semi-public, and private content settings.
 - **Social Bookmarking and  Annotation**: A standard for storing MetaWeb (SideWiki like) data about web resources, using W3C Annotation standards.
