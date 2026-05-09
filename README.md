@@ -32,6 +32,9 @@ If that works and feels good, the project is real. Community features, browser e
   - Core libraries and feature-based services.
   - Git and database infrastructure projects.
   - Avalonia desktop & Blazor web apps (later phases).
+- [CuratedCommons repo](https://github.com/publictxt/curated-commons) 
+  - Curated Commons borrows its spirit from Creative Commons: open standards, portable content, community ownership. Instead of commentary and curation living inside a centralized platform, they live in plain text repositories - publicly accessible, forkable, subscribable.
+  - see [CuratedCommons page in this repo](wiki/publictxt/CuratedCommons.md)
 
 ## Core Features (v1 Focus)
 
