@@ -23,7 +23,11 @@ Everything else in this document supports that, or is deferred.
 If that works and feels good, the project is real. Community features, browser extensions, federation protocols, and graph-database backends are all possible later - but they aren't what v1 ships.
 
 ## Linked Repos
-
+- [Txt-Hugo](https://github.com/publictxt/txt-hugo) - Static site interface for browsing/searching an public repository (PublicTxt or otherwise).
+  - Uses Hugo for static site generation
+  - Pagefind for search - Pagefind is a fully static search library that aims to perform well on large sites, while using as little of your users’ bandwidth as possible, and without hosting any infrastructure.
+  - Python for pre-processing
+  - see [jaysen.co.za](https://jaysen.co.za) for a working example
 - [WikiTool](https://github.com/jaysen/WikiTool) - In-progress. Multiplatform .NET tool for handling multiple wikis.
   - Core wiki libraries.
   - Converts between wiki formats and wiki syntaxes (incl. Obsidian ↔ md-wiki).
