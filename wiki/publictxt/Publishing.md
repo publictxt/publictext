@@ -34,6 +34,16 @@ Every push to the publishing branch republishes. **Actions → Publish site → 
 - Workflow: [`.github/workflows/publish.yml`](https://github.com/publictxt/publictext/blob/main/.github/workflows/publish.yml), publishing from `main`
 - Settings: [`settings/site.toml`](https://github.com/publictxt/publictext/blob/main/settings/site.toml)
 
+## Custom domain
+
+This site is served at `https://publictxt.github.io/publictext/` for now. To move it to `https://publictxt.net/`:
+
+1. At the DNS provider, point the domain at GitHub Pages ([GitHub's guide](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)).
+2. Repo → **Settings → Pages → Custom domain**: `publictxt.net`; tick *Enforce HTTPS* once offered.
+3. In the workflow, set `HUGO_BASEURL: https://publictxt.net/` and push.
+
+Do step 3 last: with the new address set before DNS works, the site's styles and links point at a domain that doesn't answer. No `CNAME` file is needed with Actions deploys.
+
 ## Preview locally
 
 Needs Python 3.11+, Hugo 0.162+, and Pagefind or Node.

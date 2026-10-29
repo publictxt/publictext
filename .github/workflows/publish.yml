@@ -63,6 +63,8 @@ jobs:
 
       - name: Build
         env:
+          # Switch to https://publictxt.net/ once the custom domain is set up
+          # (wiki/publictxt/Publishing.md#custom-domain).
           HUGO_BASEURL: https://publictxt.github.io/publictext/
           # "Edit this page" links: this repo's edit URL on the branch being built.
           HUGO_PARAMS_EDITURL: ${{ github.server_url }}/${{ github.repository }}/edit/${{ github.ref_name }}/
