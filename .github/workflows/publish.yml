@@ -1,0 +1,87 @@
+# Publish a PublicTxt content repo with publictxt-pages via GitHub Pages.
+#
+# Copy this file into the CONTENT repo (e.g. publictxt/publictext) as
+#   .github/workflows/publish.yml
+# and in that repo's Settings -> Pages set "Source" to "GitHub Actions"
+# (the custom domain stays configured there; the CNAME file is no longer needed).
+#
+# The content repo stays pure Markdown — the site generator lives in its own
+# repo and is checked out at build time, so upgrading the site is a one-line
+# ref change below.
+#
+# Site settings (title, description, categories, filter chips, …) live in
+# this repo's settings/site.toml, merged over publictxt-pages' hugo.toml.
+# The Build step's env: keeps only what depends on the deploy — HUGO_-prefixed
+# variables override both files
+# (https://gohugo.io/configuration/introduction/#configure-with-environment-variables).
+
+name: Publish site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out content
+        uses: actions/checkout@v4
+        with:
+          path: txt
+          # Full history: a page's `created` / `updated` come from the first and
+          # last commit that touched it. A shallow checkout has one commit, so
+          # every page would report the same date at both ends.
+          fetch-depth: 0
+
+      - name: Check out publictxt-pages
+        uses: actions/checkout@v4
+        with:
+          repository: publictxt/publictxt-pages   # <- adjust to wherever this repo lives
+          ref: main                        # pin to a tag for reproducible builds
+          path: site
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.166.0"
+
+      - name: Set up Node (for Pagefind)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build
+        env:
+          # Switch to https://publictxt.net/ once the custom domain is set up
+          # (wiki/publictxt/Publishing.md#custom-domain).
+          HUGO_BASEURL: https://publictxt.github.io/publictext/
+          # "Edit this page" links: this repo's edit URL on the branch being built.
+          HUGO_PARAMS_EDITURL: ${{ github.server_url }}/${{ github.repository }}/edit/${{ github.ref_name }}/
+        # The runner's python3 (3.11+; tomllib) is enough; build.py needs no packages.
+        run: python3 site/scripts/build.py --source ../txt
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
