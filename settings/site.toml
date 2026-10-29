@@ -1,0 +1,33 @@
+# Site settings for publictxt-pages, merged over its hugo.toml at build time.
+# Tables merge key by key; a list (e.g. [[params.chipFacets]]) replaces the
+# default whole. The deploy workflow's HUGO_* env vars (baseURL, editURL)
+# override this file.
+
+title = "PublicTxt"
+
+[params]
+  shortTitle = "PublicTxt"
+  description = "PublicTxt: plain-text public knowledge in Git repositories. Project documentation, blog and notes."
+  author = "Jaysen Naidoo"
+  mastodon = "https://hachyderm.io/@jaysen"
+
+  sectionOrder = ["wiki", "blog", "posts", "bookmarks", "notes"]
+  pagerSize = 15
+  listOrder = "created"
+
+  [params.footer]
+    text = "[PublicTxt](https://github.com/publictxt/publictext), plain-text knowledge, published with [publictxt-pages](https://github.com/publictxt/publictxt-pages)"
+
+  [params.categories]
+    enabled = false
+
+  # Filter chips, in this order.
+  [[params.chipFacets]]
+    key = "collection"
+    label = "Collection"
+    states = ["include", "exclude"]
+    match = ["any"]
+  [[params.chipFacets]]
+    key = "tag"
+    label = "Tags"
+    match = ["all", "any"]

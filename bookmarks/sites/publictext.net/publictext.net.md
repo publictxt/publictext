@@ -1,10 +1,13 @@
+---
+bookmark: https://publictext.net
+---
 # publictext.net
 
 ### Description:
 
 This is a sample page for publictext.net
 
-Metaweb notes can also reference the metaweb wiki: [sample-page.md](../../wiki/sample-page.md)
+Bookmark notes can also reference pages about bookmarks: [sample-page.md](../../wiki/sample-page.md)
 
 ### Tags:
 #publictxt #website #sample

@@ -8,7 +8,7 @@ PublicTxt is an experiment in using Git repositories as an interoperability laye
 
 The core idea is simple: desktop and web applications that sync between local working copies and one or more Git repositories, **selectively aggregate content from other people's repositories**, and publish to the web using static site generation - all built on plain Markdown that survives the tooling.
 
-The experiment is in early stages. The format is defined in the [PublicTxt Format Specification](spec/publictxt-spec.md) (v0.1.0-draft).
+The experiment is in early stages. The format specification is still a draft; the working layout is [Repository structure](wiki/publictxt/Repository-Structure.md).
 
 ## What PublicTxt Is (and Isn't), For Now
 
@@ -28,7 +28,7 @@ If that works and feels good, the project is real. Community features, browser e
 |---|---|
 | [Obsidian PublicTxt Facet Plugin](#obsidian-publictxt-facet-plugin) | **v1.0 released** |
 | [PublicTxt-Pages](#publictxt-pages) | Working - live at [jaysen.co.za](https://jaysen.co.za) |
-| [Format Specification](spec/publictxt-spec.md) | v0.1.0-draft |
+| [Format Specification](wiki/publictxt/Repository-Structure.md) | Draft |
 | [WikiTool](https://github.com/jaysen/WikiTool) | In progress |
 | [PublicTxt.net](https://github.com/publictxt/publictxt.net) | In progress |
 | [CuratedCommons](https://github.com/publictxt/curated-commons) | Specification stage |
@@ -83,7 +83,7 @@ If that works and feels good, the project is real. Community features, browser e
 
 These are the load-bearing features for the v1 vision above.
 
-- **Plain Text First**: Markdown on disk, in the md-wiki dialect (standard `[text](page.md)` links) so content is publishable by any static-site host with no conversion step. Tags and structured metadata use plaintext conventions ([spec](spec/publictxt-spec.md)).
+- **Plain Text First**: Markdown on disk, in the md-wiki dialect (standard `[text](page.md)` links) so content is publishable by any static-site host with no conversion step. Tags and structured metadata use plaintext conventions ([structure](wiki/publictxt/Repository-Structure.md)).
 - **Zero-Cost Online Storage and Hosting**: Leverages free Git hosting (GitHub, GitLab, etc.) for storage, distribution, and static websites.
 - **Static Website Generation**: [PublicTxt-Pages](#publictxt-pages) - push to a Pages-enabled branch and you're live, with full-text search and tag/type facets.
 - **Selective Aggregation from Multiple Repositories**: Subscribe to other PublicTxt repos and pull selected content (by tag, path, or filter) into a local aggregate. **This is the killer feature.**
@@ -93,7 +93,7 @@ These are the load-bearing features for the v1 vision above.
 
 ### Later Phase
 
-- **Desktop & Web UI**: Native applications that hide Git's complexity for everyday content workflows, sync with Git repositories, and pull repository data into a local cache for fast search and browsing. See milestones in [ProjectSpec.md](ProjectSpec.md).
+- **Desktop & Web UI**: Native applications that hide Git's complexity for everyday content workflows, sync with Git repositories, and pull repository data into a local cache for fast search and browsing. See the [roadmap](wiki/publictxt/Roadmap.md).
 
 ## Use Cases (v1 Focus)
 
@@ -104,17 +104,20 @@ These are the load-bearing features for the v1 vision above.
 
 ## Public Text Directory Structure
 
-Default layout (the [spec](spec/publictxt-spec.md) §4 is authoritative; a `publictxt.yaml` manifest can remap folders):
+Follows the [PublicTxt-Pages content structure](https://github.com/publictxt/publictxt-pages/blob/main/docs/SPEC.md#content-structure) until the format specification is written. Details: [Repository structure](wiki/publictxt/Repository-Structure.md).
 
-- **wiki/**: Wiki pages
-- **blog/**`<yyyy>/<mm>/<yyyymmdd>[-<n>]-<slug>.md`: Blog posts, e.g. `blog/2026/09/20260920-1-title.md`
+- **wiki/**: Wiki pages; `_index.md` is a folder's own page
+- **blog/**: Dated posts - `blog/<yyyy>/<mm>/<dd>/<file>.md`, `blog/<yyyy>/<mm>/<yyyymmdd>-<slug>.md` or `blog/<yyyymmdd>-<slug>.md`
+- **posts/**: Longer pieces
 - **notes/**: Notes
 - **media/**: Media files (attachments)
-- **metaweb/**`<domain>/<subdomain-or-folder>/<file>.md`: One file per bookmarked web resource. Any document with a `bookmark` front matter attribute is also a bookmark, wherever it lives.
-- `publictxt.yaml`: Optional repo manifest
+- **bookmarks/**`sites/<domain>/<file>.md`: One file per bookmarked web resource, with a `bookmark:` URL. Any page with a `bookmark` front matter attribute is also a bookmark, wherever it lives
+- **settings/site.toml**: Site settings for PublicTxt-Pages
 - *community/*: Profiles, groups, discussion (deferred)
 
 Indexes and tag pages are derived data and are not committed; tools generate them at build or view time.
+
+This repository is published the same way - see [Publishing a PublicTxt site](wiki/publictxt/Publishing.md).
 
 ## Future Ideas / Later Phases
 
