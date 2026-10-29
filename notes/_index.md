@@ -1,4 +1,4 @@
 ---
-description: Short, unsorted notes
+description: Longer form notes
 ---
 # Notes

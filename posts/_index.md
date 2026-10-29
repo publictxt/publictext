@@ -1,4 +1,4 @@
 ---
-description: Longer project write-ups
+description: Micro-blogging / Social posts
 ---
 # Posts

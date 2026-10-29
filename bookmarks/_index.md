@@ -3,4 +3,4 @@ description: Web resources, with notes about them
 ---
 # Bookmarks
 
-One file per web resource under `bookmarks/sites/<domain>/`, each with a `bookmark:` URL in its front matter. Pages *about* bookmarks go in `bookmarks/wiki/`.
+Bookmarks can be saved in this folder - using `bookmarks/sites/<domain>/`, or anywhere else, as long they have a `bookmark:` URL in their front matter.
