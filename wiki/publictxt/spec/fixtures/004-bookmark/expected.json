@@ -1,0 +1,121 @@
+{
+  "repo": {
+    "spec": "0.1",
+    "author": "Example Author",
+    "diagnostics": []
+  },
+  "documents": [
+    {
+      "path": "metaweb/example.com/blog/some-post.md",
+      "type": "bookmark",
+      "type_source": "folder",
+      "title": "some-post",
+      "date": null,
+      "bookmark": "HTTPS://Example.com:443/blog/some-post?ref=rss#comments",
+      "resource_id": "sha256:1c7c9dc7aaf64cd88c22f277526daf5a2bac2e9e525a0b321e24c6384446c8fe",
+      "tags": [
+        {
+          "raw": "Reading",
+          "match": "reading",
+          "source": "frontmatter"
+        },
+        {
+          "raw": "git",
+          "match": "git",
+          "source": "inline"
+        }
+      ],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "metaweb/example.net/no-url.md",
+      "type": "bookmark",
+      "type_source": "folder",
+      "title": "no-url",
+      "date": null,
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [
+        {
+          "raw": "orphan",
+          "match": "orphan",
+          "source": "frontmatter"
+        }
+      ],
+      "links": [],
+      "diagnostics": [
+        {
+          "level": "error",
+          "code": "bookmark-missing-url",
+          "subject": null
+        }
+      ]
+    },
+    {
+      "path": "metaweb/example.org/stale-id.md",
+      "type": "bookmark",
+      "type_source": "folder",
+      "title": "stale-id",
+      "date": null,
+      "bookmark": "https://example.org",
+      "resource_id": "sha256:8198d1bac40a1033653a78e48800cefc9e6b974ff075c66e5548b5c1e145a2b0",
+      "tags": [],
+      "links": [],
+      "diagnostics": [
+        {
+          "level": "warning",
+          "code": "resource-id-mismatch",
+          "subject": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ]
+    },
+    {
+      "path": "notes/hugo-page.md",
+      "type": "note",
+      "type_source": "folder",
+      "title": "Hugo page",
+      "date": null,
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "notes/quick-link.md",
+      "type": "bookmark",
+      "type_source": "frontmatter",
+      "title": "Quick link",
+      "date": null,
+      "bookmark": "http://Example.com:8080/a/b",
+      "resource_id": "sha256:bd7fa4c98d026457f987be12d6e35e957ef9accbd62d914e6bf31b7cb89c841f",
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "wiki/pro-git.md",
+      "type": "wiki",
+      "type_source": "folder",
+      "title": "Pro Git",
+      "date": null,
+      "bookmark": "https://git-scm.com/book/en/v2",
+      "resource_id": "sha256:c1a2abc82c4e68d62fab7ad35c828eeca8da376566ec490b9a7c5ee6f615ee5c",
+      "tags": [
+        {
+          "raw": "git",
+          "match": "git",
+          "source": "frontmatter"
+        },
+        {
+          "raw": "books",
+          "match": "books",
+          "source": "frontmatter"
+        }
+      ],
+      "links": [],
+      "diagnostics": []
+    }
+  ]
+}

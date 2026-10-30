@@ -1,0 +1,117 @@
+{
+  "repo": {
+    "spec": "0.1",
+    "author": "Example Author",
+    "diagnostics": []
+  },
+  "documents": [
+    {
+      "path": "blog/2026/02/20260228-bad-date.md",
+      "type": "blog",
+      "type_source": "folder",
+      "title": "bad-date",
+      "date": "2026-02-28",
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [],
+      "links": [],
+      "diagnostics": [
+        {
+          "level": "warning",
+          "code": "invalid-date",
+          "subject": "2026-02-30"
+        }
+      ]
+    },
+    {
+      "path": "blog/2026/09/20260920-1-hello-world.md",
+      "type": "blog",
+      "type_source": "folder",
+      "title": "hello-world",
+      "date": "2026-09-20",
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [
+        {
+          "raw": "meta",
+          "match": "meta",
+          "source": "frontmatter"
+        }
+      ],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "blog/2026/09/20260930-1-late-night.md",
+      "type": "blog",
+      "type_source": "folder",
+      "title": "late-night",
+      "date": "2026-09-30T23:30:00-02:00",
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "blog/2026/10/20260915-launch-notes.md",
+      "type": "blog",
+      "type_source": "folder",
+      "title": "Launch notes",
+      "date": "2026-09-15",
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [],
+      "links": [],
+      "diagnostics": [
+        {
+          "level": "warning",
+          "code": "blog-date-mismatch",
+          "subject": "2026/10"
+        }
+      ]
+    },
+    {
+      "path": "blog/2026/10/20261001-2-override.md",
+      "type": "blog",
+      "type_source": "folder",
+      "title": "override",
+      "date": "2026-10-02",
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "blog/2026/10/20261006-1-obsidian-time.md",
+      "type": "blog",
+      "type_source": "folder",
+      "title": "obsidian-time",
+      "date": "2026-10-06T14:15",
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "blog/2026/10/untitled-draft.md",
+      "type": "blog",
+      "type_source": "folder",
+      "title": "untitled-draft",
+      "date": null,
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [],
+      "links": [],
+      "diagnostics": [
+        {
+          "level": "warning",
+          "code": "blog-missing-date",
+          "subject": null
+        }
+      ]
+    }
+  ]
+}

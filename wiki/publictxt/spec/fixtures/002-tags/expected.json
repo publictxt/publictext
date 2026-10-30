@@ -1,0 +1,57 @@
+{
+  "repo": {
+    "spec": "0.1",
+    "author": "Example Author",
+    "diagnostics": []
+  },
+  "documents": [
+    {
+      "path": "notes/tagging.md",
+      "type": "note",
+      "type_source": "folder",
+      "title": "Tag edge cases",
+      "date": null,
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [
+        {
+          "raw": "PublicTxt",
+          "match": "publictxt",
+          "source": "frontmatter"
+        },
+        {
+          "raw": "Obsidian",
+          "match": "obsidian",
+          "source": "frontmatter"
+        },
+        {
+          "raw": "dotnet",
+          "match": "dotnet",
+          "source": "inline"
+        },
+        {
+          "raw": "lang/csharp",
+          "match": "lang/csharp",
+          "source": "inline"
+        },
+        {
+          "raw": "café",
+          "match": "café",
+          "source": "inline"
+        },
+        {
+          "raw": "snake_case",
+          "match": "snake_case",
+          "source": "inline"
+        },
+        {
+          "raw": "end",
+          "match": "end",
+          "source": "inline"
+        }
+      ],
+      "links": [],
+      "diagnostics": []
+    }
+  ]
+}

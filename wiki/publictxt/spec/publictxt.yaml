@@ -1,0 +1,6 @@
+publictxt: "0.1"
+author:
+  name: Jaysen
+ignore:
+  - .obsidian/
+  - spec/fixtures/

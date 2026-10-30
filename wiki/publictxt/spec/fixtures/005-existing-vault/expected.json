@@ -1,0 +1,135 @@
+{
+  "repo": {
+    "spec": "0.1",
+    "author": "Example Author",
+    "diagnostics": []
+  },
+  "documents": [
+    {
+      "path": "Home.md",
+      "type": "page",
+      "type_source": "default",
+      "title": "Home",
+      "date": null,
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [],
+      "links": [
+        {
+          "syntax": "wikilink",
+          "embed": false,
+          "external": false,
+          "target": "Index",
+          "fragment": null,
+          "resolved": "Wiki/Index.md"
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "path": "Wiki/Index.md",
+      "type": "wiki",
+      "type_source": "folder",
+      "title": "Index",
+      "date": null,
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [],
+      "links": [
+        {
+          "syntax": "wikilink",
+          "embed": false,
+          "external": false,
+          "target": "Concept A",
+          "fragment": null,
+          "resolved": "Zettels/Concept A.md"
+        },
+        {
+          "syntax": "wikilink",
+          "embed": false,
+          "external": false,
+          "target": "Missing Page",
+          "fragment": null,
+          "resolved": null
+        },
+        {
+          "syntax": "markdown",
+          "embed": false,
+          "external": false,
+          "target": "../Zettels/Sources/paper.md",
+          "fragment": "summary",
+          "resolved": "Zettels/Sources/paper.md"
+        },
+        {
+          "syntax": "markdown",
+          "embed": false,
+          "external": false,
+          "target": "../Zettels/Concept%20A.md",
+          "fragment": null,
+          "resolved": "Zettels/Concept A.md"
+        },
+        {
+          "syntax": "wikilink",
+          "embed": true,
+          "external": false,
+          "target": "diagram.png",
+          "fragment": null,
+          "resolved": "Attachments/diagram.png"
+        },
+        {
+          "syntax": "markdown",
+          "embed": false,
+          "external": true,
+          "target": "https://example.org",
+          "fragment": null,
+          "resolved": null
+        },
+        {
+          "syntax": "wikilink",
+          "embed": false,
+          "external": false,
+          "target": "",
+          "fragment": "Index",
+          "resolved": "Wiki/Index.md"
+        }
+      ],
+      "diagnostics": [
+        {
+          "level": "warning",
+          "code": "unresolved-link",
+          "subject": "Missing Page"
+        }
+      ]
+    },
+    {
+      "path": "Zettels/Concept A.md",
+      "type": "note",
+      "type_source": "folder",
+      "title": "Concept A",
+      "date": null,
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [
+        {
+          "raw": "idea",
+          "match": "idea",
+          "source": "inline"
+        }
+      ],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "Zettels/Sources/paper.md",
+      "type": "bookmark",
+      "type_source": "folder",
+      "title": "A paper",
+      "date": null,
+      "bookmark": "https://example.com/paper.pdf",
+      "resource_id": "sha256:065f30cd516e3c8b8f7987803fe0b6ef80570a84cb9026dea4025c81347e6b14",
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    }
+  ]
+}

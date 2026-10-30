@@ -1,0 +1,10 @@
+publictxt: "0.1"
+author:
+  name: Example Author
+types:
+  Wiki/: wiki
+  Zettels/: note
+  Zettels/Sources/: bookmark
+ignore:
+  - .obsidian/
+  - Templates/

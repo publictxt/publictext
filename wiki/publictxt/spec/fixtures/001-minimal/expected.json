@@ -1,0 +1,42 @@
+{
+  "repo": {
+    "spec": "0.1",
+    "author": "Example Author",
+    "diagnostics": []
+  },
+  "documents": [
+    {
+      "path": "wiki/getting-started.md",
+      "type": "wiki",
+      "type_source": "folder",
+      "title": "getting-started",
+      "date": null,
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "wiki/home.md",
+      "type": "wiki",
+      "type_source": "folder",
+      "title": "Home",
+      "date": null,
+      "bookmark": null,
+      "resource_id": null,
+      "tags": [],
+      "links": [
+        {
+          "syntax": "markdown",
+          "embed": false,
+          "external": false,
+          "target": "getting-started.md",
+          "fragment": null,
+          "resolved": "wiki/getting-started.md"
+        }
+      ],
+      "diagnostics": []
+    }
+  ]
+}
