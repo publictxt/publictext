@@ -31,3 +31,5 @@ The change is one line in `layouts/baseof.html`, in publictxt-pages commit `7569
 ## Getting the fix live
 
 The publish workflow checks out publictxt-pages `main` at build time, so no change is needed in this repo. Re-run the "Publish site" workflow, or push any commit here.
+
+**Note: in previously broken sites, its necessary to do a hard refresh in browser to reload the search index.**
