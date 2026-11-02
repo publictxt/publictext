@@ -7,10 +7,10 @@ PublicTxt is an experiment in using Git repositories as an interoperability laye
 This site is itself a PublicTxt repository ([publictxt/publictext](https://github.com/publictxt/publictext)), built by [PublicTxt-Pages](wiki/publictxt/PublicTxt-Pages.md).
 
 - [Project documentation](wiki/publictxt/_index.md)
-  - [Overview](wiki/publictxt/PublicTxt.md)
-  - [Repository structure](wiki/publictxt/Repository-Structure.md)
-  - [Publishing a PublicTxt site](wiki/publictxt/Publishing.md)
-  - [Roadmap](wiki/publictxt/Roadmap.md)
+	- [Overview](wiki/publictxt/PublicTxt.md)
+	- [Repository structure](wiki/publictxt/Repository-Structure.md)
+	- [Publishing a PublicTxt site](wiki/publictxt/Publishing.md)
+	- [Roadmap](wiki/publictxt/Roadmap.md)
 - [Blog](blog/_index.md) - project updates
 - [Posts](posts/_index.md) - micro-blogging records
 - [Notes](notes/_index.md) - long form notes 
