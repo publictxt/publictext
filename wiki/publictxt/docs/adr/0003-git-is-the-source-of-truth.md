@@ -22,3 +22,4 @@
 - − Every consumer computes its own projections. This is cheap at the expected scale of text repos with thousands of files.
 - ! Known conflict: `resource_id` in front matter is derived from the `bookmark` URL. A change to URL normalization would make every stored value stale. Spec §8.2 lists the options; resolve this before 0.1 is final.
 - ! The same question applies to `author` and `source_repo` in front matter (spec §5).
+- + Authored provenance is not derived data. Fork provenance (`fork_*`, ADR-0012) records a choice at a point in time and can't be recomputed, so it belongs on disk.

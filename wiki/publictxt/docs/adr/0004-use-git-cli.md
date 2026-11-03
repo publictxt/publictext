@@ -24,3 +24,4 @@
 - − Each call pays a process start. Use `cat-file --batch` for bulk reads.
 - − A browser (WASM) client can't use it. That isn't needed while the web layer is static (ADR-0008).
 - − The adapter's integration tests need a real `git`. Use temporary repos, not mocks.
+- + The Obsidian plugin made the same choice independently (ADR-0011), so both implementations use git as the API.

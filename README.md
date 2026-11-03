@@ -27,6 +27,7 @@ If that works and feels good, the project is real. Community features, browser e
 | Component | Status |
 |---|---|
 | [Obsidian PublicTxt Facet Plugin](#obsidian-publictxt-facet-plugin) | **v1.0 released** |
+| [Obsidian PublicTxt](#obsidian-publictxt) | In progress - follow repos, fork pages (desktop) |
 | [PublicTxt-Pages](#publictxt-pages) | Working - live at [jaysen.co.za](https://jaysen.co.za) |
 | [Format Specification](wiki/publictxt/Repository-Structure.md) | Draft |
 | [WikiTool](https://github.com/jaysen/WikiTool) | In progress |
@@ -55,6 +56,16 @@ If that works and feels good, the project is real. Community features, browser e
 - Search and filter notes by **combinations of tags**.
 - Selecting a tag narrows the remaining tag list to tags that co-occur with the current selection, so you can drill down without dead ends.
 - Brings the same faceted browsing that PublicTxt-Pages offers on the web into the editing environment.
+
+### Obsidian PublicTxt
+
+[github.com/publictxt/obsidian-publictxt](https://github.com/publictxt/obsidian-publictxt) - in progress. The pulling half of v1: follow other people's PublicTxt repos and fork pages from them into your vault.
+
+- **Follow** whole repos; narrow what's shown by folder (`include`) and watch single files.
+- **See what changed** since you last looked, by git blob SHA.
+- **Fork** a page into a folder you choose; provenance (`fork_*`) goes in its front matter, so the list of forks is derived from the vault.
+- **Desktop-only, over the git CLI**: any host, your own SSH keys, one bare partial clone per followed repo. Mobile is a later phase.
+- Decisions: [ADR-0011](wiki/publictxt/docs/adr/0011-obsidian-plugin-follows-with-git-cli.md), [ADR-0012](wiki/publictxt/docs/adr/0012-fork-provenance-in-front-matter.md).
 
 ### WikiTool
 

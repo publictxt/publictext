@@ -16,6 +16,7 @@ The experiment is in early stages.
 | [Conformance fixtures](spec/fixtures/) | Draft |
 | [Architecture decisions](docs/adr/) | Recorded; several still proposed |
 | publictxt-pages: static site with Hugo and Pagefind | Scaffold |
+| [obsidian-publictxt](https://github.com/publictxt/obsidian-publictxt): follow repos and fork pages, desktop-only ([ADR-0011](docs/adr/0011-obsidian-plugin-follows-with-git-cli.md)) | In progress |
 | `ptx` CLI: validate, publish, follow, aggregate | Planned |
 | .NET reference implementation | Planned |
 | Desktop and web apps | Deferred ([ADR-0008](docs/adr/0008-obsidian-is-the-editor.md), proposed) |

@@ -1,6 +1,6 @@
 # PublicTxt Format Specification
 
-**Version:** 0.1.0-draft · **Date:** 2026-10-13
+**Version:** 0.1.0-draft · **Date:** 2026-11-03
 
 Defines how a Git repository stores PublicTxt content so that independent tools can read, validate, aggregate and publish it. Rendering, UI, search and indexing are out of scope.
 
@@ -50,13 +50,27 @@ ignore:                     # optional: path prefixes Readers skip
   - templates/
 follows:                    # optional: repos this author subscribes to
   - url: https://github.com/example/notes
+    branch: main            # [P] optional; default: the remote's default branch
+    include: [blog/]        # [P] optional folder prefixes; default: the whole repo
     filter: "tag:dotnet"    # [O] filter grammar
 aliases: aliases.yaml       # optional: this author's tag alias file (§7.4)
 ```
 
 - Keys in `types` are repo-relative folder prefixes ending in `/`. The longest matching prefix wins.
 - Readers MUST ignore unknown keys.
-- [P] A repo's identity is its remote URL, not a manifest field. [O] Canonical form of that URL.
+- [P] A repo's identity is its remote URL, not a manifest field, in canonical form (§3.1).
+- [P] `follows[].url` is a canonical repo URL. `branch` names the branch to follow; when absent, the remote's default branch. `include` lists repo-relative folder prefixes ending in `/`, like `types` and `ignore`; when absent or empty, the whole repo. `include` narrows what a reader shows, not what it fetches: the whole repo is still fetched (ADR-0005). It is the first piece of the filter grammar; tag filters stay open (§13).
+
+### 3.1 Canonical repo URL
+
+[P] v0, adopted from obsidian-publictxt, which needs a stable key for follows and forks:
+
+- Form: `https://<host>/<owner>/<repo>`.
+- Lower-case the scheme and host. Owner and repo keep their case: hosts differ on case sensitivity.
+- Drop a `.git` suffix, a trailing `/`, the query and the fragment.
+- `git@<host>:<owner>/<repo>.git` becomes the HTTPS form.
+- Anything else is invalid.
+- [O] Hosts with nested groups (GitLab subgroups), other ports and self-hosted paths.
 
 ## 4. Default layout
 
@@ -96,6 +110,7 @@ Reserved keys, all optional unless §8 says otherwise:
 | `bookmark` | absolute URL | Makes the document a bookmark of that resource (§8.2) |
 | `resource_id` | string | See §8.2 |
 | `aliases` | list of strings | Obsidian note aliases (not tag aliases) |
+| `fork_*` | see §5.2 | Fork provenance |
 
 - Readers preserve unknown keys and pass them through.
 - [P] `url` is not reserved. Hugo uses front matter `url` to override a page's output path, so a bookmark stored as `url` would break the static site. Readers treat `url` like any unknown key.
@@ -108,6 +123,24 @@ Reserved keys, all optional unless §8 says otherwise:
 - [P] Accepted forms: `YYYY-MM-DD`, optionally followed by `T` or a space and `hh:mm`, then optional `:ss` with an optional fraction, then optional `Z` or `±hh:mm`. This covers the values Obsidian's date and date-and-time properties write.
 - [P] Readers MUST use the value as written and MUST NOT convert time zones. YAML libraries disagree on timestamps: YAML 1.1 resolves them to typed values, while the YAML 1.2 core schema leaves them as strings. Relying on typed parsing would make Readers disagree.
 - [P] A value that doesn't match these forms, or isn't a real calendar date and time (`2026-02-30`), emits `invalid-date` and is treated as absent.
+
+### 5.2 Fork provenance
+
+[P] A fork is a document copied from another repo. It records where it came from in its own front matter, flat so Obsidian Properties can show and edit it (ADR-0012).
+
+| Key | Value |
+|---|---|
+| `fork_repo` | Canonical repo URL (§3.1) of the source |
+| `fork_path` | Repo-relative path of the file forked |
+| `fork_branch` | Branch it was forked from |
+| `fork_commit` | Source head commit SHA at fork time |
+| `fork_blob` | Git blob SHA of the source file at fork time: the change marker and merge base |
+| `fork_date` | ISO 8601 datetime of the fork, with offset |
+
+- [P] A document is a fork when `fork_repo`, `fork_path` and `fork_blob` are all valid. The others are optional when reading.
+- [P] A Writer that forks keeps the source's front matter and adds or overwrites the `fork_*` keys.
+- [P] These are authored facts, not derived data: they can't be recomputed from the repo (ADR-0003).
+- [O] Whether the Document model (§10) exposes fork provenance. In 0.1 Readers pass `fork_*` through like any unknown key.
 
 ## 6. Title
 
@@ -263,8 +296,8 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 
 ## 13. Open questions
 
-1. Filter grammar for `follows` (§3)
-2. Canonical form of a repo's remote URL (§3)
+1. Filter grammar for `follows` beyond `include` folder prefixes, e.g. tags (§3)
+2. Canonical repo URL beyond v0: nested groups, ports, self-hosted paths (§3.1)
 3. `author` and `source_repo`: stored on disk or injected at publish (§5)
 4. Mapping from URL to `metaweb/` path (§8.2)
 5. Full URL normalization and near-miss handling (§8.2)
@@ -275,6 +308,8 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 10. Dataview inline fields (`key:: value`, e.g. `bookmark:: <url>`). The README requires Dataview compatibility; 0.1 does not parse them.
 11. Several resources in one document, i.e. `bookmark` as a list (§8.2)
 12. Whether two documents in one repo bookmarking the same resource should warn (§8.2)
+13. Whether the Document model exposes fork provenance (§5.2)
+14. Detecting local edits to a fork: needs a hash of the body without the `fork_*` keys (§5.2)
 
 ## Appendix A. Changes from the README layout
 
