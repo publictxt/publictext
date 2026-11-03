@@ -21,3 +21,4 @@
 - + Users keep the tools they already use.
 - − An Obsidian plugin is TypeScript, so it needs its own parser. ADR-0002's fixtures keep the two in step.
 - − People who don't use Obsidian get only the CLI and the static site at first.
+- + First plugin workflow: following and forking (ADR-0011), ahead of `ptx`.

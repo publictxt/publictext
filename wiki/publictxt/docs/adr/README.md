@@ -14,3 +14,5 @@ Format and process: [0001](0001-record-architecture-decisions.md).
 | [0008](0008-obsidian-is-the-editor.md) | Obsidian is the editor; defer custom clients | Proposed |
 | [0009](0009-single-author-per-repo.md) | One author per repository | Accepted |
 | [0010](0010-bookmark-is-an-attribute.md) | Bookmark is an attribute any document can carry | Accepted / Proposed |
+| [0011](0011-obsidian-plugin-follows-with-git-cli.md) | Follow and fork from an Obsidian plugin, desktop-only, over the git CLI | Proposed |
+| [0012](0012-fork-provenance-in-front-matter.md) | A fork records its provenance in its own front matter | Proposed |

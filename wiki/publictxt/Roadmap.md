@@ -8,6 +8,7 @@ tags: [publictxt, docs, roadmap]
 | Component | Status |
 |---|---|
 | [Obsidian PublicTxt Facets](Obsidian-PublicTxt-Facets.md) | v1.0 released |
+| [Obsidian PublicTxt](https://github.com/publictxt/obsidian-publictxt) | In progress — follow repos, fork pages (desktop) |
 | [PublicTxt-Pages](PublicTxt-Pages.md) | Working — this site, [jaysen.co.za](https://jaysen.co.za) |
 | Format specification | Draft; the [working layout](Repository-Structure.md) follows PublicTxt-Pages |
 | [WikiTool](WikiTool.md) | In progress |
@@ -18,7 +19,7 @@ tags: [publictxt, docs, roadmap]
 
 1. Keep notes and writing in a Git repository — done
 2. Publish to the web for free — done ([Publishing](Publishing.md))
-3. Pull selected pages from other people's PublicTxt repositories into a local aggregate view to browse and search — next
+3. Pull selected pages from other people's PublicTxt repositories into a local aggregate view to browse and search — in progress: Obsidian PublicTxt follows and forks, Obsidian PublicTxt Facets browses
 
 ## Later
 
