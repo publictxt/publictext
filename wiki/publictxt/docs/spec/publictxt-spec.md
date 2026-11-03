@@ -70,7 +70,7 @@ aliases: aliases.yaml       # optional: this author's tag alias file (§7.4)
 
 ### 3.2 Follows
 
-[P] The repos this author follows. Each is a document in `settings/remotes/`, at any depth, with front matter (ADR-0014):
+[P] The repos this author follows. Each is a document in `follows/`, at any depth, with front matter (ADR-0014):
 
 ```yaml
 ---
@@ -81,12 +81,13 @@ include: [blog/]                        # optional folder prefixes; default: the
 Why I follow it, and what to read there.
 ```
 
-- A document in `settings/remotes/` is a follow when `url` is a valid repo URL. Readers canonicalize it (§3.1). Without one, the Reader emits `follow-missing-url` and it is a plain document.
+- A document in `follows/` is a follow when `url` is a valid repo URL. Readers canonicalize it (§3.1). Without one, the Reader emits `follow-missing-url` and it is a plain document.
 - `branch` names the branch to follow; when absent or blank, the remote's default branch.
 - `include` lists repo-relative folder prefixes ending in `/`, like `ignore`; when absent or empty, the whole repo. It narrows what a reader shows, not what it fetches: the whole repo is still fetched (ADR-0005). It is the first piece of the filter grammar; tag filters stay open (§13).
 - Two follows of one canonical URL: the first by path (byte order) counts; the Reader emits `duplicate-follow` on the others.
 - Readers MUST ignore other keys in a follow: tools keep their own settings there.
-- [O] Whether follows are published as pages, and in which collection (§13).
+- Follows are documents like any other: in the collection `follows` (§4.2), and published.
+- [O] Whether the Document model lists follows under `repo` (§13).
 
 ## 4. Layout and collections
 
@@ -105,7 +106,7 @@ Why I follow it, and what to read there.
 | `bookmarks/wiki/` | Pages about bookmarks; no URL needed |
 | `media/` | Shared attachments |
 | `settings/site.toml` | PublicTxt-Pages site settings; not content |
-| `settings/remotes/` | One document per followed repo (§3.2) |
+| `follows/` | One document per followed repo (§3.2) |
 
 Blog paths, each dated by §5.1:
 
@@ -370,7 +371,7 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
     - Title: Pages also takes an H1 inside code (§6).
     - Invalid dates: Pages passes an invalid `created` through; this spec drops it and moves to the next rung (§5.1).
     - Links: Pages shows `[[wikilinks]]` as plain text; this spec extracts and resolves them (§9).
-16. Follows (§3.2): whether they are published as pages and in which collection (Pages calls `settings/` not content), and whether the Document model lists them under `repo`
+16. Whether the Document model lists follows under `repo` (§3.2)
 
 ## Appendix A. Changes from the README layout
 

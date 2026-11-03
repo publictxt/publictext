@@ -17,4 +17,4 @@ Format and process: [0001](0001-record-architecture-decisions.md).
 | [0011](0011-obsidian-plugin-follows-with-git-cli.md) | Follow and fork from an Obsidian plugin, desktop-only, over the git CLI | Proposed |
 | [0012](0012-fork-provenance-in-front-matter.md) | A fork records its provenance in its own front matter | Proposed |
 | [0013](0013-spec-follows-pages-layout.md) | The spec follows the PublicTxt-Pages layout and page rules | Proposed |
-| [0014](0014-follows-are-notes.md) | Follows are notes, one per repo, in `settings/remotes/` | Proposed |
+| [0014](0014-follows-are-notes.md) | Follows are notes, one per repo, in `follows/` | Proposed |

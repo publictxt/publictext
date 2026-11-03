@@ -94,7 +94,7 @@ wiki/  posts/  notes/   one collection per top-level folder
 blog/                   2023/12/17/post.md, 2024/09/20240922-title.md or 20260509-title.md
 bookmarks/sites/<domain>/…   one file per web resource, with a bookmark: URL
 media/                  shared attachments
-settings/remotes/       one note per repo you follow (ADR-0014)
+follows/                one note per repo you follow (ADR-0014)
 ```
 
 Any folder layout works: an existing vault's top-level folders become its collections, with no remapping.
@@ -107,7 +107,7 @@ author:
   name: Your Name
 ```
 
-A follow, `settings/remotes/example-notes.md` (spec §3.2):
+A follow, `follows/example-notes.md` (spec §3.2):
 
 ```yaml
 ---
