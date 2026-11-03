@@ -85,12 +85,18 @@ v1 success looks like:
 
 ## Repository layout
 
-Two layouts exist today:
+The spec follows the PublicTxt-Pages layout ([ADR-0013](wiki/publictxt/docs/adr/0013-spec-follows-pages-layout.md)); details in [Repository structure](wiki/publictxt/Repository-Structure.md) and spec §4.
 
-- **Working layout**, used by this repo and PublicTxt-Pages: `wiki/`, `blog/`, `posts/`, `notes/`, `bookmarks/sites/<domain>/`, `media/`. See [Repository structure](wiki/publictxt/Repository-Structure.md).
-- **Spec default layout** (spec §4, draft): `wiki/`, `blog/<yyyy>/<mm>/`, `notes/`, `metaweb/<domain>/…`, `media/`, plus a `publictxt.yaml` manifest. Folders can be remapped in the manifest, so an existing vault can adopt PublicTxt without restructuring.
+```txt
+publictxt.yaml          manifest: spec version, author, follows
+_index.md               home page; any folder's _index.md is its own page
+wiki/  posts/  notes/   one collection per top-level folder
+blog/                   2023/12/17/post.md, 2024/09/20240922-title.md or 20260509-title.md
+bookmarks/sites/<domain>/…   one file per web resource, with a bookmark: URL
+media/                  shared attachments
+```
 
-Reconciling the two is open. Until then, the working layout is what tools build against.
+Any folder layout works: an existing vault's top-level folders become its collections, with no remapping.
 
 A minimal manifest (spec §3):
 
@@ -107,7 +113,7 @@ Front matter on a wiki page that is also a bookmark:
 ```yaml
 ---
 title: Pro Git
-date: 2026-10-13T00:36:00+02:00
+created: 2026-10-13T00:36:00+02:00
 tags: [git, books]
 bookmark: https://git-scm.com/book/en/v2
 ---

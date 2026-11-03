@@ -1,0 +1,4 @@
+---
+created: 2026-09-30T23:30:00-02:00
+---
+This is 1 October in UTC, but the date as written is in September.

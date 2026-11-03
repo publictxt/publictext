@@ -1,6 +1,6 @@
 # 0010. Bookmark is an attribute any document can carry
 
-- **Status:** Accepted (any document can be a bookmark). Proposed (the `bookmark` key name).
+- **Status:** Accepted (any document can be a bookmark). Proposed (the `bookmark` key name). The `bookmark` type for `metaweb/` files is superseded by ADR-0013: `bookmarks/sites/` and the `bookmarks` collection.
 - **Date:** 2026-10-13
 
 ## Context

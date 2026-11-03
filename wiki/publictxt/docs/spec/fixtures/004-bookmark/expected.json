@@ -6,13 +6,21 @@
   },
   "documents": [
     {
-      "path": "metaweb/example.com/blog/some-post.md",
-      "type": "bookmark",
-      "type_source": "folder",
-      "title": "some-post",
-      "date": null,
-      "bookmark": "HTTPS://Example.com:443/blog/some-post?ref=rss#comments",
-      "resource_id": "sha256:1c7c9dc7aaf64cd88c22f277526daf5a2bac2e9e525a0b321e24c6384446c8fe",
+      "path": "bookmarks/sites/example.com/blog/some-post.md",
+      "collections": [
+        "bookmarks"
+      ],
+      "title": "some post",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [
+        {
+          "url": "HTTPS://Example.com:443/blog/some-post?ref=rss#comments",
+          "resource_id": "sha256:1c7c9dc7aaf64cd88c22f277526daf5a2bac2e9e525a0b321e24c6384446c8fe"
+        }
+      ],
       "tags": [
         {
           "raw": "Reading",
@@ -29,13 +37,16 @@
       "diagnostics": []
     },
     {
-      "path": "metaweb/example.net/no-url.md",
-      "type": "bookmark",
-      "type_source": "folder",
-      "title": "no-url",
-      "date": null,
-      "bookmark": null,
-      "resource_id": null,
+      "path": "bookmarks/sites/example.net/no-url.md",
+      "collections": [
+        "bookmarks"
+      ],
+      "title": "no url",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
       "tags": [
         {
           "raw": "orphan",
@@ -46,20 +57,28 @@
       "links": [],
       "diagnostics": [
         {
-          "level": "error",
+          "level": "warning",
           "code": "bookmark-missing-url",
           "subject": null
         }
       ]
     },
     {
-      "path": "metaweb/example.org/stale-id.md",
-      "type": "bookmark",
-      "type_source": "folder",
-      "title": "stale-id",
-      "date": null,
-      "bookmark": "https://example.org",
-      "resource_id": "sha256:8198d1bac40a1033653a78e48800cefc9e6b974ff075c66e5548b5c1e145a2b0",
+      "path": "bookmarks/sites/example.org/stale-id.md",
+      "collections": [
+        "bookmarks"
+      ],
+      "title": "stale id",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [
+        {
+          "url": "https://example.org",
+          "resource_id": "sha256:8198d1bac40a1033653a78e48800cefc9e6b974ff075c66e5548b5c1e145a2b0"
+        }
+      ],
       "tags": [],
       "links": [],
       "diagnostics": [
@@ -71,37 +90,99 @@
       ]
     },
     {
+      "path": "bookmarks/wiki/reading-list.md",
+      "collections": [
+        "bookmarks"
+      ],
+      "title": "Reading list",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
       "path": "notes/hugo-page.md",
-      "type": "note",
-      "type_source": "folder",
+      "collections": [
+        "notes"
+      ],
       "title": "Hugo page",
-      "date": null,
-      "bookmark": null,
-      "resource_id": null,
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
       "tags": [],
       "links": [],
       "diagnostics": []
     },
     {
       "path": "notes/quick-link.md",
-      "type": "bookmark",
-      "type_source": "frontmatter",
+      "collections": [
+        "notes",
+        "reading",
+        "bookmarks"
+      ],
       "title": "Quick link",
-      "date": null,
-      "bookmark": "http://Example.com:8080/a/b",
-      "resource_id": "sha256:bd7fa4c98d026457f987be12d6e35e957ef9accbd62d914e6bf31b7cb89c841f",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [
+        {
+          "url": "http://Example.com:8080/a/b",
+          "resource_id": "sha256:bd7fa4c98d026457f987be12d6e35e957ef9accbd62d914e6bf31b7cb89c841f"
+        }
+      ],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "notes/two-editions.md",
+      "collections": [
+        "notes",
+        "bookmarks"
+      ],
+      "title": "Two editions",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [
+        {
+          "url": "https://www.gutenberg.org/ebooks/1342",
+          "resource_id": "sha256:d871f6b254eb9a9700daf0139306229e63b51144bb854a8063e11177f05d021d"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Pride_and_Prejudice",
+          "resource_id": "sha256:314a1d63f9bc8cdaaadba2c64c2331ca82641304dbdf8efc43b12df124c37d0e"
+        }
+      ],
       "tags": [],
       "links": [],
       "diagnostics": []
     },
     {
       "path": "wiki/pro-git.md",
-      "type": "wiki",
-      "type_source": "folder",
+      "collections": [
+        "wiki",
+        "bookmarks"
+      ],
       "title": "Pro Git",
-      "date": null,
-      "bookmark": "https://git-scm.com/book/en/v2",
-      "resource_id": "sha256:c1a2abc82c4e68d62fab7ad35c828eeca8da376566ec490b9a7c5ee6f615ee5c",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [
+        {
+          "url": "https://git-scm.com/book/en/v2",
+          "resource_id": "sha256:c1a2abc82c4e68d62fab7ad35c828eeca8da376566ec490b9a7c5ee6f615ee5c"
+        }
+      ],
       "tags": [
         {
           "raw": "git",
