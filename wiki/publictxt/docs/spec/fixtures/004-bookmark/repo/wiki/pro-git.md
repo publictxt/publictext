@@ -4,4 +4,4 @@ tags: [git, books]
 ---
 # Pro Git
 
-A wiki page that is also a bookmark. Its type stays `wiki`.
+A wiki page that is also a bookmark. It stays in the wiki collection too.

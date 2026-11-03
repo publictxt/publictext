@@ -1,0 +1,186 @@
+{
+  "repo": {
+    "spec": "0.1",
+    "author": "Example Author",
+    "diagnostics": []
+  },
+  "documents": [
+    {
+      "path": "blog/2023/12/17/post.md",
+      "collections": [
+        "blog"
+      ],
+      "title": "post",
+      "created": "2023-12-17",
+      "created_source": "path",
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "blog/2024/09/20240922-title.md",
+      "collections": [
+        "blog"
+      ],
+      "title": "20240922 title",
+      "created": "2024-09-22",
+      "created_source": "path",
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "blog/2026/02/20260228-bad-date.md",
+      "collections": [
+        "blog"
+      ],
+      "title": "20260228 bad date",
+      "created": "2026-02-28",
+      "created_source": "path",
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": [
+        {
+          "level": "warning",
+          "code": "invalid-date",
+          "subject": "2026-02-30"
+        }
+      ]
+    },
+    {
+      "path": "blog/2026/09/late-night.md",
+      "collections": [
+        "blog"
+      ],
+      "title": "late night",
+      "created": "2026-09-30T23:30:00-02:00",
+      "created_source": "front-matter",
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "blog/2026/10/20260915-launch-notes.md",
+      "collections": [
+        "blog"
+      ],
+      "title": "Launch notes",
+      "created": "2026-09-15",
+      "created_source": "path",
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "blog/2026/10/20261001-override.md",
+      "collections": [
+        "blog"
+      ],
+      "title": "20261001 override",
+      "created": "2026-10-02",
+      "created_source": "front-matter",
+      "updated": "2026-10-08T09:00:00+02:00",
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "blog/2026/10/obsidian-time.md",
+      "collections": [
+        "blog"
+      ],
+      "title": "obsidian time",
+      "created": "2026-10-06T14:15",
+      "created_source": "front-matter",
+      "updated": "2026-10-07",
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "blog/2026/10/untitled-draft.md",
+      "collections": [
+        "blog"
+      ],
+      "title": "untitled draft",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "blog/20260509-title.md",
+      "collections": [
+        "blog"
+      ],
+      "title": "20260509 title",
+      "created": "2026-05-09",
+      "created_source": "path",
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
+      "tags": [
+        {
+          "raw": "meta",
+          "match": "meta",
+          "source": "frontmatter"
+        }
+      ],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "notes/2024-10-13-meeting.md",
+      "collections": [
+        "notes"
+      ],
+      "title": "2024 10 13 meeting",
+      "created": "2024-10-13",
+      "created_source": "path",
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "notes/isbn-9780131103627.md",
+      "collections": [
+        "notes"
+      ],
+      "title": "isbn 9780131103627",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    }
+  ]
+}

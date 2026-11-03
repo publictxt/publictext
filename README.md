@@ -1,157 +1,159 @@
-# Project Name: Public Text / PublicTxt
+# PublicTxt
 
-From [Readme of the parent project - github.com/publictxt/publictext](https://github.com/publictxt/publictext)
+PublicTxt is an experiment in using Git repositories as an interoperability layer and online storage for public and community knowledge. Using free Git hosting and plain-text Markdown, individuals and communities can share, curate and collaborate on content without relying on centralized platforms or paid infrastructure.
 
-## Overview
+At its core is a **format specification**: plaintext conventions that any tool can read and write. Tools built on it sync your repository, follow and aggregate other people's repositories, and publish everything to the web as a static site.
 
-PublicTxt is an experiment in using Git repositories as an interoperability layer and online storage for public and community knowledge. By leveraging free Git hosting services and plain text Markdown files, it enables individuals and communities to share, curate, and collaborate on content without relying on centralized platforms or paid infrastructure.
+The experiment is in early stages.
 
-The core idea is simple: desktop and web applications that sync between local working copies and one or more Git repositories, **selectively aggregate content from other people's repositories**, and publish to the web using static site generation - all built on plain Markdown that survives the tooling.
+## What PublicTxt is, for now
 
-The experiment is in early stages. The format specification is still a draft; the working layout is [Repository structure](wiki/publictxt/Repository-Structure.md).
+The differentiator is **selective aggregation across many Git-hosted repositories**: following other people's PublicTxt repos and pulling chosen pages into a local view. Plain-text Markdown in Git, published as a static site, is the *substrate*; aggregation is the *value*. Everything else supports that, or is deferred.
 
-## What PublicTxt Is (and Isn't), For Now
-
-The differentiator - the thing PublicTxt does that existing tools don't - is **selective aggregation across many Git-hosted repositories**: subscribing to other people's PublicTxt repos and pulling chosen subsets (by tag, path, or filter) into a local aggregate view. Plain-text Markdown in Git, published via static hosting, is the *substrate*; aggregation is the *value*.
-
-Everything else in this document supports that, or is deferred.
-
-### v1 Success Looks Like
+v1 success looks like:
 
 > "I can keep my notes and writing in a Git repository, publish them to the web for free via gh-pages or similar, and pull selected pages from other people's PublicTxt repos into a local aggregate view I can browse and search."
 
-If that works and feels good, the project is real. Community features, browser extensions, federation protocols, and graph-database backends are all possible later - but they aren't what v1 ships.
+## How it works
 
-## Project Status
+- **Plain text.** Markdown with YAML front matter and inline `#tags`, compatible with Obsidian Properties.
+- **Git is the storage.** A repository holds only what its author wrote. Indexes, tag pages and search are rebuilt from Git and never committed.
+- **One author per repository.** A repository is an identity. Multi-author views come from following and aggregating repositories.
+- **Follow, then filter.** You follow whole repositories and filter when reading.
+- **Fork with provenance.** A page copied from another repo records where it came from in its own front matter, so you can see when the source changes.
+- **Tags as written.** Tags stay exactly as the author wrote them. Each reader reconciles vocabulary with their own alias file.
+- **Bookmarks on any page.** A page with a `bookmark: <url>` attribute is a bookmark, whatever its type.
+- **Zero-cost publishing.** Repositories publish as static sites on free Git hosting such as GitHub Pages or GitLab Pages.
+- **Use the editor you have.** Write in Obsidian or any Markdown editor. PublicTxt tooling focuses on following, aggregating and publishing.
 
-| Component | Status |
+## Status
+
+| Part | State |
 |---|---|
-| [Obsidian PublicTxt Facet Plugin](#obsidian-publictxt-facet-plugin) | **v1.0 released** |
-| [Obsidian PublicTxt](#obsidian-publictxt) | In progress - follow repos, fork pages (desktop) |
-| [PublicTxt-Pages](#publictxt-pages) | Working - live at [jaysen.co.za](https://jaysen.co.za) |
-| [Format Specification](wiki/publictxt/Repository-Structure.md) | Draft |
-| [WikiTool](https://github.com/jaysen/WikiTool) | In progress |
-| [PublicTxt.net](https://github.com/publictxt/publictxt.net) | In progress |
-| [CuratedCommons](https://github.com/publictxt/curated-commons) | Specification stage |
+| [Format specification](wiki/publictxt/docs/spec/publictxt-spec.md) v0.1 and [conformance fixtures](wiki/publictxt/docs/spec/fixtures/) | Draft |
+| [Architecture decisions](wiki/publictxt/docs/adr/) | Recorded; several still proposed |
+| [PublicTxt-Pages](#publictxt-pages): static site | Working: live at [jaysen.co.za](https://jaysen.co.za) |
+| [Obsidian PublicTxt Facets](#obsidian-publictxt-facets): browse a vault by facets | v1.0 released |
+| [Obsidian PublicTxt](#obsidian-publictxt): follow repos, fork pages | In progress |
+| [WikiTool](#wikitool) | In progress |
+| [PublicTxt.net](#publictxtnet): .NET implementation | In progress |
+| [CuratedCommons](#curatedcommons) | Specification stage |
+| `ptx` CLI: validate, publish, follow, aggregate | Planned |
+| Desktop and web apps | Deferred ([ADR-0008](wiki/publictxt/docs/adr/0008-obsidian-is-the-editor.md)) |
 
-## Linked Repos
+## Components
 
 ### PublicTxt-Pages
 
-[github.com/publictxt/publictxt-pages](https://github.com/publictxt/publictxt-pages) - zero-backend static site for browsing and searching a PublicTxt repository (or any Obsidian / Markdown wiki). Formerly Txt-Hugo.
+[publictxt/publictxt-pages](https://github.com/publictxt/publictxt-pages): zero-backend static site for a PublicTxt repository, or any Obsidian or Markdown wiki.
 
-- **Static and free to host**: builds with Hugo and deploys to GitHub Pages or any static host. No server, no hosted search.
-- **Works on plain Obsidian vaults**: a Markdown wiki using relative links builds as a functional site with no conversion step (set Obsidian to relative Markdown links).
-- **Full-text search and facets** via [Pagefind](https://pagefind.app/): filter by tags (including tag combinations) and document type.
-- **Hashtag support**: inline `#hashtags` are pre-processed (Python) into front matter tags.
-- **Content types**: wiki, blog, notes and metaweb bookmarks, resolved from folder layout or front matter `type`.
-- **Navigation sidebar**: sections, tag cloud / top tags, and page metadata.
-- **URL-friendly filenames** generated at build time.
-- Single-repo in v1. Example: [jaysen.co.za](https://jaysen.co.za)
+- Builds with Hugo; deploys to GitHub Pages or any static host.
+- Works on plain Obsidian vaults that use relative Markdown links, with no conversion step.
+- Full-text search and facets (tags, tag combinations, type) via [Pagefind](https://pagefind.app/).
+- Single repo in v1.
 
-### Obsidian PublicTxt Facet Plugin
+### Obsidian PublicTxt Facets
 
-[github.com/publictxt/obsidian-publictxt-facets](https://github.com/publictxt/obsidian-publictxt-facets) - **v1.0**. Faceted tag navigation inside Obsidian.
+[publictxt/obsidian-publictxt-facets](https://github.com/publictxt/obsidian-publictxt-facets): the same faceted browsing inside Obsidian. Offline by design.
 
-- Search and filter notes by **combinations of tags**.
-- Selecting a tag narrows the remaining tag list to tags that co-occur with the current selection, so you can drill down without dead ends.
-- Brings the same faceted browsing that PublicTxt-Pages offers on the web into the editing environment.
+- Filter notes by combinations of tags; the tag list narrows to tags that co-occur with the selection.
 
 ### Obsidian PublicTxt
 
-[github.com/publictxt/obsidian-publictxt](https://github.com/publictxt/obsidian-publictxt) - in progress. The pulling half of v1: follow other people's PublicTxt repos and fork pages from them into your vault.
+[publictxt/obsidian-publictxt](https://github.com/publictxt/obsidian-publictxt): the pulling half of v1.
 
-- **Follow** whole repos; narrow what's shown by folder (`include`) and watch single files.
-- **See what changed** since you last looked, by git blob SHA.
-- **Fork** a page into a folder you choose; provenance (`fork_*`) goes in its front matter, so the list of forks is derived from the vault.
-- **Desktop-only, over the git CLI**: any host, your own SSH keys, one bare partial clone per followed repo. Mobile is a later phase.
+- Follow whole repos; narrow what's shown by folder (`include`) and watch single files.
+- See what changed since you last looked, by git blob SHA.
+- Fork a page into your vault, with `fork_*` provenance in its front matter.
+- Desktop-only, over the git CLI: any host, your own SSH keys. Mobile is a later phase.
 - Decisions: [ADR-0011](wiki/publictxt/docs/adr/0011-obsidian-plugin-follows-with-git-cli.md), [ADR-0012](wiki/publictxt/docs/adr/0012-fork-provenance-in-front-matter.md).
 
 ### WikiTool
 
-[github.com/jaysen/WikiTool](https://github.com/jaysen/WikiTool) - in progress. Multiplatform .NET tool for handling multiple wikis.
+[jaysen/WikiTool](https://github.com/jaysen/WikiTool): multiplatform .NET tool for handling multiple wikis.
 
-- Core wiki libraries.
-- Converts between wiki formats and wiki syntaxes (incl. Obsidian ↔ md-wiki).
-- Copy between wikis based on search, tag expressions (`tag1 + tag2 - tag3`), attributes.
+- Converts between wiki formats and syntaxes, including Obsidian ↔ md-wiki.
+- Copies between wikis by search, tag expressions (`tag1 + tag2 - tag3`) and attributes.
 
 ### PublicTxt.net
 
-[github.com/publictxt/publictxt.net](https://github.com/publictxt/publictxt.net) - in-progress .NET implementation.
-
-- Core libraries and feature-based services.
-- Git and database infrastructure projects.
-- Avalonia desktop & Blazor web apps (later phases).
+[publictxt/publictxt.net](https://github.com/publictxt/publictxt.net): .NET implementation. Core libraries, feature services, Git and database infrastructure.
 
 ### CuratedCommons
 
-[github.com/publictxt/curated-commons](https://github.com/publictxt/curated-commons) - social bookmarking and curation on top of PublicTxt repos.
+[publictxt/curated-commons](https://github.com/publictxt/curated-commons): social bookmarking and curation on PublicTxt repos. Commentary lives in plain-text repos that are public, forkable and followable. See [CuratedCommons](wiki/publictxt/CuratedCommons.md).
 
-- Borrows its spirit from Creative Commons: open standards, portable content, community ownership. Commentary and curation live in plain text repositories - publicly accessible, forkable, subscribable - instead of inside a centralized platform.
-- See [CuratedCommons page in this repo](wiki/publictxt/CuratedCommons.md).
+## Repository layout
 
-## Core Features (v1 Focus)
+The spec follows the PublicTxt-Pages layout ([ADR-0013](wiki/publictxt/docs/adr/0013-spec-follows-pages-layout.md)); details in [Repository structure](wiki/publictxt/Repository-Structure.md) and spec §4.
 
-These are the load-bearing features for the v1 vision above.
+```txt
+publictxt.yaml          manifest: spec version, author, follows
+_index.md               home page; any folder's _index.md is its own page
+wiki/  posts/  notes/   one collection per top-level folder
+blog/                   2023/12/17/post.md, 2024/09/20240922-title.md or 20260509-title.md
+bookmarks/sites/<domain>/…   one file per web resource, with a bookmark: URL
+media/                  shared attachments
+```
 
-- **Plain Text First**: Markdown on disk, in the md-wiki dialect (standard `[text](page.md)` links) so content is publishable by any static-site host with no conversion step. Tags and structured metadata use plaintext conventions ([structure](wiki/publictxt/Repository-Structure.md)).
-- **Zero-Cost Online Storage and Hosting**: Leverages free Git hosting (GitHub, GitLab, etc.) for storage, distribution, and static websites.
-- **Static Website Generation**: [PublicTxt-Pages](#publictxt-pages) - push to a Pages-enabled branch and you're live, with full-text search and tag/type facets.
-- **Selective Aggregation from Multiple Repositories**: Subscribe to other PublicTxt repos and pull selected content (by tag, path, or filter) into a local aggregate. **This is the killer feature.**
-- **Sync to One or More Origin Remotes**: Bidirectional sync with the instance's own remote(s); a single origin to start, multiple later.
-- **Obsidian Compatibility**: Files round-trip with Obsidian - either by configuring Obsidian to use Markdown links, or via WikiTool conversion at the editing edge. PublicTxt syntax aims to be compatible with Obsidian Properties and Dataview attributes.
-- **Faceted Tag Navigation in Obsidian**: The [Obsidian PublicTxt Facet Plugin](#obsidian-publictxt-facet-plugin) (v1.0) for drilling into notes by tag combinations while editing.
+Any folder layout works: an existing vault's top-level folders become its collections, with no remapping.
 
-### Later Phase
+A minimal manifest (spec §3):
 
-- **Desktop & Web UI**: Native applications that hide Git's complexity for everyday content workflows, sync with Git repositories, and pull repository data into a local cache for fast search and browsing. See the [roadmap](wiki/publictxt/Roadmap.md).
+```yaml
+publictxt: "0.1"
+author:
+  name: Your Name
+follows:
+  - url: https://github.com/example/notes
+```
 
-## Use Cases (v1 Focus)
+Front matter on a wiki page that is also a bookmark:
 
-- **Personal Knowledge Management**: Maintain your own Markdown knowledge base with version control and free hosting.
-- **Distributed Blogging**: Publish blog posts that others can subscribe to and aggregate.
-- **Research and Learning Aggregation**: Pull selected content from peers' repositories into a local view for study, reference, or synthesis.
-- **Community Wikis (Lightweight)**: Small-group collaborative Markdown wikis using Git's existing collaboration model - pull requests, branches, forks. Heavier community/moderation features are a later phase.
+```yaml
+---
+title: Pro Git
+created: 2026-10-13T00:36:00+02:00
+tags: [git, books]
+bookmark: https://git-scm.com/book/en/v2
+---
+```
 
-## Public Text Directory Structure
+## Use cases
 
-Follows the [PublicTxt-Pages content structure](https://github.com/publictxt/publictxt-pages/blob/main/docs/SPEC.md#content-structure) until the format specification is written. Details: [Repository structure](wiki/publictxt/Repository-Structure.md).
+- **Personal knowledge management:** your own Markdown knowledge base with version control and free hosting.
+- **Distributed blogging:** posts that others can follow and aggregate.
+- **Research and learning:** pull selected pages from peers' repos into a local view for study and synthesis.
+- **Social bookmarking (CuratedCommons):** share and annotate web resources; aggregate other people's bookmarks and tags.
+- **Community wikis (lightweight):** small groups using Git's own collaboration: pull requests, branches, forks.
 
-- **wiki/**: Wiki pages; `_index.md` is a folder's own page
-- **blog/**: Dated posts - `blog/<yyyy>/<mm>/<dd>/<file>.md`, `blog/<yyyy>/<mm>/<yyyymmdd>-<slug>.md` or `blog/<yyyymmdd>-<slug>.md`
-- **posts/**: Longer pieces
-- **notes/**: Notes
-- **media/**: Media files (attachments)
-- **bookmarks/**`sites/<domain>/<file>.md`: One file per bookmarked web resource, with a `bookmark:` URL. Any page with a `bookmark` front matter attribute is also a bookmark, wherever it lives
-- **settings/site.toml**: Site settings for PublicTxt-Pages
-- *community/*: Profiles, groups, discussion (deferred)
+## Later
 
-Indexes and tag pages are derived data and are not committed; tools generate them at build or view time.
+Deferred until the v1 aggregation-and-publish story works and is used. Each has a trigger in [IDEAS.md](wiki/publictxt/docs/IDEAS.md); the [Roadmap](wiki/publictxt/Roadmap.md) has the order.
 
-This repository is published the same way - see [Publishing a PublicTxt site](wiki/publictxt/Publishing.md).
+- **Visibility:** public, semi-public and private content. Private content needs private repos; how they fit into following is undecided.
+- **Community:** profiles, groups, discussion and moderation (`community/`).
+- **Desktop and web apps** that hide Git, with a local cache for fast search.
+- **MetaWeb:** a browser extension showing Git-stored notes on web pages; W3C Web Annotation export.
+- **Federation:** ActivityPub; Git commits as public records.
+- **Richer data:** RDF semantic edges, weighted links, a TerminusDB graph backend, consensus and reputation.
 
-## Future Ideas / Later Phases
+## This repository
 
-These ideas are part of the PublicTxt vision but are explicitly deferred until the v1 aggregation-and-publish story is working and used.
+A working PublicTxt repository, published as [jaysen.co.za](https://jaysen.co.za) (see [Publishing](wiki/publictxt/Publishing.md)). It also holds the project's own docs:
 
-### Community & Social
+- `wiki/publictxt/`: project documentation
+- `wiki/publictxt/docs/spec/`: format specification and conformance fixtures
+- `wiki/publictxt/docs/IDEAS.md`: parked ideas, each with a trigger for revisiting it
+- `wiki/publictxt/docs/adr/`: architecture decision records
+- `wiki/publictxt/docs/history/`: earlier versions of this README
 
-- **Community Features**: Discussion threads, profiles, groups, moderation. Building a social platform on top of Git is a separate, much larger product than a knowledge tool, and is deferred until the underlying tool has users.
-- **Fluid Community Controls**: Public / semi-public / private content settings, with selective access control for collaborative use.
-- **Collaborative Wikis with Friendly Merge UX**: Hiding Git's branching/merging complexity for non-technical contributors. v1 expects users comfortable with Git's existing collaboration primitives (PRs, branches, forks).
+Suggest changes through issues, pull requests or by forking.
 
-### MetaWeb / Web Annotation
+## License
 
-- **MetaWeb Commons**: A browser extension that integrates Git-stored discussion and notes about web pages into the browsing experience.
-- **W3C Web Annotation export**: Export bookmarks and annotations in the W3C Annotation format for interoperability.
+GPLv3: https://www.gnu.org/licenses/gpl-3.0.en.html. See [LICENSE](LICENSE).
 
-### Federation & Protocols
+## Contributing
 
-- **ActivityPub**: Integration with the decentralized social networking protocol.
-- **Immutable Public Records**: Leveraging Git commits - possibly combined with distributed ledgers - for transparent record-keeping.
-
-### Richer Data Models
-
-- **Rich Semantic Syntax**: RDF semantic edges, weighted attributes, weighted links/edges.
-- **TerminusDB Backend**: Versioned graph database to store the knowledge graph in memory for fast graph operations across the ecosystem.
-- **Consensus and Reputation Mechanisms**: Community-driven content management and peer review.
+See [CONTRIBUTING.md](CONTRIBUTING.md).

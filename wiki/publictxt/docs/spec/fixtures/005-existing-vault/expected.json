@@ -7,12 +7,15 @@
   "documents": [
     {
       "path": "Home.md",
-      "type": "page",
-      "type_source": "default",
+      "collections": [
+        "page"
+      ],
       "title": "Home",
-      "date": null,
-      "bookmark": null,
-      "resource_id": null,
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
       "tags": [],
       "links": [
         {
@@ -28,12 +31,15 @@
     },
     {
       "path": "Wiki/Index.md",
-      "type": "wiki",
-      "type_source": "folder",
+      "collections": [
+        "wiki"
+      ],
       "title": "Index",
-      "date": null,
-      "bookmark": null,
-      "resource_id": null,
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
       "tags": [],
       "links": [
         {
@@ -103,12 +109,15 @@
     },
     {
       "path": "Zettels/Concept A.md",
-      "type": "note",
-      "type_source": "folder",
+      "collections": [
+        "zettels"
+      ],
       "title": "Concept A",
-      "date": null,
-      "bookmark": null,
-      "resource_id": null,
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
       "tags": [
         {
           "raw": "idea",
@@ -121,12 +130,21 @@
     },
     {
       "path": "Zettels/Sources/paper.md",
-      "type": "bookmark",
-      "type_source": "folder",
+      "collections": [
+        "zettels",
+        "bookmarks"
+      ],
       "title": "A paper",
-      "date": null,
-      "bookmark": "https://example.com/paper.pdf",
-      "resource_id": "sha256:065f30cd516e3c8b8f7987803fe0b6ef80570a84cb9026dea4025c81347e6b14",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [
+        {
+          "url": "https://example.com/paper.pdf",
+          "resource_id": "sha256:065f30cd516e3c8b8f7987803fe0b6ef80570a84cb9026dea4025c81347e6b14"
+        }
+      ],
       "tags": [],
       "links": [],
       "diagnostics": []

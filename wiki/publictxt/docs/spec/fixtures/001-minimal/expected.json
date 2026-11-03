@@ -6,25 +6,61 @@
   },
   "documents": [
     {
+      "path": "wiki/_index.md",
+      "collections": [
+        "wiki"
+      ],
+      "title": "wiki",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
+      "path": "wiki/draft.md",
+      "collections": [
+        "wiki"
+      ],
+      "title": "Draft",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": false,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
       "path": "wiki/getting-started.md",
-      "type": "wiki",
-      "type_source": "folder",
-      "title": "getting-started",
-      "date": null,
-      "bookmark": null,
-      "resource_id": null,
+      "collections": [
+        "wiki"
+      ],
+      "title": "getting started",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
       "tags": [],
       "links": [],
       "diagnostics": []
     },
     {
       "path": "wiki/home.md",
-      "type": "wiki",
-      "type_source": "folder",
+      "collections": [
+        "wiki"
+      ],
       "title": "Home",
-      "date": null,
-      "bookmark": null,
-      "resource_id": null,
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
       "tags": [],
       "links": [
         {

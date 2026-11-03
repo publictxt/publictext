@@ -7,12 +7,15 @@
   "documents": [
     {
       "path": "notes/tagging.md",
-      "type": "note",
-      "type_source": "folder",
+      "collections": [
+        "notes"
+      ],
       "title": "Tag edge cases",
-      "date": null,
-      "bookmark": null,
-      "resource_id": null,
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
       "tags": [
         {
           "raw": "PublicTxt",

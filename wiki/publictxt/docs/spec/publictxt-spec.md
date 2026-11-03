@@ -12,6 +12,8 @@ Every rule carries a status marker:
 
 MUST, SHOULD and MAY are used as in RFC 2119.
 
+The layout and page rules follow [PublicTxt-Pages](https://github.com/publictxt/publictxt-pages/blob/main/docs/SPEC.md), the static site that publishes PublicTxt repos (ADR-0013). Where this spec and Pages disagree, §13 lists it.
+
 ## 1. Conformance
 
 | Role | Requirement |
@@ -26,25 +28,23 @@ A tool states the role and version it conforms to, e.g. "Reader 0.1".
 
 - [D] One author per repository. Multi-author views come from aggregating repositories (ADR-0009).
 - [D] Git is the source of truth.
-- [P] Repositories MUST NOT commit derived data: indexes, tag pages, search data, normalized tags (ADR-0003). One open exception: §8.2.
+- [P] Repositories MUST NOT commit derived data: indexes, tag pages, search data, normalized tags (ADR-0003). One open exception: §8.
 - [P] Content is published on the default branch. Other branches are for drafts and pull requests, not distribution (ADR-0005).
 - [P] Documents are `*.md` files in UTF-8. Writers SHOULD use LF line endings and Unicode NFC. Readers MUST accept CRLF.
 - [P] Every other file is an attachment: it can be a link target but is not a document.
-- [P] Readers skip `.git/` and every path listed under `ignore` in the manifest.
+- [P] Readers skip:
+  - the folders `.git/`, `.obsidian/`, `.trash/`, `_site/` and `node_modules/`, at any depth;
+  - the files `README.md`, `LICENSE`, `LICENSE.md`, `CONTRIBUTING.md`, `CNAME` and `.gitignore`, at any depth;
+  - every path listed under `ignore` in the manifest.
 
 ## 3. Manifest: `publictxt.yaml`
 
-[P] A YAML file at the repo root. A Reader MUST accept a repo without one, apply the default layout (§4) and emit `no-manifest`.
+[P] A YAML file at the repo root. A Reader MUST accept a repo without one and emit `no-manifest`.
 
 ```yaml
 publictxt: "0.1"            # required: spec version the repo targets
 author:
   name: Jaysen              # required: display name
-types:                      # optional: folder prefix → type; replaces §4 when present
-  wiki/: wiki
-  blog/: blog
-  notes/: note
-  metaweb/: bookmark
 ignore:                     # optional: path prefixes Readers skip
   - .obsidian/
   - templates/
@@ -56,10 +56,11 @@ follows:                    # optional: repos this author subscribes to
 aliases: aliases.yaml       # optional: this author's tag alias file (§7.4)
 ```
 
-- Keys in `types` are repo-relative folder prefixes ending in `/`. The longest matching prefix wins.
+- `ignore` entries are repo-relative folder prefixes ending in `/`.
+- [P] `types` (folder → type) is gone: collections come from folder names (§4).
 - Readers MUST ignore unknown keys.
 - [P] A repo's identity is its remote URL, not a manifest field, in canonical form (§3.1).
-- [P] `follows[].url` is a canonical repo URL. `branch` names the branch to follow; when absent, the remote's default branch. `include` lists repo-relative folder prefixes ending in `/`, like `types` and `ignore`; when absent or empty, the whole repo. `include` narrows what a reader shows, not what it fetches: the whole repo is still fetched (ADR-0005). It is the first piece of the filter grammar; tag filters stay open (§13).
+- [P] `follows[].url` is a canonical repo URL. `branch` names the branch to follow; when absent, the remote's default branch. `include` lists repo-relative folder prefixes ending in `/`, like `ignore`; when absent or empty, the whole repo. `include` narrows what a reader shows, not what it fetches: the whole repo is still fetched (ADR-0005). It is the first piece of the filter grammar; tag filters stay open (§13).
 
 ### 3.1 Canonical repo URL
 
@@ -72,57 +73,101 @@ aliases: aliases.yaml       # optional: this author's tag alias file (§7.4)
 - Anything else is invalid.
 - [O] Hosts with nested groups (GitLab subgroups), other ports and self-hosted paths.
 
-## 4. Default layout
+## 4. Layout and collections
 
-[D] Applies when the manifest has no `types`.
+### 4.1 Layout
 
-| Path | Type |
+[P] Any folder layout is valid: an existing Obsidian vault needs no restructuring. This layout is the convention, and what PublicTxt-Pages builds sections from:
+
+| Path | Holds |
 |---|---|
-| `wiki/` | `wiki` |
-| `blog/<yyyy>/<mm>/<yyyymmdd>[-<n>]-<slug>.md` | `blog` |
-| `notes/` | `note` |
-| `metaweb/<domain>/<subdomain-or-folder>/<file>.md` | `bookmark` |
-| `media/` | attachments |
+| `_index.md` | The home page |
+| `wiki/` | Reference pages, read by place |
+| `blog/` | Dated posts; the date usually comes from the path (§5.1) |
+| `posts/` | Longer pieces |
+| `notes/` | Short notes |
+| `bookmarks/sites/<domain>/…/<file>.md` | One file per web resource, with a `bookmark` URL (§8) |
+| `bookmarks/wiki/` | Pages about bookmarks; no URL needed |
+| `media/` | Shared attachments |
+| `settings/site.toml` | PublicTxt-Pages site settings; not content |
 
-- [P] A `.md` file outside every mapped folder has type `page`.
+Blog paths, each dated by §5.1:
+
+```txt
+blog/2023/12/17/post.md          day folders
+blog/2024/09/20240922-title.md   YYYYMMDD file name prefix, month folders
+blog/20260509-title.md           YYYYMMDD file name prefix, no folders
+```
+
+- [P] `_index.md` is a folder's own page, at any depth. It is a document like any other.
+- [P] Attachments sit beside the note that uses them, or in a top-level folder such as `media/`.
 - [O] `community/` (profiles, groups, discussion) is deferred.
 
-Type resolution, first match wins:
+### 4.2 Collections
 
-1. [D] Front matter `type`
-2. [D] Folder mapping
-3. [P] `page`
+[P] A document is in one or more collections. They replace types (ADR-0013).
 
-The Reader records which rule applied as `type_source`: `frontmatter`, `folder` or `default`.
+| Source | Collection it adds |
+|---|---|
+| The top-level folder the document is filed in | That folder's name |
+| A document at the repo root | `page` |
+| Front matter `collections` (one string or a list) | Each value |
+| A `bookmark` or `bookmarks` URL (§8) | `bookmarks` |
+
+- Collections are lower-cased: `Notes` and `notes` are one collection.
+- Order: the folder's (or `page`), then `collections` values as written, then `bookmarks`. Duplicates are dropped; the first stays.
+- Collections add, never replace: the folder's collection always stays.
+- A collection needs no folder: `collections: [recipe]` is valid on its own.
 
 ## 5. Front matter
 
 [P] Optional. If a file's first line is exactly `---`, the YAML block runs to the next line that is exactly `---`. This matches Obsidian Properties. If the block does not parse to a mapping, the Reader emits `invalid-frontmatter` and treats the file as having no front matter.
 
-Reserved keys, all optional unless §8 says otherwise:
+Reserved keys, all optional:
 
 | Key | Value | Meaning |
 |---|---|---|
-| `type` | string | Overrides the folder type |
-| `title` | string | Document title |
+| `title` | string | Document title (§6) |
+| `collections` | string, or list of strings | Extra collections (§4.2) |
 | `tags` | list of strings, or one string | Tags (§7) |
-| `date` | ISO 8601 datetime or date | Publication date (§5.1) |
-| `bookmark` | absolute URL | Makes the document a bookmark of that resource (§8.2) |
-| `resource_id` | string | See §8.2 |
+| `created` | ISO 8601 datetime or date | When the document was written (§5.1). Legacy: `date` |
+| `updated` | ISO 8601 datetime or date | When it last changed (§5.1). Legacy: `lastmod` |
+| `publish` | `off`, `false`, `no` or `0` | Not published (§5.3) |
+| `bookmark`, `bookmarks` | absolute URL, or list of them | Makes the document a bookmark of each resource (§8) |
+| `resource_id` | string | See §8 |
 | `aliases` | list of strings | Obsidian note aliases (not tag aliases) |
 | `fork_*` | see §5.2 | Fork provenance |
 
-- Readers preserve unknown keys and pass them through.
+- Readers preserve unknown keys and pass them through. PublicTxt-Pages also reads `categories`, `rating`, `author`, `source_repo` and post source keys (`mastodon`, `substack`, …); to this spec they are unknown keys.
+- [P] `type` is not reserved: collections replace it (§4.2).
 - [P] `url` is not reserved. Hugo uses front matter `url` to override a page's output path, so a bookmark stored as `url` would break the static site. Readers treat `url` like any unknown key.
 - [O] `author` and `source_repo` can be derived from the manifest and the repo URL. The Hugo interface currently carries them in front matter. Decide whether they are written to disk (derived data, ADR-0003) or injected at publish time.
 
 ### 5.1 Dates
 
-- [D] `date` is an ISO 8601 datetime. Writers SHOULD include the time and UTC offset: `2026-10-13T00:36:00+02:00`.
+[P] Every document has a `created` and an `updated`, resolved by a ladder. Each rung that applies wins over the ones below it. The Reader records the rung for `created` as `created_source`.
+
+`created`:
+
+1. `front-matter`: `created`, else the legacy `date`
+2. `path`: a date in the file name, else in the folders (below)
+3. `git`: the first commit that touched the file
+4. `mtime`, then `build`: the file system and the build time
+
+`updated`: front matter `updated`, else the legacy `lastmod`; then the last commit, the file's mtime, the build time. Consumers keep `updated` no earlier than `created`.
+
+- [P] Rungs 3 and 4 depend on the checkout, not the files: a shallow clone collapses rung 3. The Document model (§10) holds rungs 1 and 2 only, and is null where neither applies. Consumers fill in the rest.
+- [P] A path date is the first of:
+  - `YYYY-MM-DD` in the file name without its extension;
+  - `YYYYMMDD` in the file name without its extension;
+  - `YYYY/MM/DD/` in the folders.
+
+  Either file name form must not touch another digit, so a longer run (an ISBN, an id) is not a date. A form that isn't a real calendar date is skipped. Month folders alone (`2024/09/`) are not a date. The path date applies in any folder, not only `blog/`, and is the date-only form `YYYY-MM-DD`.
+- [D] Front matter dates are ISO 8601. Writers SHOULD include the time and UTC offset: `2026-10-13T00:36:00+02:00`.
 - [D] A date-only value (`2026-10-13`) is valid and produces no diagnostic.
 - [P] Accepted forms: `YYYY-MM-DD`, optionally followed by `T` or a space and `hh:mm`, then optional `:ss` with an optional fraction, then optional `Z` or `±hh:mm`. This covers the values Obsidian's date and date-and-time properties write.
 - [P] Readers MUST use the value as written and MUST NOT convert time zones. YAML libraries disagree on timestamps: YAML 1.1 resolves them to typed values, while the YAML 1.2 core schema leaves them as strings. Relying on typed parsing would make Readers disagree.
-- [P] A value that doesn't match these forms, or isn't a real calendar date and time (`2026-02-30`), emits `invalid-date` and is treated as absent.
+- [P] A value that doesn't match these forms, or isn't a real calendar date and time (`2026-02-30`), emits `invalid-date` and is treated as absent: the next rung applies.
 
 ### 5.2 Fork provenance
 
@@ -142,13 +187,18 @@ Reserved keys, all optional unless §8 says otherwise:
 - [P] These are authored facts, not derived data: they can't be recomputed from the repo (ADR-0003).
 - [O] Whether the Document model (§10) exposes fork provenance. In 0.1 Readers pass `fork_*` through like any unknown key.
 
+### 5.3 Publishing
+
+- [P] `publish: off` (or `false`, `no`, `0`, case-insensitive) keeps a document off published sites. It is hidden, not private: the file is still public in the repo.
+- [P] Readers still read unpublished documents and set `published: false` (§10). Whether followers aggregate them is up to the consumer.
+
 ## 6. Title
 
 [P] First match wins:
 
 1. Front matter `title`
-2. The first ATX H1 (`# Heading`) in the body, outside code
-3. The filename without `.md`. For `blog`, also without the date and sequence prefix.
+2. The first ATX H1 (`# Heading`) in the body, outside code, when it is the first content: only blank lines, or one line shorter than 200 characters, may come before it
+3. For `_index.md`, its folder's name with `-` replaced by spaces (at the repo root, `index`). Otherwise the file name without `.md`, with `-` and `_` replaced by spaces and trimmed. A date prefix stays: `20260509-title.md` is titled `20260509 title`.
 
 ## 7. Tags
 
@@ -186,30 +236,19 @@ dotnet: [dot-net, net-core]
 
 Aliases apply in views only. They are not part of the Document model.
 
-## 8. Type and attribute rules
+## 8. Bookmarks
 
-### 8.1 blog
+A bookmark is a document about a web resource. Being a bookmark is an attribute, not a folder (ADR-0010).
 
-- [D] Path: `blog/<yyyy>/<mm>/<yyyymmdd>[-<n>]-<slug>.md`, e.g. `20260920-1-title.md`.
-- [P] `<n>`, the per-day sequence, is optional. The first all-digit segment after the date is always read as `<n>`, so a slug that starts with a number (`2026-plans`) needs an explicit `<n>`.
-- [P] `date` = front matter `date`, else the filename prefix. If neither exists, `date` is null and the Validator emits `blog-missing-date`.
-- [P] The Validator emits `blog-date-mismatch` when the `<yyyy>/<mm>` folders disagree with `date`. The check uses the calendar date as written, without time zone conversion.
+- [D] Any document with a `bookmark` attribute is a bookmark, wherever it lives. A wiki page about a book stays in `wiki` and joins `bookmarks` (§4.2).
+- [P] The attribute is front matter `bookmark` or `bookmarks`: an absolute `http` or `https` URL, or a list of them. Both keys may be present; URLs are read `bookmark` first, then `bookmarks`, duplicates dropped.
+- [P] A document under `bookmarks/`, except under `bookmarks/wiki/` and except `_index.md`, without a URL emits `bookmark-missing-url`. It is still in the `bookmarks` collection by folder.
+- [P] Several documents in one repo may bookmark the same resource, e.g. a `bookmarks/sites/` entry and a wiki page. Views group them by `resource_id` and combine their tags.
 
-### 8.2 Bookmarks
-
-A bookmark is a document about one web resource. Being a bookmark is an attribute, not a type.
-
-- [D] Any document with a `bookmark` attribute is a bookmark, whatever its type. A wiki page about a book keeps type `wiki` and is also a bookmark (ADR-0010).
-- [P] The attribute is front matter `bookmark: <url>`, an absolute `http` or `https` URL, one per document.
-- [D] Type `bookmark` is for documents that exist only to bookmark a resource: one file per resource, at `metaweb/<domain>/<subdomain-or-folder>/<file>.md`.
-- [P] A document of type `bookmark` without the attribute is an error: `bookmark-missing-url`.
-- [O] The exact mapping from URL to `metaweb/` path is undefined. Readers MUST NOT validate it in 0.1.
-- [P] Several documents in one repo may bookmark the same resource, e.g. a `metaweb/` entry and a wiki page. Views group them by `resource_id` and combine their tags.
-
-#### resource_id
+### resource_id
 
 - [D] `resource_id` identifies the resource across repos. It is a hash of the normalized URL.
-- [P] `resource_id = "sha256:" + lowercase hex SHA-256 of the UTF-8 bytes of normalize(bookmark)`.
+- [P] `resource_id = "sha256:" + lowercase hex SHA-256 of the UTF-8 bytes of normalize(url)`.
 - [P] `normalize` v0 is deliberately minimal:
   - lowercase the scheme and host;
   - drop the default port (`:80` for http, `:443` for https);
@@ -217,12 +256,9 @@ A bookmark is a document about one web resource. Being a bookmark is an attribut
   - an empty path becomes `/`;
   - change nothing else: no query reordering, no trailing-slash or `www.` changes.
 - [O] Full normalization and near-miss handling are deferred.
-- [P] Readers compute `resource_id` for every bookmark. If front matter also holds one and it differs, the Validator emits `resource-id-mismatch`.
+- [P] Readers compute `resource_id` for every bookmark URL. If front matter holds a `resource_id`, the document has exactly one URL and the two differ, the Validator emits `resource-id-mismatch`.
 - [O] A stored `resource_id` is derived data (ADR-0003). Changing `normalize` would make every stored value stale. The options are (a) never store it and compute it when reading, or (b) store it with a normalization version prefix. Recommendation: (a), unless a consumer needs it on disk.
-
-### 8.3 wiki, note, page
-
-No extra rules.
+- [O] The mapping from URL to a `bookmarks/sites/` path is undefined. Readers MUST NOT validate it in 0.1.
 
 ## 9. Links
 
@@ -244,7 +280,7 @@ Resolution:
 
 ## 10. Document model
 
-This is the Reader's output and the shape of every fixture's `expected.json`. Documents are sorted by `path` in byte order. Tags and links keep reading order.
+This is the Reader's output and the shape of every fixture's `expected.json`. Documents are sorted by `path` in byte order. Collections, bookmarks, tags and links keep their order.
 
 ```json
 {
@@ -252,12 +288,13 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
   "documents": [
     {
       "path": "notes/quick-link.md",
-      "type": "bookmark",
-      "type_source": "frontmatter",
+      "collections": ["notes", "reading", "bookmarks"],
       "title": "Quick link",
-      "date": null,
-      "bookmark": "http://Example.com:8080/a/b",
-      "resource_id": "sha256:…",
+      "created": "2026-10-13T00:36:00+02:00",
+      "created_source": "front-matter",
+      "updated": null,
+      "published": true,
+      "bookmarks": [{ "url": "http://Example.com:8080/a/b", "resource_id": "sha256:…" }],
       "tags": [{ "raw": "Reading", "match": "reading", "source": "frontmatter" }],
       "links": [{
         "syntax": "markdown", "embed": false, "external": false,
@@ -269,9 +306,11 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 }
 ```
 
-- `bookmark` is the front matter `bookmark` or null, for any type.
-- `resource_id` is computed whenever `bookmark` is set, and is null otherwise.
-- `date` is the front matter value exactly as written (datetime or date), else the filename date (`YYYY-MM-DD`) for blogs, else null.
+- `collections` follows §4.2 and is never empty.
+- `created` is the front matter value exactly as written, else the path date (`YYYY-MM-DD`), else null. `created_source` is `front-matter`, `path` or null (§5.1).
+- `updated` is the front matter value exactly as written, else null.
+- `published` is false only for `publish: off` and its synonyms (§5.3).
+- `bookmarks` lists each URL as written, with its computed `resource_id`; empty when the document is not a bookmark.
 - `tags[].source` is `frontmatter` or `inline`. `links[].syntax` is `markdown` or `wikilink`.
 - Each diagnostic is `{ "level": "warning" | "error", "code": string, "subject": string | null }`.
 
@@ -283,10 +322,8 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 | `unsupported-spec` | warning | repo | the manifest's version |
 | `invalid-frontmatter` | error | document | null |
 | `invalid-date` | warning | document | the value as written |
-| `bookmark-missing-url` | error | document | null |
+| `bookmark-missing-url` | warning | document | null |
 | `resource-id-mismatch` | warning | document | the stored value |
-| `blog-missing-date` | warning | document | null |
-| `blog-date-mismatch` | warning | document | the folder `yyyy/mm` |
 | `unresolved-link` | warning | document | the link `target` |
 
 ## 12. Versioning
@@ -299,24 +336,39 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 1. Filter grammar for `follows` beyond `include` folder prefixes, e.g. tags (§3)
 2. Canonical repo URL beyond v0: nested groups, ports, self-hosted paths (§3.1)
 3. `author` and `source_repo`: stored on disk or injected at publish (§5)
-4. Mapping from URL to `metaweb/` path (§8.2)
-5. Full URL normalization and near-miss handling (§8.2)
-6. Whether `resource_id` is stored on disk (§8.2)
+4. Mapping from URL to a `bookmarks/sites/` path (§8)
+5. Full URL normalization and near-miss handling (§8)
+6. Whether `resource_id` is stored on disk (§8)
 7. Bare URLs as links (§9)
 8. Parity with Obsidian link resolution (§9)
-9. `community/`: groups and shared repos (§4)
+9. `community/`: groups and shared repos (§4.1)
 10. Dataview inline fields (`key:: value`, e.g. `bookmark:: <url>`). The README requires Dataview compatibility; 0.1 does not parse them.
-11. Several resources in one document, i.e. `bookmark` as a list (§8.2)
-12. Whether two documents in one repo bookmarking the same resource should warn (§8.2)
-13. Whether the Document model exposes fork provenance (§5.2)
-14. Detecting local edits to a fork: needs a hash of the body without the `fork_*` keys (§5.2)
+11. Whether two documents in one repo bookmarking the same resource should warn (§8)
+12. Whether the Document model exposes fork provenance (§5.2)
+13. Detecting local edits to a fork: needs a hash of the body without the `fork_*` keys (§5.2)
+14. Where folders are left out: manifest `ignore` here, `params.excludeFolders` in PublicTxt-Pages' `settings/site.toml`. One place would be better (§3)
+15. Differences from PublicTxt-Pages still to settle (ADR-0013):
+    - Tags: Pages reads ASCII letters only and lower-cases at build; this spec allows Unicode letters and keeps `raw` (§7). Pages also tags a page with a nested tag's parents (`#dev/app` → `dev`).
+    - Title: Pages also takes an H1 inside code (§6).
+    - Invalid dates: Pages passes an invalid `created` through; this spec drops it and moves to the next rung (§5.1).
+    - Links: Pages shows `[[wikilinks]]` as plain text; this spec extracts and resolves them (§9).
 
 ## Appendix A. Changes from the README layout
 
 - `indexes/` and `tags/` folders removed: derived data (ADR-0003).
 - Topic branches removed (ADR-0005).
-- `metaweb/` sub-folders (`sites`, `bookmarks`, `notes`, `annotations`) collapsed into one file per resource [D].
-- Any document can be a bookmark through the `bookmark` attribute, not only files under `metaweb/` [D] (ADR-0010).
-- Blog day folders replaced by `blog/<yyyy>/<mm>/` with date-prefixed filenames [D].
+- Bookmarks are one file per resource under `bookmarks/sites/<domain>/`, replacing `metaweb/` and its sub-folders (`sites`, `bookmarks`, `notes`, `annotations`) (ADR-0013).
+- Any document can be a bookmark through the `bookmark` attribute, wherever it lives [D] (ADR-0010).
+- Blog posts keep all three PublicTxt-Pages path forms, day folders included (ADR-0013).
 - `community/` deferred.
-- W3C Web Annotation moved from storage model to a possible export format (IDEAS.md) [D].
+- W3C Web Annotation moved from storage model to a possible export format ([IDEAS.md](../IDEAS.md)) [D].
+
+## Appendix B. Changes from the 2026-10-13 draft (ADR-0013)
+
+- Types (`type`, `type_source`, manifest `types`) replaced by collections (§4.2).
+- `date` replaced by `created` and `updated`, with `date` and `lastmod` read as legacy keys (§5.1). Path dates apply in any folder; the blog sequence `<n>` is gone.
+- `metaweb/` replaced by `bookmarks/sites/`. `bookmarks` lists are allowed; the model's `bookmark` and `resource_id` became `bookmarks[]`.
+- `bookmark-missing-url` is a warning, scoped to `bookmarks/` outside `bookmarks/wiki/`. `blog-missing-date` and `blog-date-mismatch` removed.
+- Titles keep date prefixes and replace `-` and `_` with spaces; `_index.md` takes its folder's name (§6).
+- `publish` reserved; `published` added to the model (§5.3).
+- READMEs, licences and editor folders skipped (§2).

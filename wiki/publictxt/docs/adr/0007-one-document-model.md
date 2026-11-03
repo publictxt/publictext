@@ -1,6 +1,6 @@
 # 0007. One document model; features are document types
 
-- **Status:** Proposed
+- **Status:** Proposed. The `type` field is superseded by ADR-0013: collections replace types.
 - **Date:** 2026-10-13
 
 ## Context

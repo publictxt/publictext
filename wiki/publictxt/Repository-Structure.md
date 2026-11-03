@@ -3,7 +3,7 @@ tags: [publictxt, docs, spec]
 ---
 # Repository structure
 
-How a PublicTxt repository is laid out, following the [PublicTxt-Pages content structure](https://github.com/publictxt/publictxt-pages/blob/main/docs/SPEC.md#content-structure). The full PublicTxt format specification is still to be written; until then, this is the working layout.
+How a PublicTxt repository is laid out, following the [PublicTxt-Pages content structure](https://github.com/publictxt/publictxt-pages/blob/main/docs/SPEC.md#content-structure). The [format specification](docs/spec/publictxt-spec.md) adopts the same layout (§4) and front matter (§5); it is the formal version of this page.
 
 ```txt
 _index.md                  home page
@@ -52,4 +52,4 @@ All optional; the build derives the rest.
 - Link with relative Markdown links: `[text](../wiki/page.md)`. `[[wikilinks]]` show as plain text.
 - Put images beside the note, or in a top-level folder like `media/`.
 
-Changing a rule here? It follows the PublicTxt-Pages spec; change that first.
+Changing a rule here? Change the [format specification](docs/spec/publictxt-spec.md) first (ADR-0013); PublicTxt-Pages follows.
