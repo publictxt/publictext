@@ -18,7 +18,7 @@ Fixtures have no `.git`, so `created` and `updated` cover the front matter and p
 | 002-tags | Tag sources, inline grammar edge cases, raw/match, de-duplication |
 | 003-dates | The three blog path forms, path dates in any folder, digit guard, `created`/`updated` and legacy `date`/`lastmod`, datetime and date-only values, no time zone conversion, invalid date |
 | 004-bookmark | `bookmark` on any document, `bookmarks` lists, `bookmarks/sites/` and `bookmarks/wiki/`, `collections`, `resource_id`, URL normalization v0, mismatch, missing URL, `url` is not a bookmark |
-| 005-existing-vault | Vault folders as collections, root `page`, `ignore`, link resolution |
+| 005-existing-vault | Vault folders as collections, root `page`, `ignore`, relative Markdown links (up, down, root, encoded, fragment, embed, external, unresolved), wikilinks as plain text |
 
 Rules for adding cases:
 

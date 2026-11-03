@@ -1,3 +1,3 @@
 # Home
 
-Start at [[Index]].
+Start at [the index](Wiki/Index.md).

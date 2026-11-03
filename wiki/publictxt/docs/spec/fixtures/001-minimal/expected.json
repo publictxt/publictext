@@ -64,7 +64,6 @@
       "tags": [],
       "links": [
         {
-          "syntax": "markdown",
           "embed": false,
           "external": false,
           "target": "getting-started.md",

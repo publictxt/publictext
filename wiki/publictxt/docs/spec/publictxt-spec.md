@@ -262,21 +262,18 @@ A bookmark is a document about a web resource. Being a bookmark is an attribute,
 
 ## 9. Links
 
-[P] Readers extract explicit links outside code, in reading order:
+[P] Readers extract Markdown links `[text](target)` and embeds `![alt](target)` outside code, in reading order. Writers SHOULD use relative paths, as PublicTxt-Pages expects: in Obsidian, turn off wikilinks and set new links to relative paths.
 
-- Markdown links `[text](target)` and embeds `![alt](target)`
-- Wikilinks `[[target]]`, `[[target|label]]`, `[[target#heading]]` and embeds `![[target]]`
+- [O] Wikilinks (`[[target]]`, `![[target]]`) are deferred. In 0.1 they are plain text: Readers extract nothing from them.
 
 Resolution:
 
 - [P] A target with a URI scheme (`https:`, `mailto:`) is external. Its `target` is the whole URL as written, `fragment` is null, and it is not resolved.
-- [P] For internal links, `target` is as written, minus any `#fragment` and wikilink `|label`. It is not percent-decoded. Text after `#` becomes `fragment`.
-- [P] Markdown targets are percent-decoded and resolved relative to the linking file's folder. A leading `/` means the repo root.
-- [P] A wikilink target without an extension gets `.md`. A target containing `/` is a repo-relative path. Any other target matches by filename, case-insensitively, among files that are not ignored. Exactly one match resolves; zero or several leave the link unresolved.
-- [P] An empty target (`[[#heading]]`) resolves to the linking file.
+- [P] For internal links, `target` is as written, minus any `#fragment`. It is not percent-decoded. Text after `#` becomes `fragment`.
+- [P] To resolve, the target is percent-decoded and taken relative to the linking file's folder. A leading `/` means the repo root. It resolves when that path is a file that is not skipped (§2); a path that leaves the repo does not resolve.
+- [P] An empty target (`[text](#heading)`) resolves to the linking file.
 - [P] An unresolved internal link produces `unresolved-link`.
 - [O] Bare URLs are not links in 0.1. Revisit for bookmarking.
-- [O] Full parity with Obsidian's link resolution (shortest-path rules) is not a goal for 0.1.
 
 ## 10. Document model
 
@@ -297,7 +294,7 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
       "bookmarks": [{ "url": "http://Example.com:8080/a/b", "resource_id": "sha256:…" }],
       "tags": [{ "raw": "Reading", "match": "reading", "source": "frontmatter" }],
       "links": [{
-        "syntax": "markdown", "embed": false, "external": false,
+        "embed": false, "external": false,
         "target": "../wiki/home.md", "fragment": null, "resolved": "wiki/home.md"
       }],
       "diagnostics": []
@@ -311,7 +308,7 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 - `updated` is the front matter value exactly as written, else null.
 - `published` is false only for `publish: off` and its synonyms (§5.3).
 - `bookmarks` lists each URL as written, with its computed `resource_id`; empty when the document is not a bookmark.
-- `tags[].source` is `frontmatter` or `inline`. `links[].syntax` is `markdown` or `wikilink`.
+- `tags[].source` is `frontmatter` or `inline`. `links[].embed` is true for `![alt](target)`.
 - Each diagnostic is `{ "level": "warning" | "error", "code": string, "subject": string | null }`.
 
 ## 11. Diagnostics
@@ -340,7 +337,7 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 5. Full URL normalization and near-miss handling (§8)
 6. Whether `resource_id` is stored on disk (§8)
 7. Bare URLs as links (§9)
-8. Parity with Obsidian link resolution (§9)
+8. Wikilinks: syntax and resolution, when they come back (§9)
 9. `community/`: groups and shared repos (§4.1)
 10. Dataview inline fields (`key:: value`, e.g. `bookmark:: <url>`). The README requires Dataview compatibility; 0.1 does not parse them.
 11. Whether two documents in one repo bookmarking the same resource should warn (§8)
@@ -351,7 +348,6 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
     - Tags: Pages reads ASCII letters only and lower-cases at build; this spec allows Unicode letters and keeps `raw` (§7). Pages also tags a page with a nested tag's parents (`#dev/app` → `dev`).
     - Title: Pages also takes an H1 inside code (§6).
     - Invalid dates: Pages passes an invalid `created` through; this spec drops it and moves to the next rung (§5.1).
-    - Links: Pages shows `[[wikilinks]]` as plain text; this spec extracts and resolves them (§9).
 
 ## Appendix A. Changes from the README layout
 
@@ -371,4 +367,5 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 - `bookmark-missing-url` is a warning, scoped to `bookmarks/` outside `bookmarks/wiki/`. `blog-missing-date` and `blog-date-mismatch` removed.
 - Titles keep date prefixes and replace `-` and `_` with spaces; `_index.md` takes its folder's name (§6).
 - `publish` reserved; `published` added to the model (§5.3).
+- Wikilinks deferred: Markdown links only, and `links[].syntax` removed (§9).
 - READMEs, licences and editor folders skipped (§2).

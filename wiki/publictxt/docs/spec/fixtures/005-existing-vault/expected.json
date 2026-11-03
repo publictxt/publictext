@@ -19,10 +19,9 @@
       "tags": [],
       "links": [
         {
-          "syntax": "wikilink",
           "embed": false,
           "external": false,
-          "target": "Index",
+          "target": "Wiki/Index.md",
           "fragment": null,
           "resolved": "Wiki/Index.md"
         }
@@ -43,31 +42,6 @@
       "tags": [],
       "links": [
         {
-          "syntax": "wikilink",
-          "embed": false,
-          "external": false,
-          "target": "Concept A",
-          "fragment": null,
-          "resolved": "Zettels/Concept A.md"
-        },
-        {
-          "syntax": "wikilink",
-          "embed": false,
-          "external": false,
-          "target": "Missing Page",
-          "fragment": null,
-          "resolved": null
-        },
-        {
-          "syntax": "markdown",
-          "embed": false,
-          "external": false,
-          "target": "../Zettels/Sources/paper.md",
-          "fragment": "summary",
-          "resolved": "Zettels/Sources/paper.md"
-        },
-        {
-          "syntax": "markdown",
           "embed": false,
           "external": false,
           "target": "../Zettels/Concept%20A.md",
@@ -75,15 +49,41 @@
           "resolved": "Zettels/Concept A.md"
         },
         {
-          "syntax": "wikilink",
+          "embed": false,
+          "external": false,
+          "target": "Missing%20Page.md",
+          "fragment": null,
+          "resolved": null
+        },
+        {
+          "embed": false,
+          "external": false,
+          "target": "../Zettels/Sources/paper.md",
+          "fragment": "summary",
+          "resolved": "Zettels/Sources/paper.md"
+        },
+        {
+          "embed": false,
+          "external": false,
+          "target": "/Zettels/Concept%20A.md",
+          "fragment": null,
+          "resolved": "Zettels/Concept A.md"
+        },
+        {
+          "embed": false,
+          "external": false,
+          "target": "../Home.md",
+          "fragment": null,
+          "resolved": "Home.md"
+        },
+        {
           "embed": true,
           "external": false,
-          "target": "diagram.png",
+          "target": "../Attachments/diagram.png",
           "fragment": null,
           "resolved": "Attachments/diagram.png"
         },
         {
-          "syntax": "markdown",
           "embed": false,
           "external": true,
           "target": "https://example.org",
@@ -91,11 +91,10 @@
           "resolved": null
         },
         {
-          "syntax": "wikilink",
           "embed": false,
           "external": false,
           "target": "",
-          "fragment": "Index",
+          "fragment": "index",
           "resolved": "Wiki/Index.md"
         }
       ],
@@ -103,7 +102,7 @@
         {
           "level": "warning",
           "code": "unresolved-link",
-          "subject": "Missing Page"
+          "subject": "Missing%20Page.md"
         }
       ]
     },
