@@ -20,6 +20,7 @@ bookmarks/
   wiki/topic.md            pages about bookmarks (no URL needed)
 media/                     shared images and audio, copied as-is
 settings/site.toml         site settings for PublicTxt-Pages (optional)
+settings/remotes/repo.md   one note per repo you follow: `url` in front matter (ADR-0014)
 .github/workflows/         the publish workflow
 ```
 
