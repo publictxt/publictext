@@ -10,7 +10,7 @@
 
 ## Decision
 
-- Readers follow whole repositories, listed under `follows` in their manifest. Superseded by ADR-0014: one note per follow in `settings/remotes/`.
+- Readers follow whole repositories, listed under `follows` in their manifest. Superseded by ADR-0014: one note per follow in `follows/`.
 - Filtering happens at query time, through saved filters.
 - Published content lives on the default branch. Other branches are for drafts and pull requests.
 
