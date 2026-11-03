@@ -23,4 +23,4 @@ Start with the [overview](PublicTxt.md).
 
 ## History
 
-- [README history](history/PublicTxt-README-history.md) — earlier versions of the project description
+- [README history](docs/history/PublicTxt-README-history.md) — earlier versions of the project description

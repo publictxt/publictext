@@ -1,4 +1,4 @@
-Earlier versions of the project README. See the [current README](https://github.com/publictxt/publictext/blob/main/README.md) and the [project overview](../PublicTxt.md).
+Earlier versions of the project README. See the [current README](https://github.com/publictxt/publictext/blob/main/README.md) and the [project overview](../../PublicTxt.md).
 
 ## log
 

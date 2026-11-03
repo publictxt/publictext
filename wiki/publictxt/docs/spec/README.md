@@ -12,7 +12,7 @@ The experiment is in early stages.
 
 | Part | State |
 |---|---|
-| [Format specification](spec/publictxt-spec.md) v0.1 | Draft |
+| [Format specification](publictxt-spec.md) v0.1 | Draft |
 | [Conformance fixtures](spec/fixtures/) | Draft |
 | [Architecture decisions](docs/adr/) | Recorded; several still proposed |
 | publictxt-pages: static site with Hugo and Pagefind | Scaffold |

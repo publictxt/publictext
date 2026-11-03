@@ -2,7 +2,7 @@
 
 Plain Markdown in Git as personal and public knowledge storage - published free, readable by any tool, and (next) aggregated across other people's repositories.
 
-- Format: [PublicTxt Format Specification](spec/publictxt-spec.md) (v0.1.0-draft)
+- Format: [PublicTxt Format Specification](../spec/publictxt-spec.md) (v0.1.0-draft)
 - Live example: [jaysen.co.za](https://jaysen.co.za)
 - Previous README: [docs/archive/README-2026-10-29.md](docs/archive/README-2026-10-29.md)
 
@@ -76,7 +76,7 @@ The differentiator: pull chosen subsets of other people's PublicTxt repos into a
 - Bookmarks of the same resource group across repos by `resource_id`.
 - Foundation for [CuratedCommons](https://github.com/publictxt/curated-commons): social bookmarking and curation across PublicTxt repos.
 
-Open design questions are tracked in [spec §13](spec/publictxt-spec.md#13-open-questions).
+Open design questions are tracked in [spec §13](../spec/publictxt-spec.md#13-open-questions).
 
 ## v3 Community - Later
 

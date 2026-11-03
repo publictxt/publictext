@@ -14,6 +14,9 @@ title = "PublicTxt"
   sectionOrder = ["wiki", "blog", "posts", "bookmarks", "notes"]
   pagerSize = 15
   listOrder = "created"
+  # Spec conformance fixtures are test inputs (sample repos with deliberately
+  # invalid dates etc.), not site content.
+  excludeFolders = ["wiki/publictxt/docs/spec/fixtures"]
 
   [params.footer]
     text = "[PublicTxt](https://github.com/publictxt/publictext), plain-text knowledge, published with [publictxt-pages](https://github.com/publictxt/publictxt-pages)"
