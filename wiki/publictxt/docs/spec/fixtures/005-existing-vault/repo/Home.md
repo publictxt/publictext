@@ -1,3 +1,3 @@
 # Home
 
-Start at [[Wiki/Index]].
+Start at [[Index]].
