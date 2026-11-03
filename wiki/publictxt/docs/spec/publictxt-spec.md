@@ -319,4 +319,4 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 - Any document can be a bookmark through the `bookmark` attribute, not only files under `metaweb/` [D] (ADR-0010).
 - Blog day folders replaced by `blog/<yyyy>/<mm>/` with date-prefixed filenames [D].
 - `community/` deferred.
-- W3C Web Annotation moved from storage model to a possible export format (IDEAS.md) [D].
+- W3C Web Annotation moved from storage model to a possible export format ([IDEAS.md](../IDEAS.md)) [D].

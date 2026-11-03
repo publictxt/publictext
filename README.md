@@ -123,7 +123,7 @@ bookmark: https://git-scm.com/book/en/v2
 
 ## Later
 
-Deferred until the v1 aggregation-and-publish story works and is used. Each has a trigger in [IDEAS.md](wiki/publictxt/docs/spec/IDEAS.md); the [Roadmap](wiki/publictxt/Roadmap.md) has the order.
+Deferred until the v1 aggregation-and-publish story works and is used. Each has a trigger in [IDEAS.md](wiki/publictxt/docs/IDEAS.md); the [Roadmap](wiki/publictxt/Roadmap.md) has the order.
 
 - **Visibility:** public, semi-public and private content. Private content needs private repos; how they fit into following is undecided.
 - **Community:** profiles, groups, discussion and moderation (`community/`).
@@ -137,7 +137,8 @@ Deferred until the v1 aggregation-and-publish story works and is used. Each has 
 A working PublicTxt repository, published as [jaysen.co.za](https://jaysen.co.za) (see [Publishing](wiki/publictxt/Publishing.md)). It also holds the project's own docs:
 
 - `wiki/publictxt/`: project documentation
-- `wiki/publictxt/docs/spec/`: format specification, conformance fixtures, parked ideas
+- `wiki/publictxt/docs/spec/`: format specification and conformance fixtures
+- `wiki/publictxt/docs/IDEAS.md`: parked ideas, each with a trigger for revisiting it
 - `wiki/publictxt/docs/adr/`: architecture decision records
 - `wiki/publictxt/docs/history/`: earlier versions of this README
 
