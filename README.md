@@ -66,7 +66,7 @@ v1 success looks like:
 - See what changed since you last looked, by git blob SHA.
 - Fork a page into your vault, with `fork_*` provenance in its front matter.
 - Desktop-only, over the git CLI: any host, your own SSH keys. Mobile is a later phase.
-- Decisions: [ADR-0011](wiki/publictxt/docs/adr/0011-obsidian-plugin-follows-with-git-cli.md), [ADR-0012](wiki/publictxt/docs/adr/0012-fork-provenance-in-front-matter.md).
+- Decisions: [ADR-0011](wiki/publictxt/docs/adr/0011-obsidian-plugin-follows-with-git-cli.md), [ADR-0012](wiki/publictxt/docs/adr/0012-fork-provenance-in-front-matter.md), [ADR-0014](wiki/publictxt/docs/adr/0014-follows-are-notes.md).
 
 ### WikiTool
 
@@ -88,12 +88,13 @@ v1 success looks like:
 The spec follows the PublicTxt-Pages layout ([ADR-0013](wiki/publictxt/docs/adr/0013-spec-follows-pages-layout.md)); details in [Repository structure](wiki/publictxt/Repository-Structure.md) and spec §4.
 
 ```txt
-publictxt.yaml          manifest: spec version, author, follows
+publictxt.yaml          manifest: spec version, author, ignore
 _index.md               home page; any folder's _index.md is its own page
 wiki/  posts/  notes/   one collection per top-level folder
 blog/                   2023/12/17/post.md, 2024/09/20240922-title.md or 20260509-title.md
 bookmarks/sites/<domain>/…   one file per web resource, with a bookmark: URL
 media/                  shared attachments
+settings/remotes/       one note per repo you follow (ADR-0014)
 ```
 
 Any folder layout works: an existing vault's top-level folders become its collections, with no remapping.
@@ -104,8 +105,16 @@ A minimal manifest (spec §3):
 publictxt: "0.1"
 author:
   name: Your Name
-follows:
-  - url: https://github.com/example/notes
+```
+
+A follow, `settings/remotes/example-notes.md` (spec §3.2):
+
+```yaml
+---
+url: https://github.com/example/notes
+include: [blog/]
+---
+Why I follow it, and what to read there.
 ```
 
 Front matter on a wiki page that is also a bookmark:

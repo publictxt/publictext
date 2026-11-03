@@ -48,11 +48,6 @@ author:
 ignore:                     # optional: path prefixes Readers skip
   - .obsidian/
   - templates/
-follows:                    # optional: repos this author subscribes to
-  - url: https://github.com/example/notes
-    branch: main            # [P] optional; default: the remote's default branch
-    include: [blog/]        # [P] optional folder prefixes; default: the whole repo
-    filter: "tag:dotnet"    # [O] filter grammar
 aliases: aliases.yaml       # optional: this author's tag alias file (§7.4)
 ```
 
@@ -60,7 +55,7 @@ aliases: aliases.yaml       # optional: this author's tag alias file (§7.4)
 - [P] `types` (folder → type) is gone: collections come from folder names (§4).
 - Readers MUST ignore unknown keys.
 - [P] A repo's identity is its remote URL, not a manifest field, in canonical form (§3.1).
-- [P] `follows[].url` is a canonical repo URL. `branch` names the branch to follow; when absent, the remote's default branch. `include` lists repo-relative folder prefixes ending in `/`, like `ignore`; when absent or empty, the whole repo. `include` narrows what a reader shows, not what it fetches: the whole repo is still fetched (ADR-0005). It is the first piece of the filter grammar; tag filters stay open (§13).
+- [P] `follows` is gone: follows are documents (§3.2, ADR-0014).
 
 ### 3.1 Canonical repo URL
 
@@ -72,6 +67,26 @@ aliases: aliases.yaml       # optional: this author's tag alias file (§7.4)
 - `git@<host>:<owner>/<repo>.git` becomes the HTTPS form.
 - Anything else is invalid.
 - [O] Hosts with nested groups (GitLab subgroups), other ports and self-hosted paths.
+
+### 3.2 Follows
+
+[P] The repos this author follows. Each is a document in `settings/remotes/`, at any depth, with front matter (ADR-0014):
+
+```yaml
+---
+url: https://github.com/example/notes   # required: canonical repo URL (§3.1)
+branch: main                            # optional; default: the remote's default branch
+include: [blog/]                        # optional folder prefixes; default: the whole repo
+---
+Why I follow it, and what to read there.
+```
+
+- A document in `settings/remotes/` is a follow when `url` is a valid repo URL. Readers canonicalize it (§3.1). Without one, the Reader emits `follow-missing-url` and it is a plain document.
+- `branch` names the branch to follow; when absent or blank, the remote's default branch.
+- `include` lists repo-relative folder prefixes ending in `/`, like `ignore`; when absent or empty, the whole repo. It narrows what a reader shows, not what it fetches: the whole repo is still fetched (ADR-0005). It is the first piece of the filter grammar; tag filters stay open (§13).
+- Two follows of one canonical URL: the first by path (byte order) counts; the Reader emits `duplicate-follow` on the others.
+- Readers MUST ignore other keys in a follow: tools keep their own settings there.
+- [O] Whether follows are published as pages, and in which collection (§13).
 
 ## 4. Layout and collections
 
@@ -90,6 +105,7 @@ aliases: aliases.yaml       # optional: this author's tag alias file (§7.4)
 | `bookmarks/wiki/` | Pages about bookmarks; no URL needed |
 | `media/` | Shared attachments |
 | `settings/site.toml` | PublicTxt-Pages site settings; not content |
+| `settings/remotes/` | One document per followed repo (§3.2) |
 
 Blog paths, each dated by §5.1:
 
@@ -325,6 +341,8 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 | `bookmark-missing-url` | warning | document | null |
 | `resource-id-mismatch` | warning | document | the stored value |
 | `unresolved-link` | warning | document | the link `target` |
+| `follow-missing-url` | warning | document | null |
+| `duplicate-follow` | warning | document | the canonical URL |
 
 ## 12. Versioning
 
@@ -333,7 +351,7 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 
 ## 13. Open questions
 
-1. Filter grammar for `follows` beyond `include` folder prefixes, e.g. tags (§3)
+1. Filter grammar for follows beyond `include` folder prefixes, e.g. tags (§3.2)
 2. Canonical repo URL beyond v0: nested groups, ports, self-hosted paths (§3.1)
 3. `author` and `source_repo`: stored on disk or injected at publish (§5)
 4. Mapping from URL to a `bookmarks/sites/` path (§8)
@@ -352,6 +370,7 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
     - Title: Pages also takes an H1 inside code (§6).
     - Invalid dates: Pages passes an invalid `created` through; this spec drops it and moves to the next rung (§5.1).
     - Links: Pages shows `[[wikilinks]]` as plain text; this spec extracts and resolves them (§9).
+16. Follows (§3.2): whether they are published as pages and in which collection (Pages calls `settings/` not content), and whether the Document model lists them under `repo`
 
 ## Appendix A. Changes from the README layout
 
