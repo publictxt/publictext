@@ -22,13 +22,13 @@
 
 ## Consequences
 
-- + Another vault, or any folder, can be followed and forked from, with the same checks and provenance as a hosted repo.
-- + One code path: local and hosted sources differ only in where git fetches from.
-- + Forks say which follow they came through, readably, for hosted and local sources alike.
-- + A local source's follow and its forks can be published and synced: no path in them.
-- − A local source sees nothing until it is committed: a snapshot is a deliberate step.
-- − A fork from a local source names a follow that can't be fetched elsewhere: its provenance is only complete for the author.
-- − Each computer sets a local source's folder once. Until then the source shows as not set up there.
-- − Renaming a follow would orphan its forks' `fork_remote`, so names are read-only. A link that Obsidian updates on rename is a possible way out, parked.
-- − The plugin writes outside the vault (snapshot, making a repo), always on the user's action, into the source's own folder. Obsidian's developer policies require this to be disclosed in the plugin's README; it is.
-- ! Obsidian Sync may carry the plugin's settings, and with them a folder set on one computer, to another where it doesn't exist. A check there reports the folder missing.
+- (+) Another vault, or any folder, can be followed and forked from, with the same checks and provenance as a hosted repo.
+- (+) One code path: local and hosted sources differ only in where git fetches from.
+- (+) Forks say which follow they came through, readably, for hosted and local sources alike.
+- (+) A local source's follow and its forks can be published and synced: no path in them.
+- (-) A local source sees nothing until it is committed: a snapshot is a deliberate step.
+- (-) A fork from a local source names a follow that can't be fetched elsewhere: its provenance is only complete for the author.
+- (-) Each computer sets a local source's folder once. Until then the source shows as not set up there.
+- (-) Renaming a follow would orphan its forks' `fork_remote`, so names are read-only. A link that Obsidian updates on rename is a possible way out, parked.
+- (-) The plugin writes outside the vault (snapshot, making a repo), always on the user's action, into the source's own folder. Obsidian's developer policies require this to be disclosed in the plugin's README; it is.
+- (!) Obsidian Sync may carry the plugin's settings, and with them a folder set on one computer, to another where it doesn't exist. A check there reports the folder missing.
