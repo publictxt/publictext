@@ -40,7 +40,7 @@ All optional; the build derives the rest.
 
 | Key | Purpose |
 |---|---|
-| `title` | Falls back to the first `# H1`, then the filename |
+| `title` | Falls back to an `# H1` that is the first non-empty line of the body, then the filename |
 | `tags` | Merged with inline `#hashtags` |
 | `collections` | Extra collections |
 | `bookmark` / `bookmarks` | The URL(s) the page is about |

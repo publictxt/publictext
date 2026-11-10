@@ -21,6 +21,21 @@
       "diagnostics": []
     },
     {
+      "path": "wiki/code-first.md",
+      "collections": [
+        "wiki"
+      ],
+      "title": "code first",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
       "path": "wiki/draft.md",
       "collections": [
         "wiki"
@@ -72,6 +87,21 @@
           "resolved": "wiki/getting-started.md"
         }
       ],
+      "diagnostics": []
+    },
+    {
+      "path": "wiki/late-heading.md",
+      "collections": [
+        "wiki"
+      ],
+      "title": "late heading",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
       "diagnostics": []
     }
   ]
