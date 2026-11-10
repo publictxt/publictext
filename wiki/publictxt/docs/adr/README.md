@@ -14,7 +14,8 @@ Format and process: [0001](0001-record-architecture-decisions.md).
 | [0008](0008-obsidian-is-the-editor.md) | Obsidian is the editor; defer custom clients | Proposed |
 | [0009](0009-single-author-per-repo.md) | One author per repository | Accepted |
 | [0010](0010-bookmark-is-an-attribute.md) | Bookmark is an attribute any document can carry | Accepted / Proposed; `metaweb/` type superseded by 0013 |
-| [0011](0011-obsidian-plugin-follows-with-git-cli.md) | Follow and fork from an Obsidian plugin, desktop-only, over the git CLI | Proposed |
+| [0011](0011-obsidian-plugin-follows-with-git-cli.md) | Follow and fork from an Obsidian plugin, desktop-only, over the git CLI | Proposed; mobile phase superseded by 0015 |
 | [0012](0012-fork-provenance-in-front-matter.md) | A fork records its provenance in its own front matter | Proposed |
 | [0013](0013-spec-follows-pages-layout.md) | The spec follows the PublicTxt-Pages layout and page rules | Proposed |
 | [0014](0014-follows-are-notes.md) | Follows are notes, one per repo, in `follows/` | Proposed |
+| [0015](0015-obsidian-remotes-local-sources-desktop-only.md) | Obsidian PublicTxt Remotes: named remotes, local sources, desktop only for good | Proposed |

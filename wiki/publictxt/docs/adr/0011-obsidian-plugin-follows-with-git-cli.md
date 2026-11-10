@@ -2,6 +2,7 @@
 
 - **Status:** Proposed
 - **Date:** 2026-11-03, recording the decision taken in obsidian-publictxt
+- **Note:** the plugin is now obsidian-publictxt-remotes (ADR-0015)
 
 ## Context
 
@@ -24,6 +25,6 @@
 - + Any git host, the user's SSH keys and credential helpers, no API rate limits, full history, and `git merge-file` for updating forks later.
 - + The same git-as-the-API approach on both implementations, so behaviour can be reproduced from a terminal.
 - + Spec gains a canonical repo URL (§3.1), `follows` `branch` and `include` (§3), and fork provenance keys (§5.2), all proposed.
-- − No mobile. A later phase adds a second remote host over HTTPS from the parked adapter; that brings back auth, rate limits and a merge that doesn't use git. `isDesktopOnly` can go from true to false later without taking anything from anyone.
+- − No mobile. A later phase adds a second remote host over HTTPS from the parked adapter; that brings back auth, rate limits and a merge that doesn't use git. `isDesktopOnly` can go from true to false later without taking anything from anyone. Superseded by ADR-0015: desktop only for good.
 - − The follow list lives in private plugin data, not in public text as ADR-0005 intends, until ADR-0014 is built.
 - ! Clones sit inside the vault. Obsidian Sync skips `.remotes/`; a vault git repo needs `.remotes/` in its `.gitignore`.
