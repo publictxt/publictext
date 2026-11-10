@@ -17,6 +17,7 @@ Start with the [overview](PublicTxt.md).
 
 - [PublicTxt-Pages](PublicTxt-Pages.md) — static site with search and facets
 - [Obsidian PublicTxt Facets](Obsidian-PublicTxt-Facets.md) — the same browsing inside Obsidian
+- [Obsidian PublicTxt Remotes](Obsidian-PublicTxt-Remotes.md) — follow repos and fork their pages from Obsidian
 - [WikiTool](WikiTool.md) — convert and copy between wikis
 - [PublicTxt.net](PublicTxt.net.md) — .NET libraries and apps
 - [CuratedCommons](CuratedCommons.md) — curation and social bookmarking on PublicTxt repositories

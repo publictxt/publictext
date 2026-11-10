@@ -48,11 +48,6 @@ author:
 ignore:                     # optional: path prefixes Readers skip
   - .obsidian/
   - templates/
-follows:                    # optional: repos this author subscribes to
-  - url: https://github.com/example/notes
-    branch: main            # [P] optional; default: the remote's default branch
-    include: [blog/]        # [P] optional folder prefixes; default: the whole repo
-    filter: "tag:dotnet"    # [O] filter grammar
 aliases: aliases.yaml       # optional: this author's tag alias file (§7.4)
 ```
 
@@ -60,18 +55,41 @@ aliases: aliases.yaml       # optional: this author's tag alias file (§7.4)
 - [P] `types` (folder → type) is gone: collections come from folder names (§4).
 - Readers MUST ignore unknown keys.
 - [P] A repo's identity is its remote URL, not a manifest field, in canonical form (§3.1).
-- [P] `follows[].url` is a canonical repo URL. `branch` names the branch to follow; when absent, the remote's default branch. `include` lists repo-relative folder prefixes ending in `/`, like `ignore`; when absent or empty, the whole repo. `include` narrows what a reader shows, not what it fetches: the whole repo is still fetched (ADR-0005). It is the first piece of the filter grammar; tag filters stay open (§13).
+- [P] `follows` is gone: follows are documents (§3.2, ADR-0014).
 
 ### 3.1 Canonical repo URL
 
-[P] v0, adopted from obsidian-publictxt, which needs a stable key for follows and forks:
+[P] v0, adopted from obsidian-publictxt-remotes, which needs a stable key for follows and forks:
 
 - Form: `https://<host>/<owner>/<repo>`.
 - Lower-case the scheme and host. Owner and repo keep their case: hosts differ on case sensitivity.
 - Drop a `.git` suffix, a trailing `/`, the query and the fragment.
 - `git@<host>:<owner>/<repo>.git` becomes the HTTPS form.
-- Anything else is invalid.
+- Anything else is invalid, including `file:` URLs. A follow of a repo with no public URL has no `url` at all (§3.2).
 - [O] Hosts with nested groups (GitLab subgroups), other ports and self-hosted paths.
+
+### 3.2 Follows
+
+[P] The repos this author follows. Each is a document in `follows/`, at any depth, with front matter (ADR-0014):
+
+```yaml
+---
+url: https://github.com/example/notes   # required: canonical repo URL (§3.1)
+branch: main                            # optional; default: the remote's default branch
+include: [blog/]                        # optional folder prefixes; default: the whole repo
+---
+Why I follow it, and what to read there.
+```
+
+- A document in `follows/` is a follow when `url` is a valid repo URL. Readers canonicalize it (§3.1). Without one, the Reader emits `follow-missing-url` and it is a plain document.
+- A follow's name is its file name without `.md`: `follows/ann-notes.md` is the follow `ann-notes`. Forks name the follow they came through by it (`fork_remote`, §5.2). Names are unique in a repo, compared without case.
+- [P] A document in `follows/` with `local: true` and no `url` is a tool's follow of a repo with no public URL, such as another vault on the author's computer (ADR-0015). It holds no path. To Readers it is a plain document, without `follow-missing-url`.
+- `branch` names the branch to follow; when absent or blank, the remote's default branch.
+- `include` lists repo-relative folder prefixes ending in `/`, like `ignore`; when absent or empty, the whole repo. It narrows what a reader shows, not what it fetches: the whole repo is still fetched (ADR-0005). It is the first piece of the filter grammar; tag filters stay open (§13).
+- Two follows of one canonical URL: the first by path (byte order) counts; the Reader emits `duplicate-follow` on the others.
+- Readers MUST ignore other keys in a follow: tools keep their own settings there.
+- Follows are documents like any other: in the collection `follows` (§4.2), and published.
+- [O] Whether the Document model lists follows under `repo` (§13).
 
 ## 4. Layout and collections
 
@@ -90,6 +108,7 @@ aliases: aliases.yaml       # optional: this author's tag alias file (§7.4)
 | `bookmarks/wiki/` | Pages about bookmarks; no URL needed |
 | `media/` | Shared attachments |
 | `settings/site.toml` | PublicTxt-Pages site settings; not content |
+| `follows/` | One document per followed repo (§3.2) |
 
 Blog paths, each dated by §5.1:
 
@@ -175,15 +194,17 @@ Reserved keys, all optional:
 
 | Key | Value |
 |---|---|
-| `fork_repo` | Canonical repo URL (§3.1) of the source |
+| `fork_remote` | Name of the follow (§3.2) in this repo it was forked through |
+| `fork_repo` | Canonical repo URL (§3.1) of the source; absent when the follow has none (`local: true`) |
 | `fork_path` | Repo-relative path of the file forked |
 | `fork_branch` | Branch it was forked from |
 | `fork_commit` | Source head commit SHA at fork time |
 | `fork_blob` | Git blob SHA of the source file at fork time: the change marker and merge base |
 | `fork_date` | ISO 8601 datetime of the fork, with offset |
 
-- [P] A document is a fork when `fork_repo`, `fork_path` and `fork_blob` are all valid. The others are optional when reading.
-- [P] A Writer that forks keeps the source's front matter and adds or overwrites the `fork_*` keys.
+- [P] A document is a fork when `fork_path` and `fork_blob` are valid and it has a valid `fork_repo` or `fork_remote`. The others are optional when reading.
+- [P] A Writer writes `fork_remote`, and `fork_repo` whenever the source has a URL: the URL is what lets anyone reading a published fork find the original, which a name alone can't.
+- [P] A Writer that forks keeps the source's front matter, sets its `fork_*` keys, and removes any other `fork_*` key, so a fork of a fork never keeps the upstream's provenance.
 - [P] These are authored facts, not derived data: they can't be recomputed from the repo (ADR-0003).
 - [O] Whether the Document model (§10) exposes fork provenance. In 0.1 Readers pass `fork_*` through like any unknown key.
 
@@ -325,6 +346,8 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 | `bookmark-missing-url` | warning | document | null |
 | `resource-id-mismatch` | warning | document | the stored value |
 | `unresolved-link` | warning | document | the link `target` |
+| `follow-missing-url` | warning | document | null |
+| `duplicate-follow` | warning | document | the canonical URL |
 
 ## 12. Versioning
 
@@ -333,7 +356,7 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 
 ## 13. Open questions
 
-1. Filter grammar for `follows` beyond `include` folder prefixes, e.g. tags (§3)
+1. Filter grammar for follows beyond `include` folder prefixes, e.g. tags (§3.2)
 2. Canonical repo URL beyond v0: nested groups, ports, self-hosted paths (§3.1)
 3. `author` and `source_repo`: stored on disk or injected at publish (§5)
 4. Mapping from URL to a `bookmarks/sites/` path (§8)
@@ -351,6 +374,7 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
     - Tags: Pages reads ASCII letters only and lower-cases at build; this spec allows Unicode letters and keeps `raw` (§7). Pages also tags a page with a nested tag's parents (`#dev/app` → `dev`).
     - Invalid dates: Pages passes an invalid `created` through; this spec drops it and moves to the next rung (§5.1).
     - Links: Pages shows `[[wikilinks]]` as plain text; this spec extracts and resolves them (§9).
+16. Whether the Document model lists follows under `repo` (§3.2)
 
 ## Appendix A. Changes from the README layout
 

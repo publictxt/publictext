@@ -2,6 +2,7 @@
 
 - **Status:** Proposed
 - **Date:** 2026-11-03, recording the decision taken in obsidian-publictxt
+- **Note:** the plugin is now obsidian-publictxt-remotes (ADR-0015)
 
 ## Context
 
@@ -14,16 +15,16 @@
 
 - obsidian-publictxt follows repos and forks pages from them. First use case: follow, see what changed since I last looked, fork a page with provenance, see which forks changed upstream.
 - Desktop-only, using the git CLI, as ADR-0004 does for .NET.
-- One bare partial clone per followed repo (`clone --bare --filter=blob:none`) in a vault folder (`remotes/` by default). Bare clones have no working files, so no remote note shows up as a vault note.
+- One bare partial clone per followed repo (`clone --bare --filter=blob:none`) in a vault folder (`.remotes/` by default, hidden from Obsidian and Sync). Bare clones have no working files, so no remote note shows up as a vault note.
 - Follow whole repos; `include` folder prefixes narrow what is shown, not what is fetched (ADR-0005, spec §3).
 - Change detection is by git blob SHA: content-addressed and the same on every host.
-- Followed repos live in plugin data for now. Field names match manifest `follows` (spec §3), so moving them there is mechanical.
+- Followed repos live in plugin data for now. Field names match manifest `follows` (spec §3), so moving them there is mechanical. Superseded by ADR-0014: the plugin reads and writes follow notes in `follows/`.
 
 ## Consequences
 
 - + Any git host, the user's SSH keys and credential helpers, no API rate limits, full history, and `git merge-file` for updating forks later.
 - + The same git-as-the-API approach on both implementations, so behaviour can be reproduced from a terminal.
 - + Spec gains a canonical repo URL (§3.1), `follows` `branch` and `include` (§3), and fork provenance keys (§5.2), all proposed.
-- − No mobile. A later phase adds a second remote host over HTTPS from the parked adapter; that brings back auth, rate limits and a merge that doesn't use git. `isDesktopOnly` can go from true to false later without taking anything from anyone.
-- − The follow list lives in private plugin data, not in public `publictxt.yaml` as ADR-0005 intends, until the move is made.
-- ! Clones sit inside the vault. Vault git repos and Obsidian Sync would carry them unless `remotes/` is ignored, or the folder is renamed `.remotes/`.
+- − No mobile. A later phase adds a second remote host over HTTPS from the parked adapter; that brings back auth, rate limits and a merge that doesn't use git. `isDesktopOnly` can go from true to false later without taking anything from anyone. Superseded by ADR-0015: desktop only for good.
+- − The follow list lives in private plugin data, not in public text as ADR-0005 intends, until ADR-0014 is built.
+- ! Clones sit inside the vault. Obsidian Sync skips `.remotes/`; a vault git repo needs `.remotes/` in its `.gitignore`.
