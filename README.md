@@ -34,7 +34,7 @@ v1 success looks like:
 | [Architecture decisions](wiki/publictxt/docs/adr/) | Recorded; several still proposed |
 | [PublicTxt-Pages](#publictxt-pages): static site | Working: live at [jaysen.co.za](https://jaysen.co.za) |
 | [Obsidian PublicTxt Facets](#obsidian-publictxt-facets): browse a vault by facets | v1.0 released |
-| [Obsidian PublicTxt](#obsidian-publictxt): follow repos, fork pages | In progress |
+| [Obsidian PublicTxt Remotes](#obsidian-publictxt-remotes): follow repos, fork pages | In progress |
 | [WikiTool](#wikitool) | In progress |
 | [PublicTxt.net](#publictxtnet): .NET implementation | In progress |
 | [CuratedCommons](#curatedcommons) | Specification stage |
@@ -58,15 +58,17 @@ v1 success looks like:
 
 - Filter notes by combinations of tags; the tag list narrows to tags that co-occur with the selection.
 
-### Obsidian PublicTxt
+### Obsidian PublicTxt Remotes
 
-[publictxt/obsidian-publictxt](https://github.com/publictxt/obsidian-publictxt): the pulling half of v1.
+[publictxt/obsidian-publictxt-remotes](https://github.com/publictxt/obsidian-publictxt-remotes): the pulling half of v1.
 
-- Follow whole repos; narrow what's shown by folder (`include`) and watch single files.
+- Follow whole repos, one note per repo in `follows/`; narrow what's shown by folder (`include`) and watch single files.
 - See what changed since you last looked, by git blob SHA.
 - Fork a page into your vault, with `fork_*` provenance in its front matter.
-- Desktop-only, over the git CLI: any host, your own SSH keys. Mobile is a later phase.
-- Decisions: [ADR-0011](wiki/publictxt/docs/adr/0011-obsidian-plugin-follows-with-git-cli.md), [ADR-0012](wiki/publictxt/docs/adr/0012-fork-provenance-in-front-matter.md), [ADR-0014](wiki/publictxt/docs/adr/0014-follows-are-notes.md).
+- Named remotes: each follow note is named for its remote, and forks record the name (`fork_remote`).
+- Local sources: a git repo on your computer, such as another vault, can be followed too, with no path in its note. Snapshot commits what changed in it; a plain folder can be made a repo.
+- Desktop only, over the git CLI: any host, your own SSH keys.
+- Decisions: [ADR-0011](wiki/publictxt/docs/adr/0011-obsidian-plugin-follows-with-git-cli.md), [ADR-0012](wiki/publictxt/docs/adr/0012-fork-provenance-in-front-matter.md), [ADR-0014](wiki/publictxt/docs/adr/0014-follows-are-notes.md), [ADR-0015](wiki/publictxt/docs/adr/0015-obsidian-remotes-local-sources-desktop-only.md).
 
 ### WikiTool
 
