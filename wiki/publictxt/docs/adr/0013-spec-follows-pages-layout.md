@@ -15,7 +15,7 @@
 - The spec adopts the Pages layout and page rules: collections, dates, titles, bookmarks, publishing and skipped files (spec §2, §4–§6, §8).
 - Collections replace types. The model's `type` and `type_source` become `collections`; manifest `types` is dropped.
 - The Document model carries only what the files determine. `created` stops at the path rung; git, mtime and build time are left to consumers, since they depend on the checkout.
-- Where the spec is stricter than Pages (Unicode tags, `raw` tags, H1 outside code, invalid dates dropped, wikilinks resolved), it keeps its rule for now. Spec §13 lists each difference; settling one changes Pages or the spec, through an ADR.
+- Where the spec is stricter than Pages (Unicode tags, `raw` tags, invalid dates dropped, wikilinks resolved), it keeps its rule for now. Spec §13 lists each difference; settling one changes Pages or the spec, through an ADR.
 - From here on, a change to the layout or page rules goes into the spec first and Pages follows.
 
 ## Consequences

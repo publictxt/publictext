@@ -214,7 +214,7 @@ Reserved keys, all optional:
 [P] First match wins:
 
 1. Front matter `title`
-2. The first ATX H1 (`# Heading`) in the body, outside code, when it is the first content: only blank lines, or one line shorter than 200 characters, may come before it
+2. An ATX H1 (`# Heading`) if it is the first non-empty line in the body.
 3. For `_index.md`, its folder's name with `-` replaced by spaces (at the repo root, `index`). Otherwise the file name without `.md`, with `-` and `_` replaced by spaces and trimmed. A date prefix stays: `20260509-title.md` is titled `20260509 title`.
 
 ## 7. Tags
@@ -368,7 +368,6 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 14. Where folders are left out: manifest `ignore` here, `params.excludeFolders` in PublicTxt-Pages' `settings/site.toml`. One place would be better (§3)
 15. Differences from PublicTxt-Pages still to settle (ADR-0013):
     - Tags: Pages reads ASCII letters only and lower-cases at build; this spec allows Unicode letters and keeps `raw` (§7). Pages also tags a page with a nested tag's parents (`#dev/app` → `dev`).
-    - Title: Pages also takes an H1 inside code (§6).
     - Invalid dates: Pages passes an invalid `created` through; this spec drops it and moves to the next rung (§5.1).
     - Links: Pages shows `[[wikilinks]]` as plain text; this spec extracts and resolves them (§9).
 16. Whether the Document model lists follows under `repo` (§3.2)
