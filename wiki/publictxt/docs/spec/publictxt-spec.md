@@ -34,8 +34,9 @@ A tool states the role and version it conforms to, e.g. "Reader 0.1".
 - [P] Every other file is an attachment: it can be a link target but is not a document.
 - [P] Readers skip:
   - the folders `.git/`, `.obsidian/`, `.trash/`, `_site/` and `node_modules/`, at any depth;
-  - the files `README.md`, `LICENSE`, `LICENSE.md`, `CONTRIBUTING.md`, `CNAME` and `.gitignore`, at any depth;
+  - the files `CNAME` and `.gitignore`, at any depth;
   - every path listed under `ignore` in the manifest.
+- [P] `README.md`, `LICENSE.md` and `CONTRIBUTING.md` are not skipped by default: they are documents like any other, and `LICENSE` is an attachment. A Reader MAY let a repo name further file names to skip (PublicTxt-Pages: `params.skipFiles`).
 
 ## 3. Manifest: `publictxt.yaml`
 
@@ -394,4 +395,4 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 - `bookmark-missing-url` is a warning, scoped to `bookmarks/` outside `bookmarks/wiki/`. `blog-missing-date` and `blog-date-mismatch` removed.
 - Titles keep date prefixes and replace `-` and `_` with spaces; `_index.md` takes its folder's name (§6).
 - `publish` reserved; `published` added to the model (§5.3).
-- READMEs, licences and editor folders skipped (§2).
+- Editor folders, `CNAME` and `.gitignore` skipped; READMEs, licences and contributing files are not (§2).
