@@ -6,6 +6,21 @@
   },
   "documents": [
     {
+      "path": "README.md",
+      "collections": [
+        "page"
+      ],
+      "title": "Example repo",
+      "created": null,
+      "created_source": null,
+      "updated": null,
+      "published": true,
+      "bookmarks": [],
+      "tags": [],
+      "links": [],
+      "diagnostics": []
+    },
+    {
       "path": "wiki/_index.md",
       "collections": [
         "wiki"

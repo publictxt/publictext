@@ -1,3 +1,3 @@
 # Example repo
 
-Not a document: READMEs are skipped.
+A README is a document, not skipped.

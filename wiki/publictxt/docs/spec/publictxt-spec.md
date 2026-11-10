@@ -34,8 +34,9 @@ A tool states the role and version it conforms to, e.g. "Reader 0.1".
 - [P] Every other file is an attachment: it can be a link target but is not a document.
 - [P] Readers skip:
   - the folders `.git/`, `.obsidian/`, `.trash/`, `_site/` and `node_modules/`, at any depth;
-  - the files `README.md`, `LICENSE`, `LICENSE.md`, `CONTRIBUTING.md`, `CNAME` and `.gitignore`, at any depth;
+  - the files `CNAME` and `.gitignore`, at any depth;
   - every path listed under `ignore` in the manifest.
+- [P] `README.md`, `LICENSE.md` and `CONTRIBUTING.md` are not skipped by default: they are documents like any other, and `LICENSE` is an attachment. A Reader MAY let a repo name further file names to skip (PublicTxt-Pages: `params.skipFiles`).
 
 ## 3. Manifest: `publictxt.yaml`
 
@@ -373,7 +374,6 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 15. Differences from PublicTxt-Pages still to settle (ADR-0013):
     - Tags: Pages reads ASCII letters only and lower-cases at build; this spec allows Unicode letters and keeps `raw` (§7). Pages also tags a page with a nested tag's parents (`#dev/app` → `dev`).
     - Invalid dates: Pages passes an invalid `created` through; this spec drops it and moves to the next rung (§5.1).
-    - Skipped files: this spec skips `README.md`, `LICENSE`, `LICENSE.md`, `CONTRIBUTING.md`, `CNAME` and `.gitignore` (§2). Pages skips only the names in its `params.skipFiles`, by default `CNAME` and `.gitignore`, so a README, licence or contributing file is a page unless a repo lists it.
     - Links: Pages shows `[[wikilinks]]` as plain text; this spec extracts and resolves them (§9).
 16. Whether the Document model lists follows under `repo` (§3.2)
 
@@ -395,4 +395,4 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 - `bookmark-missing-url` is a warning, scoped to `bookmarks/` outside `bookmarks/wiki/`. `blog-missing-date` and `blog-date-mismatch` removed.
 - Titles keep date prefixes and replace `-` and `_` with spaces; `_index.md` takes its folder's name (§6).
 - `publish` reserved; `published` added to the model (§5.3).
-- READMEs, licences and editor folders skipped (§2).
+- Editor folders, `CNAME` and `.gitignore` skipped; READMEs, licences and contributing files are not (§2).

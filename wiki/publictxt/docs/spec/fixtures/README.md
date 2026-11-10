@@ -14,7 +14,7 @@ Fixtures have no `.git`, so `created` and `updated` cover the front matter and p
 
 | Case | Covers |
 |---|---|
-| 001-minimal | Folder collection, H1 as first non-empty line (a later H1 or one inside code is ignored), file name and `_index.md` titles, `publish: off`, skipped README, relative link |
+| 001-minimal | Folder collection, H1 as first non-empty line (a later H1 or one inside code is ignored), file name and `_index.md` titles, `publish: off`, README as a document, relative link |
 | 002-tags | Tag sources, inline grammar edge cases, raw/match, de-duplication |
 | 003-dates | The three blog path forms, path dates in any folder, digit guard, `created`/`updated` and legacy `date`/`lastmod`, datetime and date-only values, no time zone conversion, invalid date |
 | 004-bookmark | `bookmark` on any document, `bookmarks` lists, `bookmarks/sites/` and `bookmarks/wiki/`, `collections`, `resource_id`, URL normalization v0, mismatch, missing URL, `url` is not a bookmark |
