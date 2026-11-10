@@ -17,6 +17,10 @@ title = "PublicTxt"
   # Spec conformance fixtures are test inputs (sample repos with deliberately
   # invalid dates etc.), not site content.
   excludeFolders = ["wiki/publictxt/docs/spec/fixtures"]
+  # The repo's own housekeeping files stay off the site (the landing page links
+  # to the README on GitHub). Replaces publictxt-pages' default, so CNAME and
+  # .gitignore are repeated.
+  skipFiles = ["README.md", "LICENSE", "LICENSE.md", "CONTRIBUTING.md", "CNAME", ".gitignore"]
 
   [params.footer]
     text = "[PublicTxt](https://github.com/publictxt/publictext), plain-text knowledge, published with [publictxt-pages](https://github.com/publictxt/publictxt-pages)"

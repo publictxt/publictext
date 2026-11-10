@@ -24,7 +24,7 @@ follows/repo.md            one note per repo you follow: `url` in front matter (
 .github/workflows/         the publish workflow
 ```
 
-Never published: `README.md`, `LICENSE`, `CONTRIBUTING.md`, `CNAME`, `.obsidian/`.
+Never published: `CNAME`, `.gitignore`, `.obsidian/`. `README.md`, `LICENSE` and `CONTRIBUTING.md` are published as ordinary pages; to keep them (or any other file name) off, list them in `params.skipFiles` in `settings/site.toml`. The list replaces the default, so repeat `CNAME` and `.gitignore`.
 
 ## Collections
 

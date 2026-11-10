@@ -373,6 +373,7 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 15. Differences from PublicTxt-Pages still to settle (ADR-0013):
     - Tags: Pages reads ASCII letters only and lower-cases at build; this spec allows Unicode letters and keeps `raw` (§7). Pages also tags a page with a nested tag's parents (`#dev/app` → `dev`).
     - Invalid dates: Pages passes an invalid `created` through; this spec drops it and moves to the next rung (§5.1).
+    - Skipped files: this spec skips `README.md`, `LICENSE`, `LICENSE.md`, `CONTRIBUTING.md`, `CNAME` and `.gitignore` (§2). Pages skips only the names in its `params.skipFiles`, by default `CNAME` and `.gitignore`, so a README, licence or contributing file is a page unless a repo lists it.
     - Links: Pages shows `[[wikilinks]]` as plain text; this spec extracts and resolves them (§9).
 16. Whether the Document model lists follows under `repo` (§3.2)
 
