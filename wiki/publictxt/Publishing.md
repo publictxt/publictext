@@ -3,7 +3,7 @@ tags: [publictxt, docs, publictxt-pages]
 ---
 # Publishing a PublicTxt site
 
-A PublicTxt repository becomes a website with [PublicTxt-Pages](PublicTxt-Pages.md) and GitHub Pages: no server, no database, no fork of the site generator. This site and [jaysen.co.za](https://jaysen.co.za) are built this way.
+A PublicTxt repository becomes a website with [PublicTxt-Pages](projects/PublicTxt-Pages.md) and GitHub Pages: no server, no database, no fork of the site generator. This site and [jaysen.co.za](https://jaysen.co.za) are built this way.
 
 The full guide is [PublicTxt-Pages setup](https://github.com/publictxt/publictxt-pages/blob/main/docs/user/setup.md). In short:
 

@@ -83,7 +83,7 @@ v1 success looks like:
 
 ### CuratedCommons
 
-[publictxt/curated-commons](https://github.com/publictxt/curated-commons): social bookmarking and curation on PublicTxt repos. Commentary lives in plain-text repos that are public, forkable and followable. See [CuratedCommons](wiki/publictxt/CuratedCommons.md).
+[publictxt/curated-commons](https://github.com/publictxt/curated-commons): social bookmarking and curation on PublicTxt repos. Commentary lives in plain-text repos that are public, forkable and followable. See [CuratedCommons](wiki/publictxt/projects/CuratedCommons.md).
 
 ## Repository layout
 

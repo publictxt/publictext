@@ -7,13 +7,13 @@ tags: [publictxt, docs, roadmap]
 
 | Component | Status |
 |---|---|
-| [Obsidian PublicTxt Facets](Obsidian-PublicTxt-Facets.md) | v1.0 released |
-| [Obsidian PublicTxt Remotes](Obsidian-PublicTxt-Remotes.md) | In progress — follow repos, fork pages (desktop) |
-| [PublicTxt-Pages](PublicTxt-Pages.md) | Working — this site, [jaysen.co.za](https://jaysen.co.za) |
+| [Obsidian PublicTxt Facets](projects/Obsidian-PublicTxt-Facets.md) | v1.0 released |
+| [Obsidian PublicTxt Remotes](projects/Obsidian-PublicTxt-Remotes.md) | In progress — follow repos, fork pages (desktop) |
+| [PublicTxt-Pages](projects/PublicTxt-Pages.md) | Working — this site, [jaysen.co.za](https://jaysen.co.za) |
 | Format specification | Draft; the [working layout](Repository-Structure.md) follows PublicTxt-Pages |
-| [WikiTool](WikiTool.md) | In progress |
-| [PublicTxt.net](PublicTxt.net.md) | In progress |
-| [CuratedCommons](CuratedCommons.md) | Specification stage |
+| [WikiTool](projects/WikiTool.md) | In progress |
+| [PublicTxt.net](projects/PublicTxt.net.md) | In progress |
+| [CuratedCommons](projects/CuratedCommons.md) | Specification stage |
 
 ## v1
 

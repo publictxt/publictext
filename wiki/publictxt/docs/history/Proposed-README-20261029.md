@@ -92,7 +92,7 @@ Open design questions are tracked in [spec §13](../spec/publictxt-spec.md#13-op
 |---|---|---|
 | [WikiTool](https://github.com/jaysen/WikiTool) | .NET wiki libraries; converts between wiki syntaxes (incl. Obsidian ↔ Markdown links); copy by search, tag expressions, attributes | In progress |
 | [PublicTxt.net](https://github.com/publictxt/publictxt.net) | .NET implementation: core, syntax, Git and data layers; Avalonia and Blazor apps later | In progress |
-| [CuratedCommons](https://github.com/publictxt/curated-commons) | Curation and bookmarking layer over PublicTxt repos ([details](wiki/publictxt/CuratedCommons.md)) | Specification |
+| [CuratedCommons](https://github.com/publictxt/curated-commons) | Curation and bookmarking layer over PublicTxt repos ([details](../../projects/CuratedCommons.md)) | Specification |
 
 ## License
 

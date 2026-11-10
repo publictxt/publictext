@@ -22,9 +22,9 @@ Community features, browser extensions, federation and graph-database backends m
 
 - **Plain text first** — Markdown with standard `[text](page.md)` links, readable by any static-site host with no conversion. Tags are front matter `tags:` or inline `#hashtags`.
 - **Zero-cost storage and hosting** — free Git hosting for storage, distribution and static sites.
-- **Static website generation** — [PublicTxt-Pages](PublicTxt-Pages.md): push and you're live, with full-text search and facets. See [Publishing](Publishing.md).
-- **Selective aggregation** — pull chosen content from other repositories into a local aggregate. In progress: [Obsidian PublicTxt Remotes](Obsidian-PublicTxt-Remotes.md) follows repos and forks their pages.
-- **Obsidian compatible** — a PublicTxt repository is an Obsidian vault. [Obsidian PublicTxt Facets](Obsidian-PublicTxt-Facets.md) brings the site's browsing into the editor.
+- **Static website generation** — [PublicTxt-Pages](projects/PublicTxt-Pages.md): push and you're live, with full-text search and facets. See [Publishing](Publishing.md).
+- **Selective aggregation** — pull chosen content from other repositories into a local aggregate. In progress: [Obsidian PublicTxt Remotes](projects/Obsidian-PublicTxt-Remotes.md) follows repos and forks their pages.
+- **Obsidian compatible** — a PublicTxt repository is an Obsidian vault. [Obsidian PublicTxt Facets](projects/Obsidian-PublicTxt-Facets.md) brings the site's browsing into the editor.
 
 ## Use cases
 
