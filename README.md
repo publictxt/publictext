@@ -115,6 +115,7 @@ A follow, `follows/example-notes.md` (spec §3.2):
 ---
 url: https://github.com/example/notes
 include: [blog/]
+rating: 4        # how far I trust this repo, 1–5: the source rating of its pages
 ---
 Why I follow it, and what to read there.
 ```

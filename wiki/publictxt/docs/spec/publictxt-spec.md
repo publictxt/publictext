@@ -1,6 +1,6 @@
 # PublicTxt Format Specification
 
-**Version:** 0.1.0-draft · **Date:** 2026-11-03
+**Version:** 0.1.0-draft · **Date:** 2026-11-12
 
 Defines how a Git repository stores PublicTxt content so that independent tools can read, validate, aggregate and publish it. Rendering, UI, search and indexing are out of scope.
 
@@ -78,6 +78,7 @@ aliases: aliases.yaml       # optional: this author's tag alias file (§7.4)
 url: https://github.com/example/notes   # required: canonical repo URL (§3.1)
 branch: main                            # optional; default: the remote's default branch
 include: [blog/]                        # optional folder prefixes; default: the whole repo
+rating: 4                               # optional: this author's rating of the repo, 1–5 (§5.4)
 ---
 Why I follow it, and what to read there.
 ```
@@ -88,7 +89,8 @@ Why I follow it, and what to read there.
 - `branch` names the branch to follow; when absent or blank, the remote's default branch.
 - `include` lists repo-relative folder prefixes ending in `/`, like `ignore`; when absent or empty, the whole repo. It narrows what a reader shows, not what it fetches: the whole repo is still fetched (ADR-0005). It is the first piece of the filter grammar; tag filters stay open (§13).
 - Two follows of one canonical URL: the first by path (byte order) counts; the Reader emits `duplicate-follow` on the others.
-- Readers MUST ignore other keys in a follow: tools keep their own settings there.
+- [P] `rating` is a document's rating (§5) like any other: on a follow, a document about a repo, it is this author's rating of that repo. It is the source rating of every document that came through the follow (§5.4).
+- Readers MUST ignore other keys in a follow: tools keep their own settings there. obsidian-publictxt-remotes keeps `watch`, `folder` and `list_forks`; they are not facets.
 - Follows are documents like any other: in the collection `follows` (§4.2), and published.
 - [O] Whether the Document model lists follows under `repo` (§13).
 
@@ -153,12 +155,14 @@ Reserved keys, all optional:
 | `created` | ISO 8601 datetime or date | When the document was written (§5.1). Legacy: `date` |
 | `updated` | ISO 8601 datetime or date | When it last changed (§5.1). Legacy: `lastmod` |
 | `publish` | `off`, `false`, `no` or `0` | Not published (§5.3) |
+| `rating` | integer 1–5 | This author's rating of the document; on a follow, of the repo (§5.4) |
 | `bookmark`, `bookmarks` | absolute URL, or list of them | Makes the document a bookmark of each resource (§8) |
 | `resource_id` | string | See §8 |
 | `aliases` | list of strings | Obsidian note aliases (not tag aliases) |
 | `fork_*` | see §5.2 | Fork provenance |
 
-- Readers preserve unknown keys and pass them through. PublicTxt-Pages also reads `categories`, `rating`, `author`, `source_repo` and post source keys (`mastodon`, `substack`, …); to this spec they are unknown keys.
+- Readers preserve unknown keys and pass them through. PublicTxt-Pages also reads `categories`, `author`, `source_repo`, `source_path` and post source keys (`mastodon`, `substack`, …); to this spec they are unknown keys.
+- [P] `rating` is an integer from 1 to 5, as in PublicTxt-Pages and obsidian-publictxt-facets. Any other value is treated as absent: the document is unrated.
 - [P] `type` is not reserved: collections replace it (§4.2).
 - [P] `url` is not reserved. Hugo uses front matter `url` to override a page's output path, so a bookmark stored as `url` would break the static site. Readers treat `url` like any unknown key.
 - [O] `author` and `source_repo` can be derived from the manifest and the repo URL. The Hugo interface currently carries them in front matter. Decide whether they are written to disk (derived data, ADR-0003) or injected at publish time.
@@ -202,10 +206,12 @@ Reserved keys, all optional:
 | `fork_commit` | Source head commit SHA at fork time |
 | `fork_blob` | Git blob SHA of the source file at fork time: the change marker and merge base |
 | `fork_date` | ISO 8601 datetime of the fork, with offset |
+| `fork_seen` | Git blob SHA of a later source version the author dealt with without taking it, or `gone` for a source file removed upstream. Absent until then |
 
 - [P] A document is a fork when `fork_path` and `fork_blob` are valid and it has a valid `fork_repo` or `fork_remote`. The others are optional when reading.
 - [P] A Writer writes `fork_remote`, and `fork_repo` whenever the source has a URL: the URL is what lets anyone reading a published fork find the original, which a name alone can't.
 - [P] A Writer that forks keeps the source's front matter, sets its `fork_*` keys, and removes any other `fork_*` key, so a fork of a fork never keeps the upstream's provenance.
+- [P] `fork_seen` records a decision, not where the text came from: `fork_blob` stays the version the text was copied from. A Writer that takes a newer version rewrites `fork_blob` and removes `fork_seen`.
 - [P] These are authored facts, not derived data: they can't be recomputed from the repo (ADR-0003).
 - [O] Whether the Document model (§10) exposes fork provenance. In 0.1 Readers pass `fork_*` through like any unknown key.
 
@@ -213,6 +219,39 @@ Reserved keys, all optional:
 
 - [P] `publish: off` (or `false`, `no`, `0`, case-insensitive) keeps a document off published sites. It is hidden, not private: the file is still public in the repo.
 - [P] Readers still read unpublished documents and set `published: false` (§10). Whether followers aggregate them is up to the consumer.
+
+### 5.4 Source and source rating
+
+[P] Every document has a source, the repo its text came from, and a source rating, the rating of that repo. Both are computed when reading from `fork_*` keys (§5.2) and follows (§3.2), and never written to disk (ADR-0003, ADR-0016). Views facet and sort on them.
+
+A document's follow:
+
+- A fork with `fork_remote` came through the follow of that name in this repo, compared without case. If no follow has that name, it has no follow.
+- A fork without `fork_remote` came through the follow whose canonical `url` (§3.1) equals `fork_repo`, if there is one.
+- A document that is not a fork has no follow.
+
+Its source:
+
+| Document | Source | Label |
+|---|---|---|
+| A fork with a follow | That follow | The follow's name |
+| A fork without a follow | Its `fork_remote`, else its `fork_repo` | That value |
+| Not a fork | This repo | The consumer's choice, such as the manifest's `author.name` |
+
+Its source rating:
+
+| Document | Source rating |
+|---|---|
+| A fork with a follow | The follow's `rating`; unrated if it has none |
+| A fork without a follow | Unrated |
+| Not a fork | None: this repo's own documents are not rated as a source |
+
+- Views SHOULD keep "this repo" apart from forks and from unrated sources: an own document isn't from an unrated repo.
+- A follow is not a fork, so its own source is this repo, while its `rating` is the source rating of the documents that came through it.
+- A document's own `rating` (§5) and its source rating are separate facets. A fork keeps the `rating` it had in its source repo unless the author changes it.
+- Changing a follow's `rating` rates every document from that repo at once, and renaming a follow moves its forks out of it until their `fork_remote` is updated. This matches how obsidian-publictxt-remotes matches forks to follows.
+- The source is not `source_repo`: that key names the repo a document is published from (§13).
+- [O] Ratings from other people: aggregated, weighted or consensus reputation (§13).
 
 ## 6. Title
 
@@ -368,7 +407,7 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 9. `community/`: groups and shared repos (§4.1)
 10. Dataview inline fields (`key:: value`, e.g. `bookmark:: <url>`). The README requires Dataview compatibility; 0.1 does not parse them.
 11. Whether two documents in one repo bookmarking the same resource should warn (§8)
-12. Whether the Document model exposes fork provenance (§5.2)
+12. Whether the Document model exposes fork provenance (§5.2), and the source and source rating computed from it (§5.4). PublicTxt-Pages and obsidian-publictxt-facets each compute them for now.
 13. Detecting local edits to a fork: needs a hash of the body without the `fork_*` keys (§5.2)
 14. Where folders are left out: manifest `ignore` here, `params.excludeFolders` in PublicTxt-Pages' `settings/site.toml`. One place would be better (§3)
 15. Differences from PublicTxt-Pages still to settle (ADR-0013):
@@ -376,6 +415,7 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
     - Invalid dates: Pages passes an invalid `created` through; this spec drops it and moves to the next rung (§5.1).
     - Links: Pages shows `[[wikilinks]]` as plain text; this spec extracts and resolves them (§9).
 16. Whether the Document model lists follows under `repo` (§3.2)
+17. Reputation beyond this author's own rating of a follow: other people's ratings, weighting, consensus (§5.4, [IDEAS.md](../IDEAS.md))
 
 ## Appendix A. Changes from the README layout
 
