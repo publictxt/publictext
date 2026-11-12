@@ -63,7 +63,6 @@ rating: 5
 - [_index](../remotes/txt/wiki/Computer-Science/Software/Obsidian/Plugins/_index.md)
 - [bliki](../remotes/txt/wiki/Computer-Science/Knowledge-Management/bliki.md)
 - [community.obsidian.md](../bookmarks/sites/obsidian.md/community.obsidian.md.md)
-- [daily-blog.tpl](../remotes/txt/settings/Templates/daily-blog.tpl.md)
 - [gitcms.dev](../bookmarks/sites/gitcms.dev/gitcms.dev.md)
 - [human computation](../remotes/txt/wiki/Computer-Science/Software/Social%20Software/human%20computation.md)
 - [hypothes.is](../remotes/txt/wiki/Computer-Science/Software/Social%20Software/hypothes.is.md)

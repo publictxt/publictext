@@ -16,7 +16,7 @@ title = "PublicTxt"
   listOrder = "created"
   # Spec conformance fixtures are test inputs (sample repos with deliberately
   # invalid dates etc.), not site content.
-  excludeFolders = ["wiki/publictxt/docs/spec/fixtures"]
+  excludeFolders = ["wiki/publictxt/docs/spec/fixtures", "remotes/txt/settings"]
 
   [params.footer]
     text = "[PublicTxt](https://github.com/publictxt/publictext), plain-text knowledge, published with [publictxt-pages](https://github.com/publictxt/publictxt-pages)"
