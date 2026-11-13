@@ -1,6 +1,6 @@
 # PublicTxt Format Specification
 
-**Version:** 0.1.0-draft · **Date:** 2026-11-12
+**Version:** 0.1.0-draft · **Date:** 2026-11-13
 
 Defines how a Git repository stores PublicTxt content so that independent tools can read, validate, aggregate and publish it. Rendering, UI, search and indexing are out of scope.
 
@@ -84,13 +84,13 @@ Why I follow it, and what to read there.
 ```
 
 - A document in `follows/` is a follow when `url` is a valid repo URL. Readers canonicalize it (§3.1). Without one, the Reader emits `follow-missing-url` and it is a plain document.
-- A follow's name is its file name without `.md`: `follows/ann-notes.md` is the follow `ann-notes`. Forks name the follow they came through by it (`fork_remote`, §5.2). Names are unique in a repo, compared without case.
+- A follow's name is its file name without `.md`: `follows/ann-notes.md` is the follow `ann-notes`. Forks and mirrors name the follow they came through by it (`fork_remote`, §5.2; `mirror_remote`, §5.5). Names are unique in a repo, compared without case.
 - [P] A document in `follows/` with `local: true` and no `url` is a tool's follow of a repo with no public URL, such as another vault on the author's computer (ADR-0015). It holds no path. To Readers it is a plain document, without `follow-missing-url`.
 - `branch` names the branch to follow; when absent or blank, the remote's default branch.
 - `include` lists repo-relative folder prefixes ending in `/`, like `ignore`; when absent or empty, the whole repo. It narrows what a reader shows, not what it fetches: the whole repo is still fetched (ADR-0005). It is the first piece of the filter grammar; tag filters stay open (§13).
 - Two follows of one canonical URL: the first by path (byte order) counts; the Reader emits `duplicate-follow` on the others.
 - [P] `rating` is a document's rating (§5) like any other: on a follow, a document about a repo, it is this author's rating of that repo. It is the source rating of every document that came through the follow (§5.4).
-- Readers MUST ignore other keys in a follow: tools keep their own settings there. obsidian-publictxt-remotes keeps `watch`, `folder` and `list_forks`; they are not facets.
+- Readers MUST ignore other keys in a follow: tools keep their own settings there. obsidian-publictxt-remotes keeps `folder`, `list_mirrors` and `list_forks`; they are not facets.
 - Follows are documents like any other: in the collection `follows` (§4.2), and published.
 - [O] Whether the Document model lists follows under `repo` (§13).
 
@@ -112,6 +112,7 @@ Why I follow it, and what to read there.
 | `media/` | Shared attachments |
 | `settings/site.toml` | PublicTxt-Pages site settings; not content |
 | `follows/` | One document per followed repo (§3.2) |
+| `community/<follow>/…` | Mirrors: documents from followed repos, as their authors wrote them, each at the path it has there (§5.5) |
 
 Blog paths, each dated by §5.1:
 
@@ -123,7 +124,8 @@ blog/20260509-title.md           YYYYMMDD file name prefix, no folders
 
 - [P] `_index.md` is a folder's own page, at any depth. It is a document like any other.
 - [P] Attachments sit beside the note that uses them, or in a top-level folder such as `media/`.
-- [O] `community/` (profiles, groups, discussion) is deferred.
+- [P] `community/` holds mirrors, a folder per follow, named for it (§5.5, ADR-0017). It is the one folder of this repo that isn't this author's writing.
+- [O] Profiles, groups and discussion are deferred. They were pencilled in for `community/` before it held mirrors; whether they live beside the mirrors or elsewhere is open (§13).
 
 ### 4.2 Collections
 
@@ -160,6 +162,7 @@ Reserved keys, all optional:
 | `resource_id` | string | See §8 |
 | `aliases` | list of strings | Obsidian note aliases (not tag aliases) |
 | `fork_*` | see §5.2 | Fork provenance |
+| `mirror_*` | see §5.5 | Mirror provenance |
 
 - Readers preserve unknown keys and pass them through. PublicTxt-Pages also reads `categories`, `author`, `source_repo`, `source_path` and post source keys (`mastodon`, `substack`, …); to this spec they are unknown keys.
 - [P] `rating` is an integer from 1 to 5, as in PublicTxt-Pages and obsidian-publictxt-facets. Any other value is treated as absent: the document is unrated.
@@ -195,7 +198,7 @@ Reserved keys, all optional:
 
 ### 5.2 Fork provenance
 
-[P] A fork is a document copied from another repo. It records where it came from in its own front matter, flat so Obsidian Properties can show and edit it (ADR-0012).
+[P] A fork is this author's own document, made from a document in another repo. It records where it came from in its own front matter, flat so Obsidian Properties can show and edit it (ADR-0012).
 
 | Key | Value |
 |---|---|
@@ -210,25 +213,27 @@ Reserved keys, all optional:
 
 - [P] A document is a fork when `fork_path` and `fork_blob` are valid and it has a valid `fork_repo` or `fork_remote`. The others are optional when reading.
 - [P] A Writer writes `fork_remote`, and `fork_repo` whenever the source has a URL: the URL is what lets anyone reading a published fork find the original, which a name alone can't.
-- [P] A Writer that forks keeps the source's front matter, sets its `fork_*` keys, and removes any other `fork_*` key, so a fork of a fork never keeps the upstream's provenance.
+- [P] A Writer that forks keeps the source's front matter, sets its `fork_*` keys, and removes any other `fork_*` key and every `mirror_*` key (§5.5), so a fork of a fork never keeps the upstream's provenance, and a mirror that is forked stops being one.
 - [P] `fork_seen` records a decision, not where the text came from: `fork_blob` stays the version the text was copied from. A Writer that takes a newer version rewrites `fork_blob` and removes `fork_seen`.
 - [P] These are authored facts, not derived data: they can't be recomputed from the repo (ADR-0003).
-- [O] Whether the Document model (§10) exposes fork provenance. In 0.1 Readers pass `fork_*` through like any unknown key.
+- [O] Whether the Document model (§10) exposes fork and mirror provenance. In 0.1 Readers pass `fork_*` and `mirror_*` through like any unknown key.
 
 ### 5.3 Publishing
 
 - [P] `publish: off` (or `false`, `no`, `0`, case-insensitive) keeps a document off published sites. It is hidden, not private: the file is still public in the repo.
 - [P] Readers still read unpublished documents and set `published: false` (§10). Whether followers aggregate them is up to the consumer.
 
-### 5.4 Source and source rating
+### 5.4 Source, source rating and copy
 
-[P] Every document has a source, the repo its text came from, and a source rating, the rating of that repo. Both are computed when reading from `fork_*` keys (§5.2) and follows (§3.2), and never written to disk (ADR-0003, ADR-0016). Views facet and sort on them.
+[P] Every document has a source, the repo its text came from, and a source rating, the rating of that repo. A document from another repo is also a copy of one kind: forked or mirrored. All three are computed when reading from `fork_*` keys (§5.2), `mirror_*` keys (§5.5) and follows (§3.2), and never written to disk (ADR-0003, ADR-0016). Views facet and sort on them.
+
+A mirror is read as a fork is, with `mirror_remote` and `mirror_repo` for `fork_remote` and `fork_repo`. Below, "fork" stands for either.
 
 A document's follow:
 
 - A fork with `fork_remote` came through the follow of that name in this repo, compared without case. If no follow has that name, it has no follow.
 - A fork without `fork_remote` came through the follow whose canonical `url` (§3.1) equals `fork_repo`, if there is one.
-- A document that is not a fork has no follow.
+- A document that is neither a fork nor a mirror has no follow.
 
 Its source:
 
@@ -246,12 +251,46 @@ Its source rating:
 | A fork without a follow | Unrated |
 | Not a fork | None: this repo's own documents are not rated as a source |
 
+Its copy:
+
+| Document | Copy |
+|---|---|
+| A fork (§5.2) | `forked`: this author's version of the source's text |
+| A mirror (§5.5) | `mirrored`: the source's text as it stands there |
+| Neither | None: this repo's own documents are not copies |
+
+- Copy goes by the document's keys, not its folder (§5.5), and not by whether it has a follow: a fork whose follow is gone is still `forked`.
 - Views SHOULD keep "this repo" apart from forks and from unrated sources: an own document isn't from an unrated repo.
+- Views SHOULD tell a mirror from a fork ("from" the source, "forked from" the source), and MAY facet on copy. A document with no copy matches neither value: including one leaves this repo's own documents out, excluding one keeps them. PublicTxt-Pages filters on it as `copy` (`?copy=forked`, `?copy-not=mirrored`).
 - A follow is not a fork, so its own source is this repo, while its `rating` is the source rating of the documents that came through it.
-- A document's own `rating` (§5) and its source rating are separate facets. A fork keeps the `rating` it had in its source repo unless the author changes it.
+- A document's own `rating` (§5) and its source rating are separate facets. A fork keeps the `rating` it had in its source repo unless the author changes it; a mirror's `rating` is its source author's.
 - Changing a follow's `rating` rates every document from that repo at once, and renaming a follow moves its forks out of it until their `fork_remote` is updated. This matches how obsidian-publictxt-remotes matches forks to follows.
 - The source is not `source_repo`: that key names the repo a document is published from (§13).
 - [O] Ratings from other people: aggregated, weighted or consensus reputation (§13).
+
+### 5.5 Mirrors
+
+[P] A mirror is another repo's document kept in this repo as its author wrote it: to read, search and link to, not to edit (ADR-0017). Following a repo, mirroring some of its documents and forking some of those are three steps. A fork is this author's document; a mirror is still its source's.
+
+| Key | Value |
+|---|---|
+| `mirror_remote` | Name of the follow (§3.2) in this repo it was mirrored through |
+| `mirror_repo` | Canonical repo URL (§3.1) of the source; absent when the follow has none (`local: true`) |
+| `mirror_path` | Repo-relative path of the file mirrored |
+| `mirror_branch` | Branch it was mirrored from |
+| `mirror_commit` | Source head commit SHA when the mirror was last written |
+| `mirror_blob` | Git blob SHA of the source file the mirror's text is |
+| `mirror_date` | ISO 8601 datetime the mirror was last written, with offset |
+
+- [P] A document is a mirror when `mirror_path` and `mirror_blob` are valid, it has a valid `mirror_repo` or `mirror_remote`, and it is not a fork: valid `fork_*` keys (§5.2) win. The others are optional when reading.
+- [P] What a document is goes by its keys, not its folder: a mirror moved out of `community/` is still a mirror, and a fork filed under it is still a fork.
+- [P] A Writer that mirrors keeps the source's front matter and body as they are, links included, sets its `mirror_*` keys, and removes any `fork_*` key. It writes `mirror_remote`, and `mirror_repo` whenever the source has a URL.
+- [P] A Writer that updates a mirror replaces its text with the source's and rewrites its `mirror_*` keys. There is nothing to merge and no `mirror_seen`: the copy is the source's. A Writer SHOULD NOT overwrite a mirror whose text no longer matches `mirror_blob` without asking.
+- [P] A Writer that forks a mirror moves the document, never copies it, and renames each `mirror_*` key to its `fork_*` namesake, with `fork_date` the time of the fork. `fork_blob` is the `mirror_blob`: the text came from it.
+- [P] By convention a mirror is at `community/<follow name>/<mirror_path>` (§4.1), so links between one source's mirrors resolve as they did in the source. A Reader resolves a mirror's links like any document's (§9): one to a document that isn't mirrored is unresolved.
+- [P] Mirrors are documents like any other: in the collection `community` when filed there (§4.2), and published unless `publish: off` (§5.3). A view MAY leave that collection out of its lists until asked for; PublicTxt-Pages does.
+- [P] A mirror's source and source rating are computed as a fork's are, and its copy is `mirrored` (§5.4).
+- [P] Like `fork_*`, these are authored facts, not derived data (ADR-0003): which documents an author mirrors is their choice, and can't be recomputed from the repo.
 
 ## 6. Title
 
@@ -404,11 +443,11 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 6. Whether `resource_id` is stored on disk (§8)
 7. Bare URLs as links (§9)
 8. Parity with Obsidian link resolution (§9)
-9. `community/`: groups and shared repos (§4.1)
+9. `community/` beyond mirrors: where profiles, groups and shared repos live (§4.1)
 10. Dataview inline fields (`key:: value`, e.g. `bookmark:: <url>`). The README requires Dataview compatibility; 0.1 does not parse them.
 11. Whether two documents in one repo bookmarking the same resource should warn (§8)
-12. Whether the Document model exposes fork provenance (§5.2), and the source and source rating computed from it (§5.4). PublicTxt-Pages and obsidian-publictxt-facets each compute them for now.
-13. Detecting local edits to a fork: needs a hash of the body without the `fork_*` keys (§5.2)
+12. Whether the Document model exposes fork and mirror provenance (§5.2, §5.5), and the source, source rating and copy computed from it (§5.4). PublicTxt-Pages and obsidian-publictxt-facets each compute them for now.
+13. Detecting local edits to a fork or a mirror: needs a hash of the body without the `fork_*` or `mirror_*` keys (§5.2, §5.5)
 14. Where folders are left out: manifest `ignore` here, `params.excludeFolders` in PublicTxt-Pages' `settings/site.toml`. One place would be better (§3)
 15. Differences from PublicTxt-Pages still to settle (ADR-0013):
     - Tags: Pages reads ASCII letters only and lower-cases at build; this spec allows Unicode letters and keeps `raw` (§7). Pages also tags a page with a nested tag's parents (`#dev/app` → `dev`).
@@ -416,6 +455,8 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
     - Links: Pages shows `[[wikilinks]]` as plain text; this spec extracts and resolves them (§9).
 16. Whether the Document model lists follows under `repo` (§3.2)
 17. Reputation beyond this author's own rating of a follow: other people's ratings, weighting, consensus (§5.4, [IDEAS.md](../IDEAS.md))
+18. Links in mirrors: a link to a document that isn't mirrored is `unresolved-link`, and a root-relative link resolves against this repo, not the source. Whether a Reader should resolve a mirror's links against its source's layout, or stay silent about them (§5.5, §9)
+19. Attachments of mirrors: whether a mirrored document's images and other embeds are mirrored with it (§5.5)
 
 ## Appendix A. Changes from the README layout
 
@@ -436,3 +477,10 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 - Titles keep date prefixes and replace `-` and `_` with spaces; `_index.md` takes its folder's name (§6).
 - `publish` reserved; `published` added to the model (§5.3).
 - Editor folders, `CNAME` and `.gitignore` skipped; READMEs, licences and contributing files are not (§2).
+
+## Appendix C. Changes from the 2026-11-12 draft (ADR-0017)
+
+- Mirrors added (§5.5): `mirror_*` keys, and `community/<follow>/…` as where they live (§4.1). Source and source rating read them as they read forks, and copy (`forked`, `mirrored`) tells the two apart (§5.4).
+- `community/` now holds mirrors. Profiles, groups and discussion, which it was pencilled in for, have no folder yet (§13).
+- Writing a fork removes `mirror_*` keys (§5.2).
+- obsidian-publictxt-remotes' own follow keys are `folder`, `list_mirrors` and `list_forks`; `watch` is gone (§3.2).

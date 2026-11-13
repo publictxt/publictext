@@ -62,9 +62,10 @@ v1 success looks like:
 
 [publictxt/obsidian-publictxt-remotes](https://github.com/publictxt/obsidian-publictxt-remotes): the pulling half of v1.
 
-- Follow whole repos, one note per repo in `follows/`; narrow what's shown by folder (`include`) and watch single files.
+- Follow whole repos, one note per repo in `follows/`; narrow what's shown by folder (`include`).
 - See what changed since you last looked, by git blob SHA.
-- Fork a page into your vault, with `fork_*` provenance in its front matter.
+- Mirror the pages you want at hand into `community/`, as their authors wrote them, with `mirror_*` provenance.
+- Fork a page into your own notes, with `fork_*` provenance in its front matter.
 - Named remotes: each follow note is named for its remote, and forks record the name (`fork_remote`).
 - Local sources: a git repo on your computer, such as another vault, can be followed too, with no path in its note. Snapshot commits what changed in it; a plain folder can be made a repo.
 - Desktop only, over the git CLI: any host, your own SSH keys.
@@ -144,7 +145,7 @@ bookmark: https://git-scm.com/book/en/v2
 Deferred until the v1 aggregation-and-publish story works and is used. Each has a trigger in [IDEAS.md](wiki/publictxt/docs/IDEAS.md); the [Roadmap](wiki/publictxt/Roadmap.md) has the order.
 
 - **Visibility:** public, semi-public and private content. Private content needs private repos; how they fit into following is undecided.
-- **Community:** profiles, groups, discussion and moderation (`community/`).
+- **Community:** profiles, groups, discussion and moderation. (`community/` now holds mirrors of followed repos' pages; where these live is open.)
 - **Desktop and web apps** that hide Git, with a local cache for fast search.
 - **MetaWeb:** a browser extension showing Git-stored notes on web pages; W3C Web Annotation export.
 - **Federation:** ActivityPub; Git commits as public records.
