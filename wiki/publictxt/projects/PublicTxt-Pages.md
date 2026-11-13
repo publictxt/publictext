@@ -10,7 +10,7 @@ A zero-backend static site for browsing and searching a PublicTxt repository, or
 
 - **Static and free to host** — Hugo build, deployed to GitHub Pages or any static host. No server, no hosted search.
 - **Works on plain Obsidian vaults** — relative Markdown links build as a working site with no conversion step.
-- **Full-text search and facets** — [Pagefind](https://pagefind.app/) search; filter lists and results by collection and tags, including combinations, with include / exclude chips.
+- **Full-text search and facets** — [Pagefind](https://pagefind.app/) search; filter lists and results by collection and tags, including combinations, with include / exclude chips. Pages from repos you follow filter by source, source rating and copy (forked or mirrored).
 - **Hashtags** — inline `#hashtags` merge with front matter `tags`; nested tags (`dev/web`) too.
 - **Collections** — top-level folders (wiki, blog, posts, notes, bookmarks) plus `collections:` and `bookmark:` front matter. See [Repository structure](Repository-Structure.md).
 - **Dates from the path and Git** — `created` / `updated` derived, no front matter needed.

@@ -21,6 +21,7 @@ bookmarks/
 media/                     shared images and audio, copied as-is
 settings/site.toml         site settings for PublicTxt-Pages (optional)
 follows/repo.md            one note per repo you follow: `url` in front matter (ADR-0014)
+community/repo/…           mirrors: pages from a repo you follow, as written there (ADR-0017)
 .github/workflows/         the publish workflow
 ```
 
