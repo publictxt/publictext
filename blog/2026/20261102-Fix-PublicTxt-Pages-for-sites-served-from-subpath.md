@@ -1,10 +1,11 @@
 ---
-fork_remote: txt-local
+fork_remote: txt
+fork_repo: https://github.com/jaysen/txt
 fork_path: blog/2026/20261102-Fix-PublicTxt-Pages-for-sites-served-from-subpath.md
 fork_branch: master
 fork_commit: 85f3c01ab408f962ce6ba605e40c96f606e381f9
 fork_blob: 899a169d9ac8b6c38c72a8f49941d4938a46dabf
-fork_date: 2026-11-12T16:06:48+02:00
+fork_date: 2026-11-17T21:26:17+02:00
 ---
 # Fix to publictxt-pages: search on sites served from a subpath
 #publictxt #bugfix #search #publictxt-pages

@@ -8,12 +8,13 @@ collections:
 facebook:
   - https://www.facebook.com/jaysenn/posts/pfbid02cq8T4MCFAokAVoS14BneAdVfSRPbAjVp3atDmZK9Vb2BHUHdbZDdJdMR6bew4FhXl
 updated: 2026-09-15
-fork_remote: txt-local
+fork_remote: txt
+fork_repo: https://github.com/jaysen/txt
 fork_path: blog/2026/20260915 Our tools are still broken.md
 fork_branch: master
-fork_commit: 85f3c01ab408f962ce6ba605e40c96f606e381f9
+fork_commit: 7b95c242b19930703ed48bba02beba6bb0261c61
 fork_blob: 212f173dd571a966efbd31a37381050936255580
-fork_date: 2026-11-12T16:06:48+02:00
+fork_date: 2026-11-17T21:31:18+02:00
 ---
 # Our tools are still broken - regular reminder
 

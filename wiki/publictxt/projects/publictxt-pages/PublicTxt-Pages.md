@@ -18,7 +18,7 @@ A zero-backend static site for browsing and searching a PublicTxt repository, or
 
 ## How
 
-- Python preprocessing (no dependencies): content sync, titles, dates, hashtags
+- Python pre-processing (no dependencies): content sync, titles, dates, hashtags
 - Hugo templates; browse lists and facets in plain ES modules, bundled by Hugo
 - Pagefind for search
 
@@ -28,3 +28,6 @@ A zero-backend static site for browsing and searching a PublicTxt repository, or
 - [User guide](https://github.com/publictxt/publictxt-pages/tree/main/docs/user)
 - [Spec](https://github.com/publictxt/publictxt-pages/blob/main/docs/SPEC.md)
 - Live: this site, [jaysen.co.za](https://jaysen.co.za)
+
+
+[PublicTxt-Pages Todo](PublicTxt-Pages%20Todo.md)

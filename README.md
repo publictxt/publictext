@@ -153,7 +153,7 @@ Deferred until the v1 aggregation-and-publish story works and is used. Each has 
 
 ## This repository
 
-A working PublicTxt repository, published as [jaysen.co.za](https://jaysen.co.za) (see [Publishing](wiki/publictxt/Publishing.md)). It also holds the project's own docs:
+A working PublicTxt repository, published as [jaysen.co.za](https://jaysen.co.za) (see [Publishing](wiki/publictxt/projects/publictxt-pages/Publishing.md)). It also holds the project's own docs:
 
 - `wiki/publictxt/`: project documentation
 - `wiki/publictxt/docs/spec/`: format specification and conformance fixtures

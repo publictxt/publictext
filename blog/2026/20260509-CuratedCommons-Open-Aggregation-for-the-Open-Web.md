@@ -10,12 +10,13 @@ tags:
   - social-software
   - social-bookmarking
   - infopolitics
-fork_remote: txt-local
+fork_remote: txt
+fork_repo: https://github.com/jaysen/txt
 fork_path: blog/2026/20260509-CuratedCommons-Open-Aggregation-for-the-Open-Web.md
 fork_branch: master
-fork_commit: 85f3c01ab408f962ce6ba605e40c96f606e381f9
+fork_commit: 7b95c242b19930703ed48bba02beba6bb0261c61
 fork_blob: 25b0e1db2d3ea47e7bb71ba114ddbe14831a90d1
-fork_date: 2026-11-12T16:06:48+02:00
+fork_date: 2026-11-17T21:31:18+02:00
 ---
 # Curated Commons: Open Aggregation for the Open Web
 
@@ -58,7 +59,7 @@ This isn't incidental. It's the whole point. When infrastructure is free and ope
 
 Decentralized curation raises a real question: how do you know whose curation to trust?
 
-[[../../wiki/Projects/PublicTxt/Project PublicTxt]]'s community features build reputation from transparent contribution history stored in Git. Every annotation, every edit, every curated collection is versioned and attributable. Reputation emerges from the record of what someone has contributed, not from a score assigned by an algorithm. Communities can weight voices according to their own standards - peer review for research communities, editorial judgment for journalism, consensus mechanisms for open collectives.
+[Project PublicTxt](../../community/txt/wiki/Projects/PublicTxt/Project%20PublicTxt.md)'s community features build reputation from transparent contribution history stored in Git. Every annotation, every edit, every curated collection is versioned and attributable. Reputation emerges from the record of what someone has contributed, not from a score assigned by an algorithm. Communities can weight voices according to their own standards - peer review for research communities, editorial judgment for journalism, consensus mechanisms for open collectives.
 
 No central authority decides whose voice matters. The community does.
 

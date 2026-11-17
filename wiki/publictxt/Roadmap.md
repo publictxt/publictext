@@ -7,9 +7,9 @@ tags: [publictxt, docs, roadmap]
 
 | Component | Status |
 |---|---|
-| [Obsidian PublicTxt Facets](projects/Obsidian-PublicTxt-Facets.md) | v1.0 released |
-| [Obsidian PublicTxt Remotes](projects/Obsidian-PublicTxt-Remotes.md) | In progress — follow repos, fork pages (desktop) |
-| [PublicTxt-Pages](projects/PublicTxt-Pages.md) | Working — this site, [jaysen.co.za](https://jaysen.co.za) |
+| [Obsidian PublicTxt Facets](projects/obsidian-plugins/Obsidian-PublicTxt-Facets.md) | v1.0 released |
+| [Obsidian PublicTxt Remotes](projects/obsidian-plugins/Obsidian-PublicTxt-Remotes.md) | In progress — follow repos, fork pages (desktop) |
+| [PublicTxt-Pages](projects/publictxt-pages/PublicTxt-Pages.md) | Working — this site, [jaysen.co.za](https://jaysen.co.za) |
 | Format specification | Draft; the [working layout](Repository-Structure.md) follows PublicTxt-Pages |
 | [WikiTool](projects/WikiTool.md) | In progress |
 | [PublicTxt.net](projects/PublicTxt.net.md) | In progress |
@@ -18,7 +18,7 @@ tags: [publictxt, docs, roadmap]
 ## v1
 
 1. Keep notes and writing in a Git repository — done
-2. Publish to the web for free — done ([Publishing](Publishing.md))
+2. Publish to the web for free — done ([Publishing](projects/publictxt-pages/Publishing.md))
 3. Pull selected pages from other people's PublicTxt repositories into a local aggregate view to browse and search — in progress: Obsidian PublicTxt Remotes follows and forks, Obsidian PublicTxt Facets browses
 
 ## Later

@@ -4,7 +4,7 @@ tags: [publictxt, obsidian, plugin, docs]
 ---
 # Obsidian PublicTxt Facets
 
-An Obsidian plugin that brings [PublicTxt-Pages](PublicTxt-Pages.md)' browse lists into Obsidian. Works in any vault: nothing requires PublicTxt conventions.
+An Obsidian plugin that brings [PublicTxt-Pages](../publictxt-pages/PublicTxt-Pages.md)' browse lists into Obsidian. Works in any vault: nothing requires PublicTxt conventions.
 
 - **Chips** for each collection, category and tag: click to include, ✕ to exclude.
 - **All or any** when a facet has two or more values included.

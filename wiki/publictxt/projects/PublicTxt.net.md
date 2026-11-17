@@ -1,6 +1,8 @@
 ---
 bookmark: https://github.com/publictxt/publictxt.net
-tags: [publictxt, docs]
+tags:
+  - publictxt
+  - docs
 ---
 # PublicTxt.net
 
