@@ -10,12 +10,13 @@ tags:
 rating: "4"
 category:
   - Tech
-fork_remote: txt-local
-fork_path: bookmarks/sites/obsidian.md/Obsidian Web Clipper Plugin.md
-fork_branch: master
-fork_commit: 85f3c01ab408f962ce6ba605e40c96f606e381f9
-fork_blob: df956272f407f04fc7867298678912a8a4574df7
-fork_date: 2026-11-12T16:06:48+02:00
+mirror_remote: txt
+mirror_repo: https://github.com/jaysen/txt
+mirror_path: bookmarks/sites/obsidian.md/Obsidian Web Clipper Plugin.md
+mirror_branch: master
+mirror_commit: 7b95c242b19930703ed48bba02beba6bb0261c61
+mirror_blob: df956272f407f04fc7867298678912a8a4574df7
+mirror_date: 2026-11-17T21:15:12+02:00
 ---
 ## Easily capture pages and metadata to durable files you can read offline.
 
