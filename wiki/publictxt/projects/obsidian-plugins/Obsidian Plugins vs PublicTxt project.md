@@ -6,11 +6,9 @@ fork_commit: b140866b0265a17697bb5c8440d599eb874c95cb
 fork_blob: 343106d9a7b0cadc35e1e5f69cb81734505096a4
 fork_date: 2026-11-17T22:16:46+02:00
 ---
-Q: what about implementing as a set of [Obsidian](Obsidian.md) plugins ? how does that weigh up against the [PublicTxt](PublicTxt.md) idea
+Q: what about implementing as a set of [Obsidian](../../../Computer-Science/Software/Obsidian/Obsidian.md.md) plugins ? how does that weigh up against the [PublicTxt](../../PublicTxt.md) idea
 
-A:
-
-It's a genuinely interesting alternative. Here's how it weighs up:
+A: It's a genuinely interesting alternative. Here's how it weighs up:
 
 ## What You'd Get for Free
 

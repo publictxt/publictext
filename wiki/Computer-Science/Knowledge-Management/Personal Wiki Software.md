@@ -19,7 +19,7 @@ A private, single-user digital repository used to organize, manage, and interlin
 
 #software #wiki #pkm
 
-- [Obsidian.md](Obsidian.md.md)
+- [Obsidian.md](../Software/Obsidian/Obsidian.md.md)
 - [WikidPad](WikidPad)
 - [Dendron](Dendron) and Foam
 - [Wiki.js](Wiki.js.md)

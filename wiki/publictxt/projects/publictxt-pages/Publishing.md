@@ -21,7 +21,7 @@ The content repo stays pure Markdown. Upgrading the site is a change of `ref:` i
 
 ## Setting up a repository
 
-1. Lay it out as in [Repository structure](Repository-Structure.md).
+1. Lay it out as in [Repository structure](../../Repository-Structure.md).
 2. Copy [`deploy/publish-to-github-pages.yml`](https://github.com/publictxt/publictxt-pages/blob/main/deploy/publish-to-github-pages.yml) to `.github/workflows/publish.yml`, and set the branch it publishes from.
 3. In the workflow's Build step, set `HUGO_BASEURL` to the site's address, with a trailing slash.
 4. Put site settings (title, description, filter chips) in `settings/site.toml`; it's merged over PublicTxt-Pages' `hugo.toml`. `HUGO_*` env vars in the workflow win over both.

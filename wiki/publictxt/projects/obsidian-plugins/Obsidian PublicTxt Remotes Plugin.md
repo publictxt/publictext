@@ -10,7 +10,7 @@ fork_commit: 44393c174ac3600108d7a58f16dd91a37a4fde5a
 fork_blob: a254bfa5c7ccc652e9e9458342d5ccf42026ca51
 fork_date: 2026-11-17T22:19:01+02:00
 ---
-- Adds PublicTxt collaborative features to 'connect' [Obsidian](Obsidian.md) wikis to other [PublicTxt](PublicTxt.md) Wikis.
+- Adds PublicTxt collaborative features to 'connect' [Obsidian](../../../Computer-Science/Software/Obsidian/Obsidian.md.md) wikis to other [PublicTxt](../../PublicTxt.md) Wikis.
 - Follow other people's PublicTxt repos, see what changed since you last looked, and fork the pages you want into your vault. Each fork records where it came from in its front matter.
 
 ## features
@@ -36,4 +36,4 @@ fork_date: 2026-11-17T22:19:01+02:00
 	- [ ] Warn user - message
 	- [ ] Setting to convert
 	- [ ] Convert on Fork
-	- [ ] [PublicTxt default to WikiLinks idea](../../../../../community/pwiki/01-projects/publictxt/PublicTxt%20default%20to%20WikiLinks%20idea.md) 
+	- [ ] [PublicTxt default to WikiLinks idea](../../docs/IDEAS.md) 

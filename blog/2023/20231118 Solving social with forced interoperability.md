@@ -36,7 +36,7 @@ This potential subversion of our new public space(s) cannot easily be avoided or
 An idea being called forced interoperability might offer a path to a possible solution.
 [spectrum.ieee.org/doctorow-interoperability](https://spectrum.ieee.org/doctorow-interoperability)
 
-Right now there are multiple social networking platforms available that adopt open standards that allow for a federated approach -like Mastodon and the Fediverse- so that different platforms running different software can access the same public space. Most are publicly owned ([copyleft](community/txt/wiki/Computer-Science/CopyLeft.md)) and therefore have public feed algorithms that are open to inspection.
+Right now there are multiple social networking platforms available that adopt open standards that allow for a federated approach -like Mastodon and the Fediverse- so that different platforms running different software can access the same public space. Most are publicly owned ([copyleft](../../wiki/Computer-Science/CopyLeft.md)) and therefore have public feed algorithms that are open to inspection.
 
 All of these function quite well but suffer a seemingly insurmountable downside - public spaces work best when they are ubiquitous, and so there's a very very big disincentive to leave the platforms with the largest populations
 

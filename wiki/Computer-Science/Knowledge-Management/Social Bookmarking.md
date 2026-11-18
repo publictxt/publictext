@@ -19,7 +19,7 @@ Social bookmarking is an online practice where users save, organise, annotate, a
 A key feature is **Collaborative Tagging**, where users assign descriptive keywords (tags) to create shared [Folksonomies](Folksonomies.md) instead of strict directories
 
 ## projects
-- [Project PublicTxt](../../../community/txt/wiki/Projects/PublicTxt/Project%20PublicTxt.md)
+- [Project PublicTxt](PublicTxt.md)
 - [CuratedCommons](../../publictxt/projects/CuratedCommons.md)
 ## software / web apps
 - [Hypothes.is](../Software/Social%20Software/hypothes.is.md)

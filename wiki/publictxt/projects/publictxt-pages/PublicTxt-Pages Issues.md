@@ -9,7 +9,7 @@ fork_date: 2026-11-17T22:34:09+02:00
 ---
 #project #dev #issues #publictxt 
 
-- [PublicTxt-Pages](PublicTxt-Pages.md)]
+- [PublicTxt-Pages](../../../../community/txt/wiki/Projects/PublicTxt/PublicTxt-Pages/PublicTxt-Pages.md)
 
 ## issues done
 - [x] [20261102-Fix-PublicTxt-Pages-for-sites-served-from-subpath](../../../../blog/2026/20261102-Fix-PublicTxt-Pages-for-sites-served-from-subpath.md)

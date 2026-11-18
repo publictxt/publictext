@@ -18,5 +18,5 @@ fork_date: 2026-11-17T21:46:38+02:00
 - A blog and wiki hybrid
 	- see [https://martinfowler.com/bliki/WhatIsaBliki.html](https://martinfowler.com/bliki/WhatIsaBliki.html)
 - currently using [PublicTxt-Pages](../../../community/txt/wiki/Projects/PublicTxt/PublicTxt-Pages/PublicTxt-Pages.md) for this bliki
-	- Python Pre-Processing, [Hugo](Hugo.md) static site generation, client-side Javascript for dynamic UI
-	- Works well with [Obsidian.md](Obsidian.md.md) wikis
+	- Python Pre-Processing, [Hugo](https://gohugo.io/) static site generation, client-side Javascript for dynamic UI
+	- Works well with [Obsidian.md](../Software/Obsidian/Obsidian.md.md) wikis

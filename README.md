@@ -32,7 +32,7 @@ v1 success looks like:
 |---|---|
 | [Format specification](wiki/publictxt/docs/spec/publictxt-spec.md) v0.1 and [conformance fixtures](wiki/publictxt/docs/spec/fixtures/) | Draft |
 | [Architecture decisions](wiki/publictxt/docs/adr/) | Recorded; several still proposed |
-| [PublicTxt-Pages](#publictxt-pages): static site | Working: live at [jaysen.co.za](https://jaysen.co.za) |
+| [PublicTxt-Pages](#publictxt-pages): static site | Working: live at [publictxt.github.io/publictext](https://publictxt.github.io/publictext/) |
 | [Obsidian PublicTxt Facets](#obsidian-publictxt-facets): browse a vault by facets | v1.0 released |
 | [Obsidian PublicTxt Remotes](#obsidian-publictxt-remotes): follow repos, fork pages | In progress |
 | [WikiTool](#wikitool) | In progress |
@@ -45,22 +45,26 @@ v1 success looks like:
 
 ### PublicTxt-Pages
 
-[publictxt/publictxt-pages](https://github.com/publictxt/publictxt-pages): zero-backend static site for a PublicTxt repository, or any Obsidian or Markdown wiki.
+[PublicTxt-Pages](wiki/publictxt/projects/publictxt-pages/PublicTxt-Pages.md): zero-backend static site for a PublicTxt repository, or any Obsidian or Markdown wiki.
 
 - Builds with Hugo; deploys to GitHub Pages or any static host.
 - Works on plain Obsidian vaults that use relative Markdown links, with no conversion step.
 - Full-text search and facets (tags, tag combinations, type) via [Pagefind](https://pagefind.app/).
 - Single repo in v1.
 
+see [publictxt/publictxt-pages GitHub repo](https://github.com/publictxt/publictxt-pages)
+
 ### Obsidian PublicTxt Facets
 
-[publictxt/obsidian-publictxt-facets](https://github.com/publictxt/obsidian-publictxt-facets): the same faceted browsing inside Obsidian. Offline by design.
+[Obsidian PublicTxt Facets](wiki/publictxt/projects/obsidian-plugins/Obsidian-PublicTxt-Facets.md): the same faceted browsing inside Obsidian. Offline by design.
 
 - Filter notes by combinations of tags; the tag list narrows to tags that co-occur with the selection.
 
+see [publictxt/obsidian-publictxt-facets GitHub repo](https://github.com/publictxt/obsidian-publictxt-facets)
+
 ### Obsidian PublicTxt Remotes
 
-[publictxt/obsidian-publictxt-remotes](https://github.com/publictxt/obsidian-publictxt-remotes): the pulling half of v1.
+[Obsidian PublicTxt Remotes](wiki/publictxt/projects/obsidian-plugins/Obsidian-PublicTxt-Remotes.md): the pulling half of v1.
 
 - Follow whole repos, one note per repo in `follows/`; narrow what's shown by folder (`include`).
 - See what changed since you last looked, by git blob SHA.
@@ -71,20 +75,28 @@ v1 success looks like:
 - Desktop only, over the git CLI: any host, your own SSH keys.
 - Decisions: [ADR-0011](wiki/publictxt/docs/adr/0011-obsidian-plugin-follows-with-git-cli.md), [ADR-0012](wiki/publictxt/docs/adr/0012-fork-provenance-in-front-matter.md), [ADR-0014](wiki/publictxt/docs/adr/0014-follows-are-notes.md), [ADR-0015](wiki/publictxt/docs/adr/0015-obsidian-remotes-local-sources-desktop-only.md).
 
+see [publictxt/obsidian-publictxt-remotes GitHub repo](https://github.com/publictxt/obsidian-publictxt-remotes)
+
 ### WikiTool
 
-[jaysen/WikiTool](https://github.com/jaysen/WikiTool): multiplatform .NET tool for handling multiple wikis.
+[WikiTool](wiki/publictxt/projects/WikiTool.md): multiplatform .NET tool for handling multiple wikis.
 
 - Converts between wiki formats and syntaxes, including Obsidian ↔ md-wiki.
 - Copies between wikis by search, tag expressions (`tag1 + tag2 - tag3`) and attributes.
 
+see [jaysen/WikiTool GitHub repo](https://github.com/jaysen/WikiTool)
+
 ### PublicTxt.net
 
-[publictxt/publictxt.net](https://github.com/publictxt/publictxt.net): .NET implementation. Core libraries, feature services, Git and database infrastructure.
+[PublicTxt.net](wiki/publictxt/projects/PublicTxt.net.md): .NET implementation. Core libraries, feature services, Git and database infrastructure.
+
+see [publictxt/publictxt.net GitHub repo](https://github.com/publictxt/publictxt.net)
 
 ### CuratedCommons
 
-[publictxt/curated-commons](https://github.com/publictxt/curated-commons): social bookmarking and curation on PublicTxt repos. Commentary lives in plain-text repos that are public, forkable and followable. See [CuratedCommons](wiki/publictxt/projects/CuratedCommons.md).
+[CuratedCommons](wiki/publictxt/projects/CuratedCommons.md): social bookmarking and curation on PublicTxt repos. Commentary lives in plain-text repos that are public, forkable and followable.
+
+see [publictxt/curated-commons GitHub repo](https://github.com/publictxt/curated-commons)
 
 ## Repository layout
 
@@ -149,11 +161,11 @@ Deferred until the v1 aggregation-and-publish story works and is used. Each has 
 - **Desktop and web apps** that hide Git, with a local cache for fast search.
 - **MetaWeb:** a browser extension showing Git-stored notes on web pages; W3C Web Annotation export.
 - **Federation:** ActivityPub; Git commits as public records.
-- **Richer data:** RDF semantic edges, weighted links, a TerminusDB graph backend, consensus and reputation.
+- **Richer data:** RDF semantic edges, weighted links, a [TerminusDB](TerminusDB) graph backend, consensus and reputation.
 
 ## This repository
 
-A working PublicTxt repository, published as [jaysen.co.za](https://jaysen.co.za) (see [Publishing](wiki/publictxt/projects/publictxt-pages/Publishing.md)). It also holds the project's own docs:
+A working PublicTxt repository, published as [publictxt.github.io/publictext/](https://publictxt.github.io/publictext/) (see [Publishing](wiki/publictxt/projects/publictxt-pages/Publishing.md)). It also holds the project's own docs:
 
 - `wiki/publictxt/`: project documentation
 - `wiki/publictxt/docs/spec/`: format specification and conformance fixtures
@@ -170,3 +182,7 @@ GPLv3: https://www.gnu.org/licenses/gpl-3.0.en.html. See [LICENSE](LICENSE).
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+
+## Related Projects
+- [Related projects and tools](Related-Projects.md) Agora, Solid, FedWiki, and what PublicTxt builds on

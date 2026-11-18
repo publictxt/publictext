@@ -14,4 +14,4 @@ fork_date: 2026-11-17T21:51:24+02:00
 ---
 web::https://facebook.com
 
-[Social Networking](_index.md) private monopoly. 
+[Social Networking](Social%20Software.md) private monopoly. 

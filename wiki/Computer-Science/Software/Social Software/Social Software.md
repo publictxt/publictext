@@ -43,7 +43,7 @@ fork_date: 2026-11-17T21:51:24+02:00
 
 ## working on
 
-- [Project PublicTxt](../../../../community/txt/wiki/Projects/PublicTxt/Project%20PublicTxt.md)
+- [Project PublicTxt](../../../publictxt/PublicTxt.md)
 - [CuratedCommons](../../../publictxt/projects/CuratedCommons.md)
 
 

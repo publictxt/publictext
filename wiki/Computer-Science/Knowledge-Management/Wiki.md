@@ -13,7 +13,7 @@ fork_commit: 7b95c242b19930703ed48bba02beba6bb0261c61
 fork_blob: 738bad2c0daafd1dcd9563e9f13626ba1cc4f432
 fork_date: 2026-11-17T21:46:37+02:00
 ---
-A wiki is a collaborative website or online platform that allows multiple users to create, edit, and organize content directly through their web browser. The term comes from the Hawaiian word "wiki-wiki", which means quick. It was coined by American programmer [Ward Cunningham](Ward%20Cunningham.md) in 1995 when he created the first-ever wiki software, the [WikiWikiWeb](https://wiki.c2.com/?WikiWikiWeb).
+A wiki is a collaborative website or online platform that allows multiple users to create, edit, and organize content directly through their web browser. The term comes from the Hawaiian word "wiki-wiki", which means quick. It was coined by American programmer [Ward Cunningham](../../World/People/Ward%20Cunningham.md) in 1995 when he created the first-ever wiki software, the [WikiWikiWeb](https://wiki.c2.com/?WikiWikiWeb).
 
 ## Core Characteristics of a Wiki
 - **Collaborative Editing:** Users can add, delete, or modify text and media easily without needing complex HTML or programming skills.
@@ -23,7 +23,7 @@ A wiki is a collaborative website or online platform that allows multiple users 
 
 ## Popular Examples
 - The most prominent example of a wiki is [Wikipedia](https://en.wikipedia.org/wiki/Main_Page), a massive, free multilingual encyclopedia maintained by hundreds of thousands of volunteers worldwide. 
-- [Ward Cunningham](Ward%20Cunningham.md)'s [C2 Wiki](../C2%20Wiki.md)
+- [Ward Cunningham](../../World/People/Ward%20Cunningham.md)'s [C2 Wiki](../C2%20Wiki.md)
 
 Other well-known platforms include [Wiktionary](https://www.wiktionary.org/) (a collaborative dictionary), Fandom (formerly Wikia, hosting pop-culture communities), and internal corporate project spaces powered by software like Microsoft SharePoint or Confluence.
 

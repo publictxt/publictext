@@ -8,7 +8,6 @@ list_forks: true
 
 - [Agora - The Knowledge Commons](../community/pwiki/01-projects/publictxt/09-similar/Anagora/Agora%20-%20The%20Knowledge%20Commons.md)
 - [Anagora.org](../community/pwiki/01-projects/publictxt/09-similar/Anagora/Anagora.org.md)
-- [Daily Progress - PublicTxt](../community/pwiki/00-NOW/01-Project%20PublicTxt/Daily%20Progress%20-%20PublicTxt.md)
 - [PublicText Syntax](../community/pwiki/01-projects/publictxt/PublicText%20Syntax.md)
 - [PublicTxt Git features](../community/pwiki/01-projects/publictxt/PublicTxt%20Git%20features.md)
 - [PublicTxt Projects](../community/pwiki/01-projects/publictxt/PublicTxt%20Projects.md)

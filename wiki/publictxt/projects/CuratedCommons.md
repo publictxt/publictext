@@ -10,7 +10,7 @@ fork_commit: 85f3c01ab408f962ce6ba605e40c96f606e381f9
 fork_blob: 2e50901a3bdeb6409c34dd02627ca4f35487534e
 fork_date: 2026-11-17T21:49:41+02:00
 ---
-_A PublicTxt project post_ - an extension of [Project PublicTxt](../../../community/txt/wiki/Projects/PublicTxt/Project%20PublicTxt.md) - using human computation to collectively curate the internet and all things.
+_A PublicTxt project post_ - an extension of [Project PublicTxt](../PublicTxt.md) - using human computation to collectively curate the internet and all things.
 #publictxt #km #knowledge-management #social-software #social-bookmarking #metaweb
 
 # Curated Commons: open aggregation for the open web
@@ -40,7 +40,7 @@ For the actual format, I'm using the W3C Web Annotation standard extended with P
 
 ## Zero-Cost, Open Infrastructure
 
-[Project PublicTxt](../../../community/txt/wiki/Projects/PublicTxt/Project%20PublicTxt.md)'s whole premise is that the infrastructure shouldn't cost anything, and Curated Commons inherits that directly. Repos sit on free Git hosting - GitHub, GitLab, wherever - no subscription, no API key, nothing gatekeeping who gets to participate. Any community can spin one up for nothing and start publishing their take on the web.
+[Project PublicTxt](../PublicTxt.md)'s whole premise is that the infrastructure shouldn't cost anything, and Curated Commons inherits that directly. Repos sit on free Git hosting - GitHub, GitLab, wherever - no subscription, no API key, nothing gatekeeping who gets to participate. Any community can spin one up for nothing and start publishing their take on the web.
 
 That's not a nice-to-have, it's kind of the whole point. Free and open infrastructure is what keeps curation a community act instead of a commercial one.
 
@@ -48,7 +48,7 @@ That's not a nice-to-have, it's kind of the whole point. Free and open infrastru
 
 The obvious question with anything decentralized: how do you know whose curation to actually trust?
 
-[Project PublicTxt](../../../community/txt/wiki/Projects/PublicTxt/Project%20PublicTxt.md)'s community features lean on Git's own history for this - every annotation, edit, and collection is versioned and attributed, so reputation comes from what someone has actually contributed over time, not a score handed down by an algorithm. Different communities can weigh that however makes sense to them: peer review for research groups, editorial judgment for journalism, consensus for open collectives.
+[Project PublicTxt](../PublicTxt.md)'s community features lean on Git's own history for this - every annotation, edit, and collection is versioned and attributed, so reputation comes from what someone has actually contributed over time, not a score handed down by an algorithm. Different communities can weigh that however makes sense to them: peer review for research groups, editorial judgment for journalism, consensus for open collectives.
 
 Nobody's deciding whose voice matters from above. The community sorts that out itself.
 

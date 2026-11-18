@@ -16,7 +16,7 @@ fork_commit: 7b95c242b19930703ed48bba02beba6bb0261c61
 fork_blob: 6ac72088988c33284aa9d580f075acd1498db7a2
 fork_date: 2026-11-17T21:46:37+02:00
 ---
-Federated Wiki (FedWiki) is a decentralized, open-source collaborative knowledge tool created by [Ward Cunningham](wiki/World/People/Ward%20Cunningham.md) in 2011 that lets individual users host their own separate sites and "fork" pages from one another.
+Federated Wiki (FedWiki) is a decentralized, open-source collaborative knowledge tool created by [Ward Cunningham](../../World/People/Ward%20Cunningham.md) in 2011 that lets individual users host their own separate sites and "fork" pages from one another.
 
 ## about
 - How it works

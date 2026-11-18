@@ -16,9 +16,9 @@ fork_date: 2026-11-17T21:31:18+02:00
 
 #dev #publictxt #project
 
-Static site generation for [Project PublicTxt](../../community/txt/wiki/Projects/PublicTxt/Project%20PublicTxt.md) using [Hugo](Hugo.md)
+Static site generation for [Project PublicTxt](../../wiki/publictxt/PublicTxt.md) using [Hugo](https://gohugo.io/)
 
 - Static site interface for browsing/searching an public repository (PublicTxt or otherwise).
-- Uses [Hugo](Hugo.md) for static site generation
-- [Pagefind](Pagefind.md) for search - Pagefind is a fully static search library that aims to perform well on large sites, while using as little of your users’ bandwidth as possible, and without hosting any infrastructure.
+- Uses [Hugo](https://gohugo.io/) for static site generation
+- [Pagefind](https://pagefind.app/) for search - Pagefind is a fully static search library that aims to perform well on large sites, while using as little of your users’ bandwidth as possible, and without hosting any infrastructure.
 - Python for pre-processing

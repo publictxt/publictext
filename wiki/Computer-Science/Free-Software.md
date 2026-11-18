@@ -16,7 +16,5 @@ fork_date: 2026-11-17T21:51:24+02:00
 ---
 - [CopyLeft](CopyLeft.md)
 - [Federated Social Software - Fediverse](Software/Social%20Software/Federated%20Social%20Software%20-%20Fediverse.md)
-
 - [20260915 Our tools are still broken](../../blog/2026/20260915%20Our%20tools%20are%20still%20broken.md)
-- [20240816 - The WhatsApp Mess](20240816%20-%20The%20WhatsApp%20Mess.md)
-- [Knowledge-Graphs-as-Commons](Knowledge-Graphs-as-Commons.md)
+- [20251205-Knowledge-Graphs-as-Commons](../../blog/2025/20251205-Knowledge-Graphs-as-Commons.md)
