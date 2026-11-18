@@ -86,6 +86,7 @@ Why I follow it, and what to read there.
 - A document in `follows/` is a follow when `url` is a valid repo URL. Readers canonicalize it (§3.1). Without one, the Reader emits `follow-missing-url` and it is a plain document.
 - A follow's name is its file name without `.md`: `follows/ann-notes.md` is the follow `ann-notes`. Forks and mirrors name the follow they came through by it (`fork_remote`, §5.2; `mirror_remote`, §5.5). Names are unique in a repo, compared without case.
 - [P] A document in `follows/` with `local: true` and no `url` is a tool's follow of a repo with no public URL, such as another vault on the author's computer (ADR-0015). It holds no path. To Readers it is a plain document, without `follow-missing-url`.
+- [P] A repo is followed once. A tool that also has a copy of a hosted follow's repo on the author's computer may fetch from it, and keeps where it is in its own settings: the follow stays the hosted repo's, and says nothing of the copy (ADR-0018).
 - `branch` names the branch to follow; when absent or blank, the remote's default branch.
 - `include` lists repo-relative folder prefixes ending in `/`, like `ignore`; when absent or empty, the whole repo. It narrows what a reader shows, not what it fetches: the whole repo is still fetched (ADR-0005). It is the first piece of the filter grammar; tag filters stay open (§13).
 - Two follows of one canonical URL: the first by path (byte order) counts; the Reader emits `duplicate-follow` on the others.
@@ -483,4 +484,5 @@ This is the Reader's output and the shape of every fixture's `expected.json`. Do
 - Mirrors added (§5.5): `mirror_*` keys, and `community/<follow>/…` as where they live (§4.1). Source and source rating read them as they read forks, and copy (`forked`, `mirrored`) tells the two apart (§5.4).
 - `community/` now holds mirrors. Profiles, groups and discussion, which it was pencilled in for, have no folder yet (§13).
 - Writing a fork removes `mirror_*` keys (§5.2).
+- A hosted follow with a copy on the author's computer is still one follow, with nothing of the copy in it (§3.2, ADR-0018).
 - obsidian-publictxt-remotes' own follow keys are `folder`, `list_mirrors` and `list_forks`; `watch` is gone (§3.2).

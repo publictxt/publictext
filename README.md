@@ -72,6 +72,7 @@ see [publictxt/obsidian-publictxt-facets GitHub repo](https://github.com/publict
 - Fork a page into your own notes, with `fork_*` provenance in its front matter.
 - Named remotes: each follow note is named for its remote, and forks record the name (`fork_remote`).
 - Local sources: a git repo on your computer, such as another vault, can be followed too, with no path in its note. Snapshot commits what changed in it; a plain folder can be made a repo.
+- Local copies: a repo followed by URL that is also cloned on your computer stays one source, fetched from the folder.
 - Desktop only, over the git CLI: any host, your own SSH keys.
 - Decisions: [ADR-0011](wiki/publictxt/docs/adr/0011-obsidian-plugin-follows-with-git-cli.md), [ADR-0012](wiki/publictxt/docs/adr/0012-fork-provenance-in-front-matter.md), [ADR-0014](wiki/publictxt/docs/adr/0014-follows-are-notes.md), [ADR-0015](wiki/publictxt/docs/adr/0015-obsidian-remotes-local-sources-desktop-only.md).
 

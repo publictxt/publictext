@@ -21,3 +21,4 @@ Format and process: [0001](0001-record-architecture-decisions.md).
 | [0015](0015-obsidian-remotes-local-sources-desktop-only.md) | Obsidian PublicTxt Remotes: named remotes, local sources, desktop only for good | Proposed |
 | [0016](0016-source-rating-on-the-follow.md) | A repo's rating lives on its follow; a document's source is computed | Proposed |
 | [0017](0017-mirrors-in-community.md) | Mirrors: followed repos' pages, as written, under `community/` | Proposed |
+| [0018](0018-local-copy-of-a-hosted-follow.md) | A hosted follow can have a local copy; it stays one follow | Proposed |
