@@ -3,17 +3,17 @@ mirror_remote: publictxt-remotes
 mirror_repo: https://github.com/publictxt/obsidian-publictxt-remotes
 mirror_path: docs/features/local.md
 mirror_branch: master
-mirror_commit: cf50c1028184abc438baf56902550868ab47e4d8
-mirror_blob: 3adb41345f934d22277574bbdaadbc27a5318dee
-mirror_date: 2026-11-17T21:07:37+02:00
+mirror_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
+mirror_blob: 02ae6ef95000fd281cfcc3a573a1ca81165f7ac7
+mirror_date: 2026-11-25T22:45:39+02:00
 ---
 # Local sources and local copies
 
 ## Local sources
 
-A git repo on this computer. Its follow note says `local: true` and holds no path: the folder
-is in `localPaths` per computer, so the note can be published and synced. It is cloned and
-checked like any source, so a check sees only what is committed.
+A git repo on this computer. Its follow note says `local: true` and holds no path, so it can be
+published and synced. It is cloned and checked like any source, so a check sees only what is
+committed.
 
 The plugin writes to the folder (outside the vault) only when asked: **making a repo** and
 **snapshot**. Both run the user's git, identity and hooks, one at a time per folder.
@@ -60,9 +60,9 @@ source: the note is the hosted one's and says nothing of the copy, so key, clone
 and `mirror_repo` stay the hosted URL. The copy's folder in `localPaths` only changes where git
 fetches from.
 
-- **Setting it**: **Local copy** in the source form. Must be a working repo's top with a remote
-  whose canonical URL is the source's (`hasRemote()`, `copyProblem()`); never made a repo. The
-  settings row says `local copy: /path`.
+- **Setting it**: **Local path** beside the **Repo URL** in the source form. Must be a working
+  repo's top with a remote whose canonical URL is the source's (`hasRemote()`, `copyProblem()`);
+  never made a repo. The settings row says `local copy: /path`.
 - **Local or remote**: chosen in the check view, saved in `checkFrom`; until chosen, **Local**.
   **Check now**, mirrors and forks use the current choice.
 - **Missing folder is an error**: git's own, naming the folder. The network is never used

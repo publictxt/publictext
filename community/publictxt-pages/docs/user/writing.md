@@ -3,9 +3,9 @@ mirror_remote: publictxt-pages
 mirror_repo: https://github.com/publictxt/publictxt-pages
 mirror_path: docs/user/writing.md
 mirror_branch: main
-mirror_commit: 8dde109855f4ca8323ea404f8327a48c1f497d3c
-mirror_blob: 39375e2e4ae5a300c9560e26c2c597ddf7137876
-mirror_date: 2026-11-17T21:07:18+02:00
+mirror_commit: 184a8535c03384a65b94a3ef851e0127c1b99085
+mirror_blob: f374799fc0613c346c4565b185b02e1daffc521a
+mirror_date: 2026-11-25T22:44:54+02:00
 ---
 # Writing
 
@@ -37,8 +37,13 @@ optional.
   are plain pages, outside any section.
 - **`_index.md`** is a folder's own page: its intro text, shown above the folder's list
   and searchable. At the root, it's the home page. No `_index.md`? One is generated.
+- **A folder note** can be the folder's page instead: any note with
+  `is-folder-index: true` in its front matter, such as Obsidian's
+  `Design notes/Design notes.md`. Its title is its own name, the edit link opens it,
+  and links to it reach the folder's page. A real `_index.md` wins, as does the first
+  flagged note by name; the build warns about the other, which stays a plain page.
 - An `_index.md` can carry `order:` / `pagerSize:` / `filter:` for its list
-  ([Configuration](community/publictxt-pages/docs/user/configuration.md#browse-lists)).
+  ([Configuration](configuration.md#browse-lists)).
 - Folder names show as written (`Design notes`, not `design-notes`).
 
 ```txt
@@ -60,7 +65,7 @@ First match wins:
 1. `title:` in front matter
 2. A `# Heading` on the first line (blank lines before it are fine) — removed from the
    body so it isn't shown twice. A `# Heading` further down stays a heading.
-   Turn this step off with [`titleFromHeading`](community/publictxt-pages/docs/user/configuration.md#titles-from-headings).
+   Turn this step off with [`titleFromHeading`](configuration.md#titles-from-headings).
 3. The file name
 
 Obsidian's "inline title" is the file name, so a note with neither is titled as it
@@ -137,14 +142,14 @@ rating: 4                       # 1–5
 ---
 ```
 
-Categories must be on the [configured list](community/publictxt-pages/docs/user/configuration.md#categories) (else ignored,
+Categories must be on the [configured list](configuration.md#categories) (else ignored,
 with a build warning). Ratings show as stars and drive *Top rated* sorting and a
 minimum-rating filter.
 
 ## Links
 
 Use relative Markdown links — Obsidian writes these with the setup in
-[Setup step 3](community/publictxt-pages/docs/user/setup.md#3-configure-obsidian):
+[Setup step 3](setup.md#3-configure-obsidian):
 
 ```markdown
 [Search](../wiki/Site/Search.md)
@@ -241,7 +246,7 @@ substack:
 ```
 
 Default keys: `facebook`, `twitter`, `substack`, `mastodon`, `github`. Add others in
-[Configuration](community/publictxt-pages/docs/user/configuration.md#posted-on-links).
+[Configuration](configuration.md#posted-on-links).
 
 ## Follows and forks
 
@@ -250,14 +255,15 @@ fork pages from them; the site reads what they write.
 
 - **A follow** is a note in `follows/` with the repo's `url` (or `local: true`, for a
   repo with no public URL). The file name is the follow's name; its `rating` is your
-  rating of that repo — the [source rating](community/publictxt-pages/docs/user/site.md#community) of every page mirrored or forked from it —
+  rating of that repo — the [source rating](site.md#community) of every page mirrored or forked from it —
   and its `description` a line about it. The note's page shows the repository, the
   rating and links to its mirrored and forked pages; the note itself counts as unrated.
 - **A mirror** is a page from a repo you follow, kept as its author wrote it, with
-  `mirror_*` keys saying where it came from. Mirrors live under `community/`, in a folder
-  named for the follow. It shows **From** — the follow's name, linked to its note — and
+  `mirror_*` keys saying where it came from. Mirrors live in the community folder
+  (`community/`, or [`communityFolder`](configuration.md#browse-lists)), in the follow's
+  mirror folder: its `folder:`, else its name. It shows **From** — the follow's name, linked to its note — and
   **↗ original**, as a fork does. Its `rating`, if it has one, is its author's. Mirrors are
-  [left out of lists and search](community/publictxt-pages/docs/user/site.md#community) until a reader asks for them.
+  [left out of lists and search](site.md#community) until a reader asks for them.
 - **A fork** is your own page, made from one in a repo you follow, with `fork_*` keys saying where it was copied from. It shows
   **Forked from** — the follow's name, linked to its note — and **↗ original**: the file
   it was forked from on GitHub, GitLab or Codeberg; elsewhere the repo; for a local
@@ -277,6 +283,11 @@ A fork keeps its date if it has one of its own — `created:`, or a date in the 
 Without one, its date is when it came into your repo, shown as **forked** *date*: the
 original's history isn't in your repo. A mirror is the same, shown as **mirrored** *date*.
 
+The mirroring tool points a mirror's links at where each linked page's mirror is or would
+be, by full path (`[b](community/ann-notes/cs/b.md)`). A link to a page that wasn't
+mirrored goes to the original instead: at the commit the linking page came from, else
+the follow's `branch:`, else the repo. A local follow's stay as written.
+
 A fork whose `fork_remote` names no follow — the follow was renamed or removed — gets a
 build warning (a mirror's `mirror_remote` likewise), and shows that name unlinked.
 
@@ -291,7 +302,7 @@ publish: off      # also: false, no, 0
 - The page isn't built.
 - A folder whose notes are *all* unpublished keeps its other files (images) off too —
   so a draft post folder stays fully hidden. Beside a published note, files publish.
-- Whole folders: [`excludeFolders`](community/publictxt-pages/docs/user/configuration.md#leave-folders-out).
+- Whole folders: [`excludeFolders`](configuration.md#leave-folders-out).
 
 **Hidden is not private.** The note is still in your public repo, readable on GitHub.
 Keep anything truly private out of the repo — a separate vault, or a `.gitignore`d
@@ -315,8 +326,9 @@ All optional.
 | `mirror_remote`, `mirror_repo`, `mirror_path`, … | written by the mirroring tool | A mirror — see [Follows and forks](#follows-and-forks) |
 | `url`, `local`, `rating` in `follows/` | repo URL, `true`, 1–5 | A follow, and your rating of it |
 | `publish` | `off` | Keep off the site |
+| `is-folder-index` | `true` | This note is its folder's page, in place of `_index.md` — see [Folders and sections](#folders-and-sections) |
 | `description` | text | The page's meta description (search engines, link previews) |
-| `order` / `pagerSize` | see [config](community/publictxt-pages/docs/user/configuration.md#browse-lists) | On `_index.md`: this folder's list order and page size |
+| `order` / `pagerSize` | see [config](configuration.md#browse-lists) | On `_index.md`: this folder's list order and page size |
 | `author`, `source_repo` | text | Kept, not shown yet |
 
 Any other key is kept and ignored — your own Dataview fields are safe. The site

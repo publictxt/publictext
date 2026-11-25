@@ -3,9 +3,9 @@ mirror_remote: publictxt-pages
 mirror_repo: https://github.com/publictxt/publictxt-pages
 mirror_path: docs/user/other-editors.md
 mirror_branch: main
-mirror_commit: 8dde109855f4ca8323ea404f8327a48c1f497d3c
+mirror_commit: 184a8535c03384a65b94a3ef851e0127c1b99085
 mirror_blob: e4e5250c75335e9fdaaa74819220f8446cd72381
-mirror_date: 2026-11-17T21:07:18+02:00
+mirror_date: 2026-11-25T22:44:54+02:00
 ---
 # Other editors
 
@@ -15,7 +15,7 @@ the GitHub web editor from a phone.
 
 ## What any editor needs to get right
 
-The same rules Obsidian is configured for in [Setup](community/publictxt-pages/docs/user/setup.md#3-configure-obsidian):
+The same rules Obsidian is configured for in [Setup](setup.md#3-configure-obsidian):
 
 - **Markdown links with relative paths** — `[text](../wiki/page.md)`, not
   `[[wikilinks]]`.
@@ -23,7 +23,7 @@ The same rules Obsidian is configured for in [Setup](community/publictxt-pages/d
 - **YAML front matter** between `---` lines, if any.
 - **A blank line between paragraphs** — single line breaks join up.
 
-Everything else in [Writing](community/publictxt-pages/docs/user/writing.md) is plain text conventions any editor can
+Everything else in [Writing](writing.md) is plain text conventions any editor can
 type.
 
 ## Editors
@@ -42,7 +42,7 @@ type.
 - Commit `.obsidian/` only if you want shared Obsidian settings; other editors ignore
   it, and so does the site.
 - Watch for editors that rewrite links (to wikilinks, or absolute paths) on rename.
-  Run a [local build](community/publictxt-pages/docs/user/setup.md#optional-preview-locally) after bulk renames: the build
+  Run a [local build](setup.md#optional-preview-locally) after bulk renames: the build
   warns about images it can't place, and a dead link shows as a link to nowhere.
 - A Dataview block shows as code outside Obsidian — harmless.
 

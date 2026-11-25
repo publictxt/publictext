@@ -3,9 +3,9 @@ mirror_remote: publictxt-pages
 mirror_repo: https://github.com/publictxt/publictxt-pages
 mirror_path: docs/plans/wikilinks.md
 mirror_branch: main
-mirror_commit: 8dde109855f4ca8323ea404f8327a48c1f497d3c
+mirror_commit: 184a8535c03384a65b94a3ef851e0127c1b99085
 mirror_blob: a7f8883d1440eec228a35b2fd5c65a7125990559
-mirror_date: 2026-11-17T21:07:18+02:00
+mirror_date: 2026-11-25T22:44:54+02:00
 ---
 # Plan: Obsidian `[[wikilinks]]` at sync
 

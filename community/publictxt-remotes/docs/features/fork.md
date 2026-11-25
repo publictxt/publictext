@@ -3,14 +3,14 @@ mirror_remote: publictxt-remotes
 mirror_repo: https://github.com/publictxt/obsidian-publictxt-remotes
 mirror_path: docs/features/fork.md
 mirror_branch: master
-mirror_commit: cf50c1028184abc438baf56902550868ab47e4d8
-mirror_blob: 998ed9d86dd513cd870c810452e7b5736629e3cc
-mirror_date: 2026-11-17T21:07:37+02:00
+mirror_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
+mirror_blob: 5fe2913bc870f99e7de3f37706f8ada96f08e8b6
+mirror_date: 2026-11-25T22:45:39+02:00
 ---
 # Fork
 
 A fork is the user's own note made from an upstream page. They edit it; upstream changes come
-through Compare ([fork-update.md](community/publictxt-remotes/docs/features/fork-update.md)).
+through Compare ([fork-update.md](fork-update.md)).
 
 ## Provenance
 
@@ -30,7 +30,7 @@ Flat front matter keys, so Properties can show them. Upstream front matter is ke
 A note is a fork when `fork_path` and `fork_blob` are valid and it has a valid `fork_remote` or
 `fork_repo`. Writing a fork sets these and removes other `fork_*` and all `mirror_*` keys, so a
 fork of a fork never keeps upstream's provenance. A fork (or mirror) belongs to a source by
-`fork_remote` (case-insensitive), else `fork_repo` (`isForkOf()`). Forks are found by scanning.
+`fork_remote` (case-insensitive), else `fork_repo` (`isFrom()`).
 
 ## Ways in
 
@@ -38,9 +38,11 @@ fork of a fork never keeps upstream's provenance. A fork (or mirror) belongs to 
 **Fork selected**; **Fork a file from a source**; **Fork this mirror** (active note, no fetch).
 Markdown only.
 
-**A mirrored file is moved, not fetched**: `renameFile` (Obsidian updates links to it), keys
-`mirror_*` → `fork_*`, `fork_date` now, text unchanged. Never copied: two notes of one name would
-split every link by name. Its own path doesn't count as taken. If upstream has moved on, the
+**A mirrored file is moved, not fetched**: `renameFile` (Obsidian updates links to it; mirrors and
+the moved note get their text back, `moveMirror()`), keys `mirror_*` → `fork_*`, `fork_date` now,
+text unchanged but for its links. Never copied: two notes of one name would split every link by
+name. Its own path doesn't count as taken. Of a file mirrored twice (copied by hand), **Fork this
+mirror** moves the active note, anything else the first by path. If upstream has moved on, the
 next check lists it under Forks.
 
 ## The modal
@@ -57,14 +59,17 @@ One modal for one file or several.
 - **Folder**: empty is the vault root. Suggests up to 50 vault folders; free text. End slashes
   dropped; `.`/`..` parts or a file path are errors.
 
-Opens on **Same folder as in the source** when `matchFolders` is on and the vault has every
-file's exact folder; else **Into the folder**. **Folder** starts as `forkFolder`. The modal says
-which rule applied until edited. The typed folder survives switching choices. A fork never opens
-under the community folder, though the user can type it.
+Opens on **Same folder as in the source** when `matchFolders` is on and any file has a folder;
+else **Into the folder**. **Folder** starts as `forkFolder`. The modal says so until edited. The
+typed folder survives switching choices. The modal doesn't stop a fork going under the community
+folder.
 
 **One file** also has **Name** (no `.md`): the source name, or the first free `<name> 1`, `2`, …
 with a note saying so. It follows the destination until typed in; then it must be free. Empty,
 `/` or `\` is an error. Earlier forks of the file are named.
+
+**Convert links** and **Match links to existing pages**, applied once the forks are written:
+[fork-links.md](fork-links.md).
 
 **Preview**, redrawn on change: "Goes to `<path>`", or a row per file (`source → vault`, "Name
 taken." when numbered (case-insensitive), "Forked before.", "Its mirror moves."), plus folders
@@ -80,10 +85,8 @@ YAML is refused before writing.
 - Several: each in turn, continuing past failures; one notice (sticky if any failed); nothing
   opened. Ticks are cleared.
 
-Then links may be offered for conversion ([convert-links.md](community/publictxt-remotes/docs/features/convert-links.md)).
-
 ## Code
 
-Pure: `src/fork/destination.ts`, `fork.ts`, `src/sources/fork-meta.ts`,
-`src/check/selection.ts`. Vault: `src/fork/run.ts`, `command.ts`, `src/sources/forks.ts`. UI:
-`src/ui/fork-modal.ts`, `fork-preview.ts`, `folder-suggest.ts`.
+Pure: `src/fork/destination.ts`, `fork.ts`, `src/copy/copy.ts`, `src/sources/fork-meta.ts`,
+`src/check/selection.ts`. Vault: `src/fork/run.ts`, `command.ts`, `src/copy/run.ts`,
+`src/sources/forks.ts`. UI: `src/ui/fork-modal.ts`, `fork-preview.ts`, `folder-suggest.ts`.

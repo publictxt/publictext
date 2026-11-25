@@ -17,13 +17,13 @@ mirror_remote: txt
 mirror_repo: https://github.com/jaysen/txt
 mirror_path: wiki/Projects/PublicTxt/PublicTxt-Obsidian/Obsidian PublicTxt Remotes Plugin.md
 mirror_branch: master
-mirror_commit: 7b95c242b19930703ed48bba02beba6bb0261c61
+mirror_commit: f0327741e674af5afa5891b0a8aae03a1d182fb2
 mirror_blob: 777c7ec5e0246d6df34039e1e82a5a117de5ddbd
-mirror_date: 2026-11-17T21:15:12+02:00
+mirror_date: 2026-11-25T23:00:39+02:00
 ---
 ## overview
-- Adds collaborative features - to 'connect' [Obsidian.md](community/txt/wiki/Computer-Science/Software/Obsidian/Obsidian.md.md) wikis to other [PublicTxt Wikis](PublicTxt%20Wikis)
-- Should work well with [Obsidian PublicTxt Facets Plugin](community/txt/wiki/Projects/PublicTxt/PublicTxt-Obsidian/Obsidian%20PublicTxt%20Facets%20Plugin.md) -- which replaced the [Obsidian Search Facets Plugin](community/txt/wiki/Projects/Obsidian%20Plugins/Obsidian%20Search%20Facets%20Plugin.md)
+- Adds collaborative features - to 'connect' [Obsidian.md](wiki/Computer-Science/Software/Obsidian/Obsidian.md.md) wikis to other [PublicTxt Wikis](PublicTxt%20Wikis)
+- Should work well with [Obsidian PublicTxt Facets Plugin](Obsidian%20PublicTxt%20Facets%20Plugin.md) -- which replaced the [Obsidian Search Facets Plugin](wiki/Projects/Obsidian%20Plugins/Obsidian%20Search%20Facets%20Plugin.md)
 
 Follow other people's PublicTxt repos, see what changed since you last looked, and fork the
 pages you want into your vault. Each fork records where it came from in its front matter.

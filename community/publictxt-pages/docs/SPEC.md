@@ -3,9 +3,9 @@ mirror_remote: publictxt-pages
 mirror_repo: https://github.com/publictxt/publictxt-pages
 mirror_path: docs/SPEC.md
 mirror_branch: main
-mirror_commit: 8dde109855f4ca8323ea404f8327a48c1f497d3c
-mirror_blob: 0301c543ca6e0b5eaa96876e37dff997c09250f0
-mirror_date: 2026-11-17T21:07:18+02:00
+mirror_commit: 184a8535c03384a65b94a3ef851e0127c1b99085
+mirror_blob: c17dd4d977d02bbea746c5370f502c2abea55a6c
+mirror_date: 2026-11-25T22:44:54+02:00
 ---
 # Spec
 
@@ -76,7 +76,9 @@ Items marked **(TBD)** are not built.
     - Source rating: a minimum, as Rating (`?source-rating=4`), over forks; "Unrated" is forks whose source has no rating. This repo's own pages have no source rating, so any value leaves them out. Shown when forks' source ratings vary. A fork's page shows it under Source.
     - Sort by source rating: "Top rated source" puts this repo's own pages first, above any source, then forks by their source's rating, unrated as 2.5 (mid-scale, as Rating's sort); ties newest first. Author (TBD).
     - A card's source chip links to the follow's page; its tooltip gives the repo, the source rating and the follow's `description:`.
-  - `params.hiddenCollections` (default `community`, where mirrors live: `community/<follow>/<path in its repo>`): excluded by default in the Collection filter of lists (home, sections, tags, dataview) and search, so the excluded chip — or the collection's own section — brings them back, and Reset hides them again. A fork lives in this repo's own folders, not in `community`, so it shows. No feeds yet to keep them out of.
+  - `params.communityFolder` (default `community`; the remotes plugin's Community folder, set by hand): its pages, at any depth, are the `community` collection; `""` (the root): each follow's mirror folder, `<folder or name>/`. Mirrors live at `<communityFolder>/<folder or name>/<path in its repo>`.
+  - A `.md` link or embed that reaches no page but lands in a follow's mirror folder (the plugin's full-path links to pages not mirrored) goes to the original: at the linking copy's commit when from that follow, else the follow's `branch`, else the repo; an embed becomes a link. A local follow's are left. Wikilinks, which the plugin keeps in a wikilink vault's mirrors, are TBD with wikilinks generally.
+  - `params.hiddenCollections` (default `community`, the community folder's pages): excluded by default in the Collection filter of lists (home, sections, tags, dataview) and search, so the excluded chip — or the collection's own section — brings them back, and Reset hides them again. A fork lives in this repo's own folders, not in `community`, so it shows. No feeds yet to keep them out of.
   - A follow's page is its source's landing page: page details show the repository (linked; "local repository" for a local follow), the source rating, and how many pages were mirrored and forked through it, each a link to search by source and copy (`?source=ann-notes&copy=mirrored`). Its `rating` is the repo's, so the page itself is unrated in lists, search and the Rating filter.
   - A fork's dates follow the usual ladder, so `created:` or a date in the file name carried over from the original holds. Without either, the dates are this repo's — when it was forked and last changed here — as the original's history isn't in this repo; such a date shows as "forked <date>", or "mirrored <date>" for a mirror (page, its details, cards). TBD: the forking tool could write `created`/`updated` from the source's history.
 - Pages
@@ -97,6 +99,7 @@ Items marked **(TBD)** are not built.
 _index.md, About.md                     (home + root pages)
 
 wiki/_index.md, wiki/A/_index.md        (folder index = section page (any depth))
+wiki/A/A.md + `is-folder-index: true`   (or a flagged note, written as the _index.md; links follow)
 
 blog/2023/12/17/x.md                    (dates derived from path)
 blog/20260509-title.md                  (YYYYMMDD prefix date)
@@ -152,13 +155,14 @@ All front matter optional; sync derives the rest.
 | `tags`                  | Inline or block list       | Merged with `#hashtags`; deduplicated                                           |
 | `created`               | ISO 8601 datetime          | Derived from path, git, mtime, or build time if not set                         |
 | `updated`               | ISO 8601 datetime          | Derived from git, mtime, or build time if not set; never earlier than `created` |
+| `is-folder-index`       | `true`                     | The note is its folder's index, written as `_index.md` at sync; a real `_index.md` wins. Title fallback: its own name; `source_path` stays its path; `.md` links to it are rewritten |
 | `author`, `source_repo` | Metadata                   | Passed through; not filterable                                                  |
 | `bookmark`, `bookmarks` | URL or list                | Adds collection `bookmarks`, wherever the page lives. See [Collections](#collections) |
 | `facebook`, `mastodon`, … | URL or list            | Where else it was posted; keys and labels in `[params.sources]`. Shown as "Posted on" links |
 | `fork_remote`, `fork_repo`, `fork_path`, `fork_branch`, `fork_commit`, `fork_blob` | Fork provenance (PublicTxt spec §5.2) | Make a page a fork: its source, source rating and link to the original |
 | `mirror_remote`, `mirror_repo`, `mirror_path`, `mirror_branch`, `mirror_commit`, `mirror_blob` | Mirror provenance (PublicTxt spec §5.5) | Make a page a mirror, unless it is a fork: the same, shown as "From" |
-| `url`, `local`, `rating` in `follows/` | A follow (PublicTxt spec §3.2) | `url` is written out as `follow_url`, canonical: Hugo reads `url` as the page's address |
-| `source_name`, `source_rating`, `source_follow`, `source_original`, `source_kind`, `follow_name`, `follow_url` | A fork's or a mirror's source (`source_kind: mirror` on a mirror); a follow's repo | Written by sync; dropped if authored |
+| `url`, `local`, `rating`, `folder`, `branch` in `follows/` | A follow (PublicTxt spec §3.2; `folder` is the remotes plugin's mirror folder) | `url` is written out as `follow_url`, canonical: Hugo reads `url` as the page's address |
+| `source_name`, `source_rating`, `source_follow`, `source_original`, `source_kind`, `follow_name`, `follow_url`, `in_community` | A fork's or a mirror's source (`source_kind: mirror` on a mirror); a follow's repo; a page in the community folder | Written by sync; dropped if authored |
 | `source_path`           | Path in the source repo    | Written by sync; with `params.editURL`, drives the footer "Edit this page" link |
 
 Other keys pass through unchanged. `hugo.toml` maps `created` → `.Date`, `updated` → `.Lastmod`.

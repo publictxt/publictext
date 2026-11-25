@@ -14,11 +14,11 @@ mirror_remote: txt
 mirror_repo: https://github.com/jaysen/txt
 mirror_path: wiki/Projects/PublicTxt/PublicTxt-Obsidian/Obsidian PublicTxt Facets Plugin.md
 mirror_branch: master
-mirror_commit: 7b95c242b19930703ed48bba02beba6bb0261c61
+mirror_commit: f0327741e674af5afa5891b0a8aae03a1d182fb2
 mirror_blob: 62e01cf86fa0336a9ad15101af36fd36a8fed66b
-mirror_date: 2026-11-17T21:15:12+02:00
+mirror_date: 2026-11-25T23:00:39+02:00
 ---
-One of [Obsidian Plugins for PublicTxt](community/txt/wiki/Projects/PublicTxt/PublicTxt-Obsidian/Obsidian%20Plugins%20for%20PublicTxt.md). Renamed from **Obsidian Txt Facets Plugin**
+One of [Obsidian Plugins for PublicTxt](Obsidian%20Plugins%20for%20PublicTxt.md). Renamed from **Obsidian Txt Facets Plugin**
 
 ## Txt Facets — Intent
 An Obsidian plugin for browsing a vault by **facets**: chip facets with live counts (collection,

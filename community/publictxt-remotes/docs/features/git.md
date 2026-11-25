@@ -3,9 +3,9 @@ mirror_remote: publictxt-remotes
 mirror_repo: https://github.com/publictxt/obsidian-publictxt-remotes
 mirror_path: docs/features/git.md
 mirror_branch: master
-mirror_commit: cf50c1028184abc438baf56902550868ab47e4d8
-mirror_blob: 425859d45ecd368fd550f4cf5179bfd7571bd2e8
-mirror_date: 2026-11-17T21:07:37+02:00
+mirror_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
+mirror_blob: 9bf441ff4e3eddffcacf04fc6345ce892de423d1
+mirror_date: 2026-11-25T22:45:39+02:00
 ---
 # Git host
 
@@ -13,7 +13,7 @@ mirror_date: 2026-11-17T21:07:37+02:00
 
 **Clones.** One bare partial clone per source: `<clonesFolder>/<host>/<owner>/<repo>.git`, or
 `<clonesFolder>/local/<name>-<hash>.git` for a local source (`<hash>`: 32-bit FNV-1a of the key,
-so names that clean up alike don't share a clone). Bare, so no remote `.md` shows as a note.
+so names that clean up alike don't share a clone).
 
 **Where it fetches from** (`fetchFrom()`): a hosted source's URL; a local source's folder, or a
 hosted source's local copy when **Local** is chosen, as `fileUrl()` from `localPaths`. Origin is
@@ -46,5 +46,5 @@ or folder missing), `bad-input` (not a canonical URL or SHA; snapshot refusals).
 
 ## Code
 
-Pure: `src/remote/host.ts`, `git.ts`, `fetch-from.ts`. The only Node module:
-`src/remote/git-process.ts`. Wiring: `src/remote/vault-host.ts`.
+Pure: `src/remote/host.ts`, `git.ts`, `fetch-from.ts`. Node: `src/remote/git-process.ts`. Wiring:
+`src/remote/vault-host.ts`.

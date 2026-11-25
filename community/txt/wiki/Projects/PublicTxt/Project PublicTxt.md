@@ -12,9 +12,9 @@ mirror_remote: txt
 mirror_repo: https://github.com/jaysen/txt
 mirror_path: wiki/Projects/PublicTxt/Project PublicTxt.md
 mirror_branch: master
-mirror_commit: 7b95c242b19930703ed48bba02beba6bb0261c61
+mirror_commit: f0327741e674af5afa5891b0a8aae03a1d182fb2
 mirror_blob: 4c3270d823b802a0c4c8847d8f62f034e7c6f456
-mirror_date: 2026-11-17T21:14:13+02:00
+mirror_date: 2026-11-25T22:58:57+02:00
 ---
 see the repo here [https://github.com/publictxt/publictext](https://github.com/publictxt/publictext)
 
@@ -29,7 +29,7 @@ The core idea is simple: Desktop and Web applications that sync between local an
 The experiment is in early stages. Links to software repositories for tooling that works with these plain-text repositories to follow.
 
 ## Linked Repositories
-- [PublicTxt-Pages](community/txt/wiki/Projects/PublicTxt/PublicTxt-Pages/PublicTxt-Pages.md) **Static-site generator with dynamic client-side layer - Python preprocessing, Hugo build, Pagefind search & JS faceted browse for PublicTxt/Obsidian repos.**
+- [PublicTxt-Pages](PublicTxt-Pages/PublicTxt-Pages.md) **Static-site generator with dynamic client-side layer - Python preprocessing, Hugo build, Pagefind search & JS faceted browse for PublicTxt/Obsidian repos.**
 	- Uses Hugo for static site generation
 	- Pagefind for search - Pagefind is a fully static search library that aims to perform well on large sites, while using as little of your users’ bandwidth as possible, and without hosting any infrastructure.
 	- Python for pre-processing
@@ -37,13 +37,13 @@ The experiment is in early stages. Links to software repositories for tooling th
 	- Core Wiki Libraries
 	- Converts between Wiki formats and Wiki-Syntax
 	- Copy between wikis based on search, tag expressions (tag1 + tag2 - tag3), attributes.
-	- see [WikiTool](community/txt/wiki/Projects/PublicTxt/WikiTool.md) 
+	- see [WikiTool](WikiTool.md) 
 - [PublicTxt.net](https://github.com/publictxt/publictxt.net) An **in-progress .NET implementation** with:
 	- Core libraries, and feature based services  
 	- Git and Database Infrastructure projects  
-	- [Avalonia](community/txt/wiki/Computer-Science/Software%20Dev/Avalonia.md) Desktop & Blazor Web Apps
-- [Obsidian Plugins for PublicTxt](community/txt/wiki/Projects/PublicTxt/PublicTxt-Obsidian/Obsidian%20Plugins%20for%20PublicTxt.md)
-	- [Obsidian Search Facets Plugin](community/txt/wiki/Projects/Obsidian%20Plugins/Obsidian%20Search%20Facets%20Plugin.md)
+	- [Avalonia](../../Computer-Science/Software%20Dev/Avalonia.md) Desktop & Blazor Web Apps
+- [Obsidian Plugins for PublicTxt](PublicTxt-Obsidian/Obsidian%20Plugins%20for%20PublicTxt.md)
+	- [Obsidian Search Facets Plugin](../Obsidian%20Plugins/Obsidian%20Search%20Facets%20Plugin.md)
 	- 
 
 ## Core Features
@@ -117,5 +117,5 @@ The directory structure for a Public Text repository is as follows:
 - see [LICENSE](LICENSE) for more information
 
 ## Contributing
-- See [CONTRIBUTING.md](community/txt/CONTRIBUTING.md) for information on contributing to this project.
+- See [CONTRIBUTING.md](CONTRIBUTING.md) for information on contributing to this project.
 

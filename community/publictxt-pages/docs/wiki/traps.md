@@ -3,9 +3,9 @@ mirror_remote: publictxt-pages
 mirror_repo: https://github.com/publictxt/publictxt-pages
 mirror_path: docs/wiki/traps.md
 mirror_branch: main
-mirror_commit: 8dde109855f4ca8323ea404f8327a48c1f497d3c
-mirror_blob: a9451a88ee9a52a24062215f3fdc13ff6f2f0562
-mirror_date: 2026-11-17T21:07:18+02:00
+mirror_commit: 184a8535c03384a65b94a3ef851e0127c1b99085
+mirror_blob: 4ec8e9cf552f3fdebc75efefa2da3041c79752ac
+mirror_date: 2026-11-25T22:44:54+02:00
 ---
 # Traps
 
@@ -18,8 +18,9 @@ Every `data-pagefind-body` template **must** call `pagefind-keys.html` (now:
 `page.html`, `section.html`). Pagefind drops a page lacking
 the key it sorts on, or the filter selected — so a template without it vanishes from
 sorted and filtered results, no error. Hence the rating sort key and filter are on
-every page, rated or not. `check_search_index()` catches a page without them, and an
-index count that differs from the body pages; `hugo server` builds skip it.
+every page, rated or not — and `copy`, own pages `"none"`. `check_search_index()` catches a page without them, and an
+index count that differs from the body pages; `hugo server` builds skip it. Its key half,
+`key_problems()`, also runs in `test_site.py`, on Hugo's output alone.
 
 ## Pairs that must change together
 
@@ -33,6 +34,7 @@ search. Add one to both, or search cards go without it. What's still implemented
 | stars in `page-meta.html` | `ratingHTML()` in `cards.js` |
 | unrated sort value 2.5 in `pagefind-keys.html` | `UNRATED` in `sorts.js` |
 | own pages' source rating sort value 6 in `pagefind-keys.html` | `OWN_SOURCE` in `sorts.js` |
+| `copy` `"none"` on this repo's own pages, in `pagefind-keys.html`; `unset` in `chip-facets.html` | `d.unset` dropped from chips in `search.js` |
 | `source-rating` `"none"` on this repo's own pages, in `pagefind-keys.html` | `NO_SOURCE` in `cards.js`; `sourceRatingPasses()` is the lists' rule, `pagefindFilters()` search's |
 | `created`'s `2006-01-…` form in `list-json.html` | `monthOf()` in `timeline.js` reads its digits |
 | Pagefind `month` filter, `"2006-01"`, in `pagefind-keys.html` | `countsTree()` in `timeline.js`, `?year=&month=` → `month` in `search.js` |
@@ -55,9 +57,16 @@ together.
 `pagefind-keys.html` writes it on every page. Both read `own-source.html`.
 
 `copy` ("forked", "mirrored") follows it in the same block, with no `missing`: this
-repo's own pages carry no value in `index.json` or Pagefind. It is not `arrived`, the
+repo's own pages carry no value in `index.json`, but `"none"` in Pagefind (its `unset`,
+which `search.js` never shows as a chip) — a page lacking a filter drops out of every
+search on it, `?copy-not=mirrored` included. It is not `arrived`, the
 date's word, which only an undated fork or mirror has (`date-labels.html`); both come
 from `fork-source.html`'s `mirror`.
+
+The `community` collection is named twice: `page-collections.html` adds it from sync's
+`in_community` (`params.communityFolder`, read by `sync_content.py`, not Hugo), and
+`hiddenCollections`' default hides it. `communityFolder` must match the remotes plugin's
+Community folder by hand; nothing checks.
 
 `params.hiddenCollections` is hidden three times over, by one rule — a list with some
 pages of the collection, not all: `list-container.html` (the no-JS list), `list.js` and

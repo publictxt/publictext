@@ -5,7 +5,7 @@ mirror_path: docs/intent.md
 mirror_branch: master
 mirror_commit: 11eb3c44b065e5040c2708e2da5ab5c6d38bd2fe
 mirror_blob: 910a9a64a56019ff4b2133f7b1c973f2bd8df8b5
-mirror_date: 2026-11-17T21:19:50+02:00
+mirror_date: 2026-11-25T22:45:16+02:00
 ---
 # PublicTxt Facets — Intent
 

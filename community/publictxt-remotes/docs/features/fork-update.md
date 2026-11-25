@@ -3,9 +3,9 @@ mirror_remote: publictxt-remotes
 mirror_repo: https://github.com/publictxt/obsidian-publictxt-remotes
 mirror_path: docs/features/fork-update.md
 mirror_branch: master
-mirror_commit: cf50c1028184abc438baf56902550868ab47e4d8
-mirror_blob: 6315f790dbae473c0d0df0d5aeb72c82506a0053
-mirror_date: 2026-11-17T21:07:37+02:00
+mirror_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
+mirror_blob: 26d34ec57167ea70d51fdc6acd0862e9b1f1005d
+mirror_date: 2026-11-25T22:45:39+02:00
 ---
 # Fork update
 
@@ -24,12 +24,14 @@ The view's header: source, branch, the note, then
 - **What changed**: "12 lines added, 3 removed since you forked." (`diffStat` from `fork_blob`
   to head), or that the forked version is gone upstream.
 - **Edited?** kept current as the note saves: edited / as forked / can't tell (forked blob
-  unreadable). Edited (`isEdited()`): the body differs ignoring leading blank lines, line
-  endings, and links showing the same words (`matchesExceptLinks()`: converted links are no
-  edit); or the parsed front matter differs, `fork_*` aside (parsed, because Obsidian rewrites
-  the YAML).
+  unreadable).
 
-Below: upstream rendered, front matter hidden; **Show source** toggles raw text.
+**Edited** (`isEdited()`, mirrors too): the body differs, ignoring leading blank lines, line
+endings, and links showing the same words to the same subpath (`matchesExceptLinks()`: converting
+a link, or Obsidian updating one whose target moved, is no edit); or the parsed front matter
+differs, `fork_*` and `mirror_*` aside (parsed, because Obsidian rewrites the YAML).
+
+Below the header: upstream rendered, front matter hidden; **Show source** toggles raw text.
 
 ## Actions
 
@@ -43,12 +45,13 @@ Each leaves every copy settled, so the file leaves the check view and the pane c
 copies aren't written.
 
 - **Overwrite** asks first if the copy is edited or can't tell. Same name and path. Invalid
-  upstream YAML is refused; if keys can't be written the note is restored.
+  upstream YAML is refused; a note that changes meanwhile is left; if keys can't be written the
+  note is restored (`overwriteWithProvenance()`).
 - **Write alongside**: a new fork (`writeFork()`) in the copy's folder named
   `<name> (up-01)`, `(up-02)`, … (an existing ` (up-nn)` dropped first). Opens where the copy
   was; now the latest copy.
 
-After **Overwrite** or **Write alongside**, links may be offered for conversion.
+After either, the note's links are converted ([fork-links.md](fork-links.md)).
 
 **Gone upstream**: **Detach** removes `fork_*` from every copy after asking; **Keep** sets
 `fork_seen: gone` (not listed until the file is back and differs).
@@ -59,5 +62,5 @@ followed, it says so and offers nothing.
 
 ## Code
 
-Pure: `src/fork/update.ts`; `isSettled()`, `latestFirst()` in `src/check/check.ts`. Vault:
+Pure: `src/fork/update.ts`, `src/copy/edited.ts`; `isSettled()`, `latestFirst()` in `src/check/check.ts`. Vault:
 `src/fork/update-run.ts`, `compare-run.ts`. UI: `src/ui/upstream-view.ts`.

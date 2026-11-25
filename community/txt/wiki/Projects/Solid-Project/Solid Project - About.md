@@ -26,11 +26,11 @@ mirror_path: wiki/Projects/Solid-Project/Solid Project - About.md
 mirror_branch: master
 mirror_commit: 85f3c01ab408f962ce6ba605e40c96f606e381f9
 mirror_blob: 75f442eeb9f0f2189c5ebc0263420e48dc461de7
-mirror_date: 2026-11-17T21:13:32+02:00
+mirror_date: 2026-11-25T22:52:10+02:00
 ---
-Solid is an evolution of the web by its creator Sir [Tim Berners-Lee](community/txt/wiki/World/People/Tim%20Berners-Lee.md). Solid realizes Tim's original vision for the Web as a medium for the secure, decentralized exchange of public and private data.
+Solid is an evolution of the web by its creator Sir [Tim Berners-Lee](../../World/People/Tim%20Berners-Lee.md). Solid realizes Tim's original vision for the Web as a medium for the secure, decentralized exchange of public and private data.
 
-My silly [Project PublicTxt](community/txt/wiki/Projects/PublicTxt/Project%20PublicTxt.md) sort of shares some mission, but was thinking of using Git repos instead of [Solid Pods](community/txt/wiki/Projects/Solid-Project/Solid%20Pods.md). (maybe there's room for overlap)
+My silly [Project PublicTxt](../PublicTxt/Project%20PublicTxt.md) sort of shares some mission, but was thinking of using Git repos instead of [Solid Pods](Solid%20Pods.md). (maybe there's room for overlap)
 
 ## Your data, your choice
 Advancing the Web to empower people and communities.

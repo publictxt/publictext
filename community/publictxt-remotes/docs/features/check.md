@@ -3,9 +3,9 @@ mirror_remote: publictxt-remotes
 mirror_repo: https://github.com/publictxt/obsidian-publictxt-remotes
 mirror_path: docs/features/check.md
 mirror_branch: master
-mirror_commit: cf50c1028184abc438baf56902550868ab47e4d8
-mirror_blob: bfa747cd11091a1ccbbcf7600b78fc82cd6a8dfb
-mirror_date: 2026-11-17T21:07:37+02:00
+mirror_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
+mirror_blob: 132cafa0a3bba4f8700f32a947813867008f43fb
+mirror_date: 2026-11-25T22:45:39+02:00
 ---
 # Check
 
@@ -45,7 +45,7 @@ once the user opens or closes it, it stays that way until the view closes. In th
 
 - **Local** / **Remote**: hosted sources with a local copy; the one in use marked. Selecting
   one saves `checkFrom` and rechecks that source alone (`checkOne()`). Disabled during a check.
-- **Snapshot**: local sources, and local copies while **Local** is chosen ([local.md](community/publictxt-remotes/docs/features/local.md)).
+- **Snapshot**: local sources, and local copies while **Local** is chosen ([local.md](local.md)).
 
 Under an open header, the error or "nothing new", then actions:
 
@@ -68,12 +68,18 @@ Then lists:
   back after **Mark as seen**. Folders start closed. Browsing changes no state and stays on
   across checks.
 
-**File rows** in What's new and All files, for Markdown files not removed: a tick box,
-**Mirror** and **Fork**. Mirrored: "mirrored" (opens it) and **Stop** instead of **Mirror**;
-**Fork** moves the mirror. Forked: **Compare** while unsettled, else "forked"; it keeps its own
-tick box, but a folder's tick box leaves it out, so ticking a folder never re-forks. A folder's
-tick box is ticked, half or clear; selecting it ticks all or clears all. Ticks are per file
-across both lists, persist like open folders, and don't count files a later check doesn't list.
+**File rows** in What's new and All files. Markdown files not removed have a tick box and:
+
+| File | Row has |
+|---|---|
+| Not mirrored | **Mirror**, **Fork** |
+| Mirrored | "mirrored" (opens it), **Stop**, **Fork** (moves the mirror) |
+| Forked, unsettled | Also **Compare** |
+| Forked, settled | Also "forked" |
+
+**Ticks.** A folder's tick box is ticked, half or clear; selecting it ticks all or clears all. It
+leaves out forked files, so ticking a folder never re-forks. Ticks are per file across both
+lists, persist like open folders, and don't count files a later check doesn't list.
 
 ## Code
 

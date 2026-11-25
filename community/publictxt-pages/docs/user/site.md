@@ -3,9 +3,9 @@ mirror_remote: publictxt-pages
 mirror_repo: https://github.com/publictxt/publictxt-pages
 mirror_path: docs/user/site.md
 mirror_branch: main
-mirror_commit: 8dde109855f4ca8323ea404f8327a48c1f497d3c
-mirror_blob: d1c18ac088a5d3c6f3cf4eaaa292b884483cff85
-mirror_date: 2026-11-17T21:07:18+02:00
+mirror_commit: 184a8535c03384a65b94a3ef851e0127c1b99085
+mirror_blob: 249bcd76848c66407b0ba785293083c8e2cc4ca9
+mirror_date: 2026-11-25T22:44:54+02:00
 ---
 # The published site
 
@@ -35,17 +35,17 @@ as a drawer on narrower ones.
 ## Home
 
 Your root `_index.md` (or, without one, the site description), then **Recent**: every
-page, newest first ([`listOrder`](community/publictxt-pages/docs/user/configuration.md#browse-lists)), with the full filters and timeline beside it.
+page, newest first ([`listOrder`](configuration.md#browse-lists)), with the full filters and timeline beside it.
 
 ## Section pages
 
 `/blog/`, `/wiki/`, and every sub-folder:
 
 1. The folder's `_index.md` text
-2. For a [tree section](community/publictxt-pages/docs/user/configuration.md#timeline-and-folder-tree) (default `wiki`): its
+2. For a [tree section](configuration.md#timeline-and-folder-tree) (default `wiki`): its
    sub-folders, one level open
 3. The browse list — for a top-level section, every page in its
-   [collection](community/publictxt-pages/docs/user/writing.md#collections), wherever filed; for a sub-folder, only what's
+   [collection](writing.md#collections), wherever filed; for a sub-folder, only what's
    filed under it
 
 Breadcrumbs above every page but home trace the folders.
@@ -55,16 +55,16 @@ Breadcrumbs above every page but home trace the folders.
 Home, section and tag lists share one interface.
 
 **Sort**: Newest, Oldest, Title, Recently updated, Top/Lowest rated (unrated counts as
-2.5). Starts at the [configured order](community/publictxt-pages/docs/user/configuration.md#browse-lists).
+2.5). Starts at the [configured order](configuration.md#browse-lists).
 
 **Show**, beside sort: cards per page — 10, 20, 50 or All, plus the list's own
-[default](community/publictxt-pages/docs/user/configuration.md#browse-lists). Changing it keeps the cards you were looking at
+[default](configuration.md#browse-lists). Changing it keeps the cards you were looking at
 on screen. Remembered in your browser for every list; not part of the URL.
 
 **Compact**, beside them: one line per page — title, date, stars — for skimming. Remembered
 in your browser for lists and search; not part of the URL.
 
-**Filter chips** — Collection, Category, Tags (as [configured](community/publictxt-pages/docs/user/configuration.md#filter-chips)):
+**Filter chips** — Collection, Category, Tags (as [configured](configuration.md#filter-chips)):
 
 - Click a chip to **include** it; click again to clear.
 - Click its **✕** to **exclude** it (shown on hover, focus, or once set).
@@ -84,16 +84,16 @@ Below the filters, on lists spanning two or more months:
 - Open a year for its months, with bars and counts.
 - Click a year or month to filter the list to it; the other filters still apply.
 
-Dates here are `created` — see [Dates](community/publictxt-pages/docs/user/writing.md#dates).
+Dates here are `created` — see [Dates](writing.md#dates).
 
 ## Community
 
 When a list holds pages from more than one source — your own and
-[mirrors and forks](community/publictxt-pages/docs/user/writing.md#follows-and-forks) from repos you follow — a **Community** block
+[mirrors and forks](writing.md#follows-and-forks) from repos you follow — a **Community** block
 appears under Filters, in lists and in search:
 
 - **Source** — a chip per source: click to show only those, ✕ to leave one out. Your own
-  pages are "this repo" ([`ownSource`](community/publictxt-pages/docs/user/configuration.md#filter-chips) renames it).
+  pages are "this repo" ([`ownSource`](configuration.md#filter-chips) renames it).
 - **Copy** — **forked** (your version of a page) or **mirrored** (the page as its author
   wrote it): click to show only those, ✕ to leave them out (`?copy=forked`,
   `?copy-not=mirrored`). Your own pages are neither, so picking one leaves them out.
@@ -105,10 +105,10 @@ appears under Filters, in lists and in search:
 - A mirror's or a fork's card says **from** *source* — a link to the follow's note; hover for the
   repo, your rating and the follow's description. Its page shows the source's rating too.
 
-Pages under `community/` — mirrors: pages from repos you follow, as their authors wrote
-them — are left out of lists and search to start with: **community** shows crossed out
+Pages in the community folder (`community/`, or [`communityFolder`](configuration.md#browse-lists)) —
+mirrors: pages from repos you follow, as their authors wrote them — are left out of lists and search to start with: **community** shows crossed out
 under Collection; click it to bring them in. The Community section itself always lists
-them. Forks live in your own folders and are yours to show, and do. ([`hiddenCollections`](community/publictxt-pages/docs/user/configuration.md#browse-lists).)
+them. Forks live in your own folders and are yours to show, and do. ([`hiddenCollections`](configuration.md#browse-lists).)
 
 ## On a page
 
@@ -116,13 +116,13 @@ Right column, top: **this page's details** —
 
 - collections, created and updated dates, categories, rating stars, tags
 - the bookmark link, if any; "Posted on" links to where it was cross-posted
-- for a [mirror or a fork](community/publictxt-pages/docs/user/writing.md#follows-and-forks), its source and a link to the original
+- for a [mirror or a fork](writing.md#follows-and-forks), its source and a link to the original
 
 Below that, **where it sits**:
 
 - **Timeline** — the page's section, by date, with titles; its year and month open, the
   page marked; year and month labels link to the list at that date. Pages in
-  [`timelineCollections`](community/publictxt-pages/docs/user/configuration.md#timeline-and-folder-tree) (default `blog`,
+  [`timelineCollections`](configuration.md#timeline-and-folder-tree) (default `blog`,
   `posts`) share one timeline, with a chip per collection — and per `timelineTags` tag —
   to narrow it.
 - **Folder tree** — for tree sections (default `wiki`): folders then pages, A→Z, open
@@ -147,7 +147,7 @@ The **Search** page: full text over every page and section intro, with:
 - Year and month from the timeline
 - The same sorts as browse lists
 
-*Show more* loads further results, a batch at a time ([`pagerSize`](community/publictxt-pages/docs/user/configuration.md#browse-lists)). Search runs in the browser ([Pagefind](https://pagefind.app));
+*Show more* loads further results, a batch at a time ([`pagerSize`](configuration.md#browse-lists)). Search runs in the browser ([Pagefind](https://pagefind.app));
 nothing is sent to a server.
 
 ## Phones, and no JavaScript

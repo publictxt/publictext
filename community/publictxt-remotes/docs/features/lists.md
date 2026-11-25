@@ -3,9 +3,9 @@ mirror_remote: publictxt-remotes
 mirror_repo: https://github.com/publictxt/obsidian-publictxt-remotes
 mirror_path: docs/features/lists.md
 mirror_branch: master
-mirror_commit: cf50c1028184abc438baf56902550868ab47e4d8
-mirror_blob: 14153587a6250e6258ae77cb22bb4462d0ec6d46
-mirror_date: 2026-11-17T21:07:37+02:00
+mirror_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
+mirror_blob: e7e04e27030934454c73ad32517eaefbc8268292
+mirror_date: 2026-11-25T22:45:39+02:00
 ---
 # Mirror and fork lists
 
@@ -39,9 +39,6 @@ is ready (a half-loaded cache would empty lists). A note is written only if a ke
 a list no longer kept is left as is. **Update mirror and fork lists in follow notes**
 (`update-page-lists`) syncs every note now, skipping lists turned off in the note, whatever the
 settings.
-
-The "Links to fix" and "Links to check" sections ([convert-links.md](community/publictxt-remotes/docs/features/convert-links.md)) are
-owned the same way and written in the same pass.
 
 ## Code
 

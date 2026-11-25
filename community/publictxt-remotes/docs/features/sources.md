@@ -3,9 +3,9 @@ mirror_remote: publictxt-remotes
 mirror_repo: https://github.com/publictxt/obsidian-publictxt-remotes
 mirror_path: docs/features/sources.md
 mirror_branch: master
-mirror_commit: cf50c1028184abc438baf56902550868ab47e4d8
-mirror_blob: 8b1327e8b79fcd2b4c8ba09b2eaf1856253d924d
-mirror_date: 2026-11-17T21:07:37+02:00
+mirror_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
+mirror_blob: 77a6f7b2ee1f71d3144f99080821e76fb1672820
+mirror_date: 2026-11-25T22:45:40+02:00
 ---
 # Sources and data
 
@@ -13,11 +13,12 @@ mirror_date: 2026-11-17T21:07:37+02:00
 
 | Field | Default | Meaning |
 |---|---|---|
+| `version` | `1` | Schema version |
 | `communityFolder` | `community` | Holds each source's mirror folder (`''`: vault root). publictxt-pages names the same folder in its own settings, set by hand |
-| `forkFolder` | `''` | Where forks go when not to their source folder (`''`: vault root). Not under the community folder by default |
-| `matchFolders` | `true` | Fork modal opens on **Same folder as in the source** when the vault has that exact folder |
-| `listMirrors` / `listForks` | `false` | Keep a mirror / fork list in each follow note ([lists.md](community/publictxt-remotes/docs/features/lists.md)) |
-| `clonesFolder` | `.clones` | Holds the clones; never empty. Hidden, so not indexed and skipped by Sync |
+| `forkFolder` | `''` | Where forks go when not to their source folder (`''`: vault root) |
+| `matchFolders` | `true` | Fork modal opens on **Same folder as in the source** |
+| `listMirrors` / `listForks` | `false` | Keep a mirror / fork list in each follow note ([lists.md](lists.md)) |
+| `clonesFolder` | `.clones` | Holds the clones; never empty |
 | `gitPath` | `git` | The git executable, for when Obsidian lacks the shell's PATH (macOS from Finder) |
 | `localPaths` | `{}` | Remote name → absolute folder: a local source's, or a hosted source's local copy. Never in a note |
 | `checkFrom` | `{}` | Remote name → `local` / `remote` for a hosted source with a local copy. Absent: `local`. Kept only for names in `localPaths` |
@@ -38,8 +39,8 @@ sources no longer followed at the next check.
 ## Follow notes
 
 A source is a note anywhere under the top-level `follows/`, one per repo (publictext ADR-0014,
-spec §3.2). Sources are found by scanning, never stored. The body is the user's; the plugin
-touches only front matter and its own list sections.
+spec §3.2). The body is the user's; the plugin touches only front matter and its own list
+sections.
 
 The file name without `.md` is the **remote name** (`follows/research.md` → `research`), which
 mirrors and forks record. It can't start with `.` or a space or contain
@@ -79,16 +80,17 @@ and **Add source**. Redraws when a note in `follows/` changes. Folder fields (**
 folder**, **Fork folder**, the form's **Mirror folder**) suggest vault folders. In the form,
 lists are one path per line; **Mirror list** / **Fork list** are Default, On, Off.
 
-- **Add**: **Name** and **Repo URL or folder**. A URL makes a hosted source; an absolute path
-  or `file:///` URL a local one. URL valid and not followed; name valid and free, suggested
-  when empty (`owner-repo`, or the folder's name). Creates `follows/<name>.md`; a clash is an
-  error. A local folder is inspected first ([local.md](community/publictxt-remotes/docs/features/local.md)). A hosted repo isn't
-  contacted: a wrong URL shows at the first check. A hosted source can be given a **Local
-  copy**.
+- **Add**: **Name**, **Repo URL**, **Local path**; at least one of the last two. A URL makes a
+  hosted source, and with a path too, the path is its local copy. A path alone (absolute, or a
+  `file:///` URL) makes a local source. Each in the other's field is an error, not moved. URL
+  valid and not followed; name valid and free, suggested when empty (`owner-repo`, or without a
+  URL the folder's name). Creates `follows/<name>.md`; a clash is an error. A folder is
+  inspected first ([local.md](local.md)). A hosted repo isn't contacted: a wrong URL shows at
+  the first check.
 - **Edit**: rewrites these keys (`processFrontMatter`), keeping others and the body. Name and
-  hosted URL are read-only (mirrors and forks record the name; another repo means remove and
-  add). A local source's **Folder** and a hosted source's **Local copy** can change; a cleared
-  copy is forgotten with its `checkFrom`.
+  **Repo URL** are read-only (mirrors and forks record the name; another repo, or a URL for a
+  local source, means remove and add). **Local path** can change: required for a local source;
+  a hosted source's, cleared, is forgotten with its `checkFrom`.
 - **Remove**: after confirming, trashes the note (`trashFile`) and forgets its folder here.
   Mirrors, forks and the clone stay.
 

@@ -3,16 +3,16 @@ mirror_remote: publictxt-pages
 mirror_repo: https://github.com/publictxt/publictxt-pages
 mirror_path: docs/wiki/index.md
 mirror_branch: main
-mirror_commit: 8dde109855f4ca8323ea404f8327a48c1f497d3c
-mirror_blob: ea37d6b32493dcefd10c3076fc279d19b61248be
-mirror_date: 2026-11-17T21:07:18+02:00
+mirror_commit: 184a8535c03384a65b94a3ef851e0127c1b99085
+mirror_blob: 440b6b936122ee52ff781c4523bb392b388147f6
+mirror_date: 2026-11-25T22:44:54+02:00
 ---
 # Map
 
 Every source file, one line — to find the right files, then read those: every script
 has a docstring, every partial a `{{/* */}}` contract. Code wins any disagreement.
-[traps.md](community/publictxt-pages/docs/wiki/traps.md) holds what spans files; **read it before editing templates or the
-pipeline.** [SPEC.md](community/publictxt-pages/docs/SPEC.md) is what the site *should* do.
+[traps.md](traps.md) holds what spans files; **read it before editing templates or the
+pipeline.** [SPEC.md](../SPEC.md) is what the site *should* do.
 
 Add, move or remove a file: update this map. `python scripts/map_lint.py` checks both ways —
 a bare name counts only under its folder's heading.
@@ -23,9 +23,11 @@ Hugo never reads the source repo — only what sync writes: `build/content/`, `b
 
 ```txt
 scripts/sync_content.py     source repo -> build/content: titles, dates,
-                            hashtags, source_path, skips (incl. `publish: off`, `params.excludeFolders`, `params.skipFiles`);
-                            reads `params.titleFromHeading`; a fork's or a mirror's source_* keys, a follow's `follow_name` and `url` -> `follow_url`
-scripts/sources.py          follows, forks, mirrors and the join: a fork's or a mirror's source, source rating, link to the original
+                            hashtags, source_path, folder notes (`is-folder-index`) -> _index.md, skips (incl. `publish: off`, `params.excludeFolders`, `params.skipFiles`);
+                            reads `params.titleFromHeading`; a fork's or a mirror's source_* keys, a follow's `follow_name` and `url` -> `follow_url`;
+                            `in_community` (`params.communityFolder`); links to pages not mirrored -> the original
+scripts/sources.py          follows, forks, mirrors and the join: a fork's or a mirror's source, source rating, link to the original;
+                            follows' mirror folders
 scripts/dates.py            created/updated ladders, one git log pass, sort_key
 scripts/hashtags.py         HASHTAG_RE; linkify (body), merge_tags (front matter `tags`); nested tags + parents, flat keys
 scripts/build.py            full pipeline, any OS, + search index check; docstring has usage
@@ -41,10 +43,11 @@ tests/test_golden.py        example/txt through sync vs tests/golden/;
                             docstring: refreshing the snapshot
 tests/test_dates.py         the date ladder, which the golden test fixes
 tests/test_title.py         derive_title: the H1 on the first line only; titleFromHeading
+tests/test_folder_index.py  `is-folder-index: true`: a note as its folder's _index.md; links to it rewritten
 tests/test_exclude.py       params.excludeFolders (whole subtrees) and params.skipFiles, left out of sync
 tests/test_sources.py       sources.py: canonical URLs, follows, the join; what sync writes from it
 tests/test_hashtags.py       merge_tags: a `#` already in front matter `tags` is dropped; nested tags
-tests/test_site.py          that content through Hugo: index.json vs tests/golden/ (needs hugo)
+tests/test_site.py          that content through Hugo: index.json vs tests/golden/, Pagefind keys on every page (needs hugo)
 tests/test_build.py         build.py's search index check, on made-up public/ trees
 tests/test_map_lint.py      map_lint.py's reading of the map: folder headings, namesakes
 tests/js/facets.test.mjs    facets.js + sorts.js: URL spelling, chip presses, lists = search
@@ -94,7 +97,7 @@ layouts/_partials/
   pagefind-keys.html    hidden sort keys + filters — see traps.md
   bookmark-urls.html    only reader of bookmark:/bookmarks:
   bookmark-links.html   the chip row
-  page-collections.html only reader of collections:; + section, "bookmarks" if URL
+  page-collections.html only reader of collections:; + section, "bookmarks" if URL, "community" if in_community
   collection-pages.html every page of a collection        (partialCached)
   section-pages.html    what a section lists, + its scope
   bookmark-label.html   one URL's short form (returns it)

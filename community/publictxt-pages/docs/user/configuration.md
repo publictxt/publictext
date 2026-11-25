@@ -3,9 +3,9 @@ mirror_remote: publictxt-pages
 mirror_repo: https://github.com/publictxt/publictxt-pages
 mirror_path: docs/user/configuration.md
 mirror_branch: main
-mirror_commit: 8dde109855f4ca8323ea404f8327a48c1f497d3c
-mirror_blob: 708b8226bff2ff696e2cbbbd4559d967320580f7
-mirror_date: 2026-11-17T21:07:18+02:00
+mirror_commit: 184a8535c03384a65b94a3ef851e0127c1b99085
+mirror_blob: 776f662c761a6b46b7ebc79de59820bde5fdfa0c
+mirror_date: 2026-11-25T22:44:54+02:00
 ---
 # Configuration
 
@@ -98,10 +98,17 @@ filter: tag-not=journal
 ---
 ```
 
-`hiddenCollections` (site-wide, default `["community"]`, where mirrors live) keeps whole collections out of
+`hiddenCollections` (site-wide, default `["community"]`: the pages in `communityFolder`, below) keeps whole collections out of
 every list and of search until a reader asks: each starts excluded in the Collection
 filter, on top of any `filter`. The collection's own section still lists it. `[]` hides
 none; it needs the collection filter's `exclude` state ([Filter chips](#filter-chips)).
+
+`communityFolder` (default `"community"`) is the folder obsidian-publictxt-remotes
+mirrors pages into — set it to the plugin's **Community folder**, by hand. Every page
+under it, at any depth, is in the `community` collection, wherever the folder sits
+(`"people/community"` works). `""`, the repo root as in the plugin: each follow's mirror
+folder (its `folder:`, else its name) instead. A link into a mirror folder that reaches
+no page — one not mirrored — goes to the original ([Follows and forks](writing.md#follows-and-forks)).
 
 `filter` starts the list filtered — chip filters spelled as in the list's URL
 (`tag=a&tag-not=b&collection=blog`). Set it to `""` to stop a parent folder's from
@@ -119,7 +126,7 @@ nothing here.)
 ## Timeline and folder tree
 
 The right column of a page shows its place in the site — a dated **timeline** for
-logs, or a **folder tree** for reference material. See [The published site](community/publictxt-pages/docs/user/site.md#on-a-page).
+logs, or a **folder tree** for reference material. See [The published site](site.md#on-a-page).
 
 ```toml
 [params]
@@ -167,7 +174,7 @@ whole default — list every facet you want, in display order.
   # defaults: states = ["include", "exclude"], match = ["all", "any"]
 ```
 
-The **Source** and **Copy** filters (the [Community](community/publictxt-pages/docs/user/site.md#community) block) aren't in
+The **Source** and **Copy** filters (the [Community](site.md#community) block) aren't in
 this list: Source shows whenever a list has pages from more than one source, Copy where
 some of its pages are forks or mirrors. `ownSource` names your own
 pages there:
@@ -199,7 +206,7 @@ links. Key → label:
 ```
 
 Writing this table merges with the defaults (`facebook`, `twitter`, `substack`,
-`mastodon`, `github`). Usage: [Writing → Posted elsewhere](community/publictxt-pages/docs/user/writing.md#posted-elsewhere).
+`mastodon`, `github`). Usage: [Writing → Posted elsewhere](writing.md#posted-elsewhere).
 
 ## Leave folders out
 
@@ -233,7 +240,7 @@ Hidden, not private, like `excludeFolders`.
 ## Titles from headings
 
 A note without `title:` takes a `# Heading` on its first line as its title, removed from
-the body ([Writing → Titles](community/publictxt-pages/docs/user/writing.md#titles)). To title every such note by its file
+the body ([Writing → Titles](writing.md#titles)). To title every such note by its file
 name instead, and keep the heading in the body:
 
 ```toml
@@ -279,4 +286,4 @@ title = "Jo's notes"
 ```
 
 Check it locally with `python scripts/build.py --source ../my-notes --serve`
-([Setup](community/publictxt-pages/docs/user/setup.md#optional-preview-locally)) before pushing — a TOML typo fails the build.
+([Setup](setup.md#optional-preview-locally)) before pushing — a TOML typo fails the build.
