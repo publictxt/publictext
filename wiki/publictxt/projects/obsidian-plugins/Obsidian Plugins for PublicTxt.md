@@ -13,6 +13,6 @@ fork_commit: b140866b0265a17697bb5c8440d599eb874c95cb
 fork_blob: e5a172f391f6fef609a96a2a4411fcd3bcf7fd79
 fork_date: 2026-11-17T22:16:46+02:00
 ---
-- [Obsidian PublicTxt Facets Plugin](Obsidian%20PublicTxt%20Facets%20Plugin.md)
-- [Obsidian PublicTxt Remotes Plugin](Obsidian%20PublicTxt%20Remotes%20Plugin.md)
+- [Obsidian PublicTxt Facets Plugin](publictxt-facets/Obsidian%20PublicTxt%20Facets%20Plugin.md)
+- [Obsidian PublicTxt Remotes Plugin](publictxt-remotes/Obsidian%20PublicTxt%20Remotes%20Plugin.md)
 

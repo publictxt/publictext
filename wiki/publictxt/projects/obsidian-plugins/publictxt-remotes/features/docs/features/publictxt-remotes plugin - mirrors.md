@@ -1,13 +1,13 @@
 ---
-mirror_remote: publictxt-remotes
-mirror_repo: https://github.com/publictxt/obsidian-publictxt-remotes
-mirror_path: docs/features/mirror.md
-mirror_branch: master
-mirror_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
-mirror_blob: e52136af2173701ce54dc77b3124261d0f899178
-mirror_date: 2026-11-25T22:45:40+02:00
+fork_remote: publictxt-remotes
+fork_repo: https://github.com/publictxt/obsidian-publictxt-remotes
+fork_path: docs/features/mirror.md
+fork_branch: master
+fork_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
+fork_blob: e52136af2173701ce54dc77b3124261d0f899178
+fork_date: 2026-11-25T23:51:25+02:00
 ---
-# Mirror
+# publictxt-remotes plugin - Mirrors
 
 A mirror is upstream's copy of a page in the vault: searchable, with backlinks and graph, opened
 in place. Not for editing: updates overwrite it.
@@ -15,7 +15,7 @@ in place. Not for editing: updates overwrite it.
 ## Provenance
 
 `mirror_remote`, `mirror_repo`, `mirror_path`, `mirror_branch`, `mirror_commit`, `mirror_blob`,
-`mirror_date`: as their `fork_*` namesakes ([fork.md](fork.md)), for the version held. No
+`mirror_date`: as their `fork_*` namesakes ([fork.md](publictxt-remotes%20forks.md)), for the version held. No
 `mirror_seen`: an update overwrites.
 
 A note is a mirror when `mirror_path` and `mirror_blob` are valid, it has a valid
@@ -55,7 +55,7 @@ saw and rewrites `mirror_*`. No compare. Its mirrors are looked up again, so one
 since the check is updated where it is.
 
 A mirror isn't overwritten unasked (`mirrorState()`) when it is edited
-([fork-update.md](fork-update.md)), or when that can't be told (its version can't be read).
+([fork-update.md](publictxt-remotes%20fork-update.md)), or when that can't be told (its version can't be read).
 **Update** asks, saying which, and suggests forking; **Update mirrors** skips and names it. A note
 that changes while it is being updated is left and reported. A file whose mirrors are all gone
 leaves the list.

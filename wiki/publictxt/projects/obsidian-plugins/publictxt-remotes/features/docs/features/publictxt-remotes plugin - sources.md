@@ -1,13 +1,13 @@
 ---
-mirror_remote: publictxt-remotes
-mirror_repo: https://github.com/publictxt/obsidian-publictxt-remotes
-mirror_path: docs/features/sources.md
-mirror_branch: master
-mirror_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
-mirror_blob: 77a6f7b2ee1f71d3144f99080821e76fb1672820
-mirror_date: 2026-11-25T22:45:40+02:00
+fork_remote: publictxt-remotes
+fork_repo: https://github.com/publictxt/obsidian-publictxt-remotes
+fork_path: docs/features/sources.md
+fork_branch: master
+fork_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
+fork_blob: 77a6f7b2ee1f71d3144f99080821e76fb1672820
+fork_date: 2026-11-25T23:51:25+02:00
 ---
-# Sources and data
+# publictxt-remotes plugin - Sources and data
 
 ## data.json
 
@@ -17,7 +17,7 @@ mirror_date: 2026-11-25T22:45:40+02:00
 | `communityFolder` | `community` | Holds each source's mirror folder (`''`: vault root). publictxt-pages names the same folder in its own settings, set by hand |
 | `forkFolder` | `''` | Where forks go when not to their source folder (`''`: vault root) |
 | `matchFolders` | `true` | Fork modal opens on **Same folder as in the source** |
-| `listMirrors` / `listForks` | `false` | Keep a mirror / fork list in each follow note ([lists.md](lists.md)) |
+| `listMirrors` / `listForks` | `false` | Keep a mirror / fork list in each follow note ([lists.md](publictxt-remotes%20Lists.md)) |
 | `clonesFolder` | `.clones` | Holds the clones; never empty |
 | `gitPath` | `git` | The git executable, for when Obsidian lacks the shell's PATH (macOS from Finder) |
 | `localPaths` | `{}` | Remote name → absolute folder: a local source's, or a hosted source's local copy. Never in a note |
@@ -85,7 +85,7 @@ lists are one path per line; **Mirror list** / **Fork list** are Default, On, Of
   `file:///` URL) makes a local source. Each in the other's field is an error, not moved. URL
   valid and not followed; name valid and free, suggested when empty (`owner-repo`, or without a
   URL the folder's name). Creates `follows/<name>.md`; a clash is an error. A folder is
-  inspected first ([local.md](local.md)). A hosted repo isn't contacted: a wrong URL shows at
+  inspected first ([local.md](publictxt-remotes%20plugin%20-%20local%20sources.md)). A hosted repo isn't contacted: a wrong URL shows at
   the first check.
 - **Edit**: rewrites these keys (`processFrontMatter`), keeping others and the body. Name and
   **Repo URL** are read-only (mirrors and forks record the name; another repo, or a URL for a

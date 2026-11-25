@@ -1,13 +1,13 @@
 ---
-mirror_remote: publictxt-remotes
-mirror_repo: https://github.com/publictxt/obsidian-publictxt-remotes
-mirror_path: docs/features/check.md
-mirror_branch: master
-mirror_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
-mirror_blob: 132cafa0a3bba4f8700f32a947813867008f43fb
-mirror_date: 2026-11-25T22:45:39+02:00
+fork_remote: publictxt-remotes
+fork_repo: https://github.com/publictxt/obsidian-publictxt-remotes
+fork_path: docs/features/check.md
+fork_branch: master
+fork_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
+fork_blob: 132cafa0a3bba4f8700f32a947813867008f43fb
+fork_date: 2026-11-25T23:51:23+02:00
 ---
-# Check
+# publictxt-remotes plugin - check feature
 
 ## What a check finds
 
@@ -45,7 +45,7 @@ once the user opens or closes it, it stays that way until the view closes. In th
 
 - **Local** / **Remote**: hosted sources with a local copy; the one in use marked. Selecting
   one saves `checkFrom` and rechecks that source alone (`checkOne()`). Disabled during a check.
-- **Snapshot**: local sources, and local copies while **Local** is chosen ([local.md](local.md)).
+- **Snapshot**: local sources, and local copies while **Local** is chosen ([local.md](publictxt-remotes%20plugin%20-%20local%20sources.md)).
 
 Under an open header, the error or "nothing new", then actions:
 

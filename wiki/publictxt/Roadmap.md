@@ -7,8 +7,8 @@ tags: [publictxt, docs, roadmap]
 
 | Component | Status |
 |---|---|
-| [Obsidian PublicTxt Facets](projects/obsidian-plugins/Obsidian-PublicTxt-Facets.md) | v1.0 released |
-| [Obsidian PublicTxt Remotes](projects/obsidian-plugins/Obsidian-PublicTxt-Remotes.md) | In progress — follow repos, mirror and fork pages (desktop) |
+| [Obsidian PublicTxt Facets](projects/obsidian-plugins/publictxt-facets/Obsidian-PublicTxt-Facets.md) | v1.0 released |
+| [Obsidian PublicTxt Remotes](projects/obsidian-plugins/publictxt-remotes/Obsidian-PublicTxt-Remotes.md) | In progress — follow repos, mirror and fork pages (desktop) |
 | [PublicTxt-Pages](projects/publictxt-pages/PublicTxt-Pages.md) | Working — this site, [publictxt.github.io/publictext](https://publictxt.github.io/publictext/) |
 | Format specification | Draft; the [working layout](Repository-Structure.md) follows PublicTxt-Pages |
 | [WikiTool](projects/WikiTool.md) | In progress |
@@ -23,7 +23,7 @@ tags: [publictxt, docs, roadmap]
 
 ## Next
 
-- **Obsidian PublicTxt Remotes**: first release. Then merging forks and proposing changes upstream ([Later](projects/obsidian-plugins/Obsidian-PublicTxt-Remotes.md#later)).
+- **Obsidian PublicTxt Remotes**: first release. Then merging forks and proposing changes upstream ([Later](projects/obsidian-plugins/publictxt-remotes/Obsidian-PublicTxt-Remotes.md#later)).
 - **Obsidian PublicTxt Facets**: source, source rating and copy filters, so mirrored and forked pages can be told apart while browsing.
 - **PublicTxt-Pages**: `[[wikilinks]]` at sync (on hold), folder pages by any name, tag feeds ([Planned](projects/publictxt-pages/PublicTxt-Pages.md#planned)).
 

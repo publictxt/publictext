@@ -1,13 +1,13 @@
 ---
-mirror_remote: publictxt-remotes
-mirror_repo: https://github.com/publictxt/obsidian-publictxt-remotes
-mirror_path: docs/features/lists.md
-mirror_branch: master
-mirror_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
-mirror_blob: e7e04e27030934454c73ad32517eaefbc8268292
-mirror_date: 2026-11-25T22:45:39+02:00
+fork_remote: publictxt-remotes
+fork_repo: https://github.com/publictxt/obsidian-publictxt-remotes
+fork_path: docs/features/lists.md
+fork_branch: master
+fork_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
+fork_blob: e7e04e27030934454c73ad32517eaefbc8268292
+fork_date: 2026-11-25T23:51:25+02:00
 ---
-# Mirror and fork lists
+# publictxt-remotes plugin - Mirror and fork lists
 
 A follow note can end with links to the notes mirrored and forked from its source.
 

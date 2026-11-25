@@ -15,11 +15,11 @@ mirror_date: 2026-11-25T23:12:21+02:00
 - [x] [[PublicTxt-Pages Index pages by attribute]]
 - [x] Title only to use H1 on first line of body
 
-## [[Obsidian PublicTxt Facets Plugin]]
+## [[../../../../wiki/publictxt/projects/obsidian-plugins/publictxt-facets/Obsidian PublicTxt Facets Plugin]]
 - [x] Title only to use H1 on first line of body
 - [ ] [[PublicTxt Facets Community Features]]
 
-## [[Obsidian PublicTxt Remotes Plugin]]
+## [[projects/Obsidian/Obsidian PublicTxt Remotes Plugin]]
 - [[PublicTxt Community Mirrors]]
 - [[PublicTxt Remotes Convert Links]]
 - [[PublicTxt Remotes Local Copies]]

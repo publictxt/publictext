@@ -1,13 +1,13 @@
 ---
-mirror_remote: publictxt-remotes
-mirror_repo: https://github.com/publictxt/obsidian-publictxt-remotes
-mirror_path: docs/features/fork-update.md
-mirror_branch: master
-mirror_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
-mirror_blob: 26d34ec57167ea70d51fdc6acd0862e9b1f1005d
-mirror_date: 2026-11-25T22:45:39+02:00
+fork_remote: publictxt-remotes
+fork_repo: https://github.com/publictxt/obsidian-publictxt-remotes
+fork_path: docs/features/fork-update.md
+fork_branch: master
+fork_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
+fork_blob: 26d34ec57167ea70d51fdc6acd0862e9b1f1005d
+fork_date: 2026-11-25T23:51:24+02:00
 ---
-# Fork update
+# publictxt-remotes plugin - Fork update
 
 Look at upstream's new version beside the note, then take it, keep it alongside, or wave it
 off. No merge.
@@ -51,7 +51,7 @@ copies aren't written.
   `<name> (up-01)`, `(up-02)`, … (an existing ` (up-nn)` dropped first). Opens where the copy
   was; now the latest copy.
 
-After either, the note's links are converted ([fork-links.md](fork-links.md)).
+After either, the note's links are converted ([fork-links.md](publictxt-remotes%20fork-links.md)).
 
 **Gone upstream**: **Detach** removes `fork_*` from every copy after asking; **Keep** sets
 `fork_seen: gone` (not listed until the file is back and differs).

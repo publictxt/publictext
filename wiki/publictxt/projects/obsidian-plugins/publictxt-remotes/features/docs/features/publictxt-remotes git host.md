@@ -1,13 +1,13 @@
 ---
-mirror_remote: publictxt-remotes
-mirror_repo: https://github.com/publictxt/obsidian-publictxt-remotes
-mirror_path: docs/features/git.md
-mirror_branch: master
-mirror_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
-mirror_blob: 9bf441ff4e3eddffcacf04fc6345ce892de423d1
-mirror_date: 2026-11-25T22:45:39+02:00
+fork_remote: publictxt-remotes
+fork_repo: https://github.com/publictxt/obsidian-publictxt-remotes
+fork_path: docs/features/git.md
+fork_branch: master
+fork_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
+fork_blob: 9bf441ff4e3eddffcacf04fc6345ce892de423d1
+fork_date: 2026-11-25T23:51:24+02:00
 ---
-# Git host
+# publictxt-remotes plugin - Git host
 
 `RemoteHost` is all checks, mirrors and forks use. `GitHost` implements it with the git CLI.
 

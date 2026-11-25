@@ -4,7 +4,7 @@ tags: [publictxt, obsidian, plugin, docs]
 ---
 # Obsidian PublicTxt Remotes
 
-An Obsidian plugin that follows other people's PublicTxt repos, shows what changed since you last looked, mirrors the pages you want at hand, and forks the ones you want to make your own. It is the pulling half of PublicTxt's aggregate view; [Obsidian PublicTxt Facets](Obsidian-PublicTxt-Facets.md) is the browsing half.
+An Obsidian plugin that follows other people's PublicTxt repos, shows what changed since you last looked, mirrors the pages you want at hand, and forks the ones you want to make your own. It is the pulling half of PublicTxt's aggregate view; [Obsidian PublicTxt Facets](../publictxt-facets/Obsidian-PublicTxt-Facets.md) is the browsing half.
 
 - **Follow notes**: one note per repo in `follows/`, named for the remote, with its `url`, `branch` and `include` in front matter and why you follow it in the body (spec §3.2).
 - **Check**: per repo, what's new since you last looked, your mirrors that are behind, and your forks whose original changed. By git blob SHA, so it's the same on every host.
@@ -53,4 +53,4 @@ Merge a fork (`git merge-file` on `fork_blob`); propose changes upstream, conver
 ## Links
 
 - [Repository](https://github.com/publictxt/obsidian-publictxt-remotes)
-- Earlier notes: [Obsidian PublicTxt Remotes Plugin](Obsidian%20PublicTxt%20Remotes%20Plugin.md), [PublicTxt Remotes Local Copies](PublicTxt%20Remotes%20Local%20Copies.md)
+- Earlier notes: [Obsidian PublicTxt Remotes Plugin](publictxt-remotes/Obsidian%20PublicTxt%20Remotes%20Plugin.md), [PublicTxt Remotes Local Copies](PublicTxt%20Remotes%20Local%20Copies.md)

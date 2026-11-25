@@ -63,7 +63,7 @@ make some my own; see when those change upstream.
 ## Open questions
 
 1. **Canonical repo URL** (publictext spec §13 q2): v0 rule in
-   [features/sources.md](features/sources.md); propose it upstream.
+   [features/sources.md](../../../wiki/publictxt/projects/obsidian-plugins/publictxt-remotes/features/docs/features/publictxt-remotes%20plugin%20-%20sources.md); propose it upstream.
 2. **Removing a source leaves its clone.** Delete on remove (asking), a clean-up command, or
    leave it (re-adding is cheap). Left for now.
 3. **`fork_remote` as a link** (`[[follows/name]]`): clickable and rename-safe if Obsidian

@@ -1,16 +1,16 @@
 ---
-mirror_remote: publictxt-remotes
-mirror_repo: https://github.com/publictxt/obsidian-publictxt-remotes
-mirror_path: docs/features/fork.md
-mirror_branch: master
-mirror_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
-mirror_blob: 5fe2913bc870f99e7de3f37706f8ada96f08e8b6
-mirror_date: 2026-11-25T22:45:39+02:00
+fork_remote: publictxt-remotes
+fork_repo: https://github.com/publictxt/obsidian-publictxt-remotes
+fork_path: docs/features/fork.md
+fork_branch: master
+fork_commit: e7b2a3ec63d65ba1ee06578e69f3b9032b6a5f5b
+fork_blob: 5fe2913bc870f99e7de3f37706f8ada96f08e8b6
+fork_date: 2026-11-25T23:51:24+02:00
 ---
-# Fork
+# publictxt-remotes plugin - Fork feature
 
 A fork is the user's own note made from an upstream page. They edit it; upstream changes come
-through Compare ([fork-update.md](fork-update.md)).
+through Compare ([fork-update.md](publictxt-remotes%20fork-update.md)).
 
 ## Provenance
 
@@ -69,7 +69,7 @@ with a note saying so. It follows the destination until typed in; then it must b
 `/` or `\` is an error. Earlier forks of the file are named.
 
 **Convert links** and **Match links to existing pages**, applied once the forks are written:
-[fork-links.md](fork-links.md).
+[fork-links.md](publictxt-remotes%20fork-links.md).
 
 **Preview**, redrawn on change: "Goes to `<path>`", or a row per file (`source → vault`, "Name
 taken." when numbered (case-insensitive), "Forked before.", "Its mirror moves."), plus folders

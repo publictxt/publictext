@@ -56,7 +56,7 @@ see [publictxt/publictxt-pages GitHub repo](https://github.com/publictxt/publict
 
 ### Obsidian PublicTxt Facets
 
-[Obsidian PublicTxt Facets](wiki/publictxt/projects/obsidian-plugins/Obsidian-PublicTxt-Facets.md): the same faceted browsing inside Obsidian. Offline by design.
+[Obsidian PublicTxt Facets](wiki/publictxt/projects/obsidian-plugins/publictxt-facets/Obsidian-PublicTxt-Facets.md): the same faceted browsing inside Obsidian. Offline by design.
 
 - Filter notes by combinations of tags; the tag list narrows to tags that co-occur with the selection.
 
@@ -64,7 +64,7 @@ see [publictxt/obsidian-publictxt-facets GitHub repo](https://github.com/publict
 
 ### Obsidian PublicTxt Remotes
 
-[Obsidian PublicTxt Remotes](wiki/publictxt/projects/obsidian-plugins/Obsidian-PublicTxt-Remotes.md): the pulling half of v1.
+[Obsidian PublicTxt Remotes](wiki/publictxt/projects/obsidian-plugins/publictxt-remotes/Obsidian-PublicTxt-Remotes.md): the pulling half of v1.
 
 - Follow whole repos, one note per repo in `follows/`; narrow what's shown by folder (`include`).
 - See what changed since you last looked, by git blob SHA.

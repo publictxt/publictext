@@ -14,4 +14,4 @@ The PublicTxt repos this one follows, one note per repo ([ADR-0014](../wiki/publ
 | [txt](txt.md) | [jaysen/txt](https://github.com/jaysen/txt): Jaysen's public wiki and blog |
 | [pwiki](pwiki.md) | A local repo: Jaysen's personal wiki |
 
-How follows work: [Obsidian PublicTxt Remotes](../wiki/publictxt/projects/obsidian-plugins/Obsidian-PublicTxt-Remotes.md), [spec §3.2](../wiki/publictxt/docs/spec/publictxt-spec.md#32-follows).
+How follows work: [Obsidian PublicTxt Remotes](../wiki/publictxt/projects/obsidian-plugins/publictxt-remotes/Obsidian-PublicTxt-Remotes.md), [spec §3.2](../wiki/publictxt/docs/spec/publictxt-spec.md#32-follows).

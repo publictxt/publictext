@@ -21,15 +21,15 @@ Features:
 
 | File | Covers |
 |---|---|
-| [sources.md](features/sources.md) | `data.json`, follow notes, canonical URL, settings tab, state |
-| [check.md](features/check.md) | A check, and the check view |
-| [git.md](features/git.md) | `RemoteHost` over the git CLI: clones, commands, errors |
-| [local.md](features/local.md) | Local sources, local copies, making a repo, snapshot |
-| [mirror.md](features/mirror.md) | Mirror provenance; mirror, update, stop |
-| [fork.md](features/fork.md) | Fork provenance; the fork modal |
-| [fork-update.md](features/fork-update.md) | Compare, overwrite, write alongside, keep, detach |
-| [lists.md](features/lists.md) | Mirror and fork lists in follow notes |
-| [fork-links.md](features/fork-links.md) | A fork's links: converting their form, matching broken ones |
+| [sources.md](../../../wiki/publictxt/projects/obsidian-plugins/publictxt-remotes/features/docs/features/publictxt-remotes%20plugin%20-%20sources.md) | `data.json`, follow notes, canonical URL, settings tab, state |
+| [check.md](../../../wiki/publictxt/projects/obsidian-plugins/publictxt-remotes/features/docs/features/publictxt-remotes%20check%20feature.md) | A check, and the check view |
+| [git.md](../../../wiki/publictxt/projects/obsidian-plugins/publictxt-remotes/features/docs/features/publictxt-remotes%20git%20host.md) | `RemoteHost` over the git CLI: clones, commands, errors |
+| [local.md](../../../wiki/publictxt/projects/obsidian-plugins/publictxt-remotes/features/docs/features/publictxt-remotes%20plugin%20-%20local%20sources.md) | Local sources, local copies, making a repo, snapshot |
+| [mirror.md](../../../wiki/publictxt/projects/obsidian-plugins/publictxt-remotes/features/docs/features/publictxt-remotes%20plugin%20-%20mirrors.md) | Mirror provenance; mirror, update, stop |
+| [fork.md](../../../wiki/publictxt/projects/obsidian-plugins/publictxt-remotes/features/docs/features/publictxt-remotes%20forks.md) | Fork provenance; the fork modal |
+| [fork-update.md](../../../wiki/publictxt/projects/obsidian-plugins/publictxt-remotes/features/docs/features/publictxt-remotes%20fork-update.md) | Compare, overwrite, write alongside, keep, detach |
+| [lists.md](../../../wiki/publictxt/projects/obsidian-plugins/publictxt-remotes/features/docs/features/publictxt-remotes%20Lists.md) | Mirror and fork lists in follow notes |
+| [fork-links.md](../../../wiki/publictxt/projects/obsidian-plugins/publictxt-remotes/features/docs/features/publictxt-remotes%20fork-links.md) | A fork's links: converting their form, matching broken ones |
 
 Each feature file ends with its code. Nothing is released yet: everything, ids included, can
 still change until the first release.

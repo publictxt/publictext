@@ -23,8 +23,8 @@ Start with the [overview](PublicTxt.md).
 ## Components
 
 - [PublicTxt-Pages](projects/publictxt-pages/PublicTxt-Pages.md) — static site with search and facets
-- [Obsidian PublicTxt Facets](projects/obsidian-plugins/Obsidian-PublicTxt-Facets.md) — the same browsing inside Obsidian
-- [Obsidian PublicTxt Remotes](projects/obsidian-plugins/Obsidian-PublicTxt-Remotes.md) — follow repos and fork their pages from Obsidian
+- [Obsidian PublicTxt Facets](projects/obsidian-plugins/publictxt-facets/Obsidian-PublicTxt-Facets.md) — the same browsing inside Obsidian
+- [Obsidian PublicTxt Remotes](projects/obsidian-plugins/publictxt-remotes/Obsidian-PublicTxt-Remotes.md) — follow repos and fork their pages from Obsidian
 - [WikiTool](projects/WikiTool.md) — convert and copy between wikis
 - [PublicTxt.net](projects/PublicTxt.net.md) — .NET libraries and apps
 - [CuratedCommons](projects/CuratedCommons.md) — curation and social bookmarking on PublicTxt repositories
