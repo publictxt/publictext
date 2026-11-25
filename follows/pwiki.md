@@ -11,3 +11,8 @@ list_forks: true
 - [Obsidian PublicTxt Facets Plugin](../wiki/publictxt/projects/obsidian-plugins/Obsidian%20PublicTxt%20Facets%20Plugin.md)
 - [Obsidian PublicTxt Remotes Plugin](../wiki/publictxt/projects/obsidian-plugins/Obsidian%20PublicTxt%20Remotes%20Plugin.md)
 - [PublicTxt Remotes Local Copies](../wiki/publictxt/projects/obsidian-plugins/PublicTxt%20Remotes%20Local%20Copies.md)
+
+## Mirrored pages
+
+- [PublicTxt Todo](../community/pwiki/01-projects/publictxt/PublicTxt%20Todo.md)
+- [PublicTxt-Pages](../community/pwiki/01-projects/publictxt/projects/PublicTxt-Pages/PublicTxt-Pages.md)
