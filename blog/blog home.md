@@ -1,5 +1,6 @@
 ---
 description: Project updates and journal posts
+is-folder-index: "true"
 ---
 # Blog
 

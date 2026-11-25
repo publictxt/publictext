@@ -1,5 +1,6 @@
 ---
 description: Repositories this one follows
+is-folder-index: true
 ---
 # Follows
 

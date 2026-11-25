@@ -1,3 +1,6 @@
+---
+is-folder-index: true
+---
 # PublicTxt
 
 Plain-text public knowledge, kept in Git repositories and published for free.
@@ -12,7 +15,7 @@ This site is itself a PublicTxt repository ([publictxt/publictext](https://githu
 	- [Repository structure](wiki/publictxt/Repository-Structure.md)
 	- [Publishing a PublicTxt site](wiki/publictxt/projects/publictxt-pages/Publishing.md)
 	- [Roadmap](wiki/publictxt/Roadmap.md)
-- [Blog](blog/_index.md) - project updates
-- [Posts](posts/_index.md) - micro-blogging records
-- [Notes](notes/_index.md) - long form notes 
-- [Bookmarks](bookmarks/_index.md) - project related bookmarks
+- [Blog](blog/blog%20home.md) - project updates
+- [Posts](posts/posts%20home.md) - micro-blogging records
+- [Notes](notes/notes%20home.md) - long form notes 
+- [Bookmarks](bookmarks/bookmarks%20home.md) - project related bookmarks

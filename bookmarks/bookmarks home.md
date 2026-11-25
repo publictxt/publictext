@@ -1,5 +1,6 @@
 ---
 description: Web resources, with notes about them
+is-folder-index: true
 ---
 # Bookmarks
 
