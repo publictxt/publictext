@@ -12,7 +12,7 @@ Start with the [overview](PublicTxt.md).
 - [Roadmap](Roadmap.md) — v1 focus, component status, later phases
 - [Repository structure](Repository-Structure.md) — how a PublicTxt repository is laid out
 - [Publishing a PublicTxt site](projects/publictxt-pages/Publishing.md) — from a repository to a live site, as this one is built
-- [Related projects and tools](Related-Projects.md) — Agora, Solid, FedWiki, and what PublicTxt builds on
+- [Related projects and tools](related/Related-Projects.md) — Agora, Solid, FedWiki, and what PublicTxt builds on
 
 ## Design
 

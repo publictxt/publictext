@@ -186,4 +186,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 
 ## Related Projects
-- [Related projects and tools](Related-Projects.md) Agora, Solid, FedWiki, and what PublicTxt builds on
+- [Related projects and tools](wiki/publictxt/related/Related-Projects.md) Agora, Solid, FedWiki, and what PublicTxt builds on

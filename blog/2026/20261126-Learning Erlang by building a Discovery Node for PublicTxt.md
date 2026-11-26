@@ -7,6 +7,7 @@ tags:
   - publictxt-web
   - design
   - dev/planned
+  - sticky
 rating: "4"
 ---
 ## Why Erlang, why now
