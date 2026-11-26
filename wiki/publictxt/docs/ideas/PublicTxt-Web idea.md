@@ -1,4 +1,3 @@
-# PublicTxt Web
 
 Parked ([IDEAS.md](../IDEAS.md): web app). A hosted service, possibly paid for, that gives anyone a PublicTxt site at `yoursite.publictext.net` (or `publicwiki.net`) and does in the browser what the tools do today, without the person touching Git.
 

@@ -18,7 +18,7 @@ Start with the [overview](PublicTxt.md).
 
 - [Format specification](docs/spec/publictxt-spec.md) — the plaintext conventions every tool reads and writes
 - [Architecture decisions](docs/adr/README.md) — why things are the way they are
-- [Ideas](docs/IDEAS.md) — parked, each with a trigger: [weighted links and attributes](docs/ideas/weighted-links-and-attributes.md), [Git features](docs/ideas/git-features.md), [PublicTxt Web](docs/ideas/PublicTxt-Web.md)
+- [Ideas](docs/IDEAS.md) — parked, each with a trigger: [weighted links and attributes](docs/ideas/weighted-links-and-attributes.md), [Git features](docs/ideas/git-features.md), [PublicTxt Web](docs/ideas/PublicTxt-Web%20idea.md)
 
 ## Components
 
